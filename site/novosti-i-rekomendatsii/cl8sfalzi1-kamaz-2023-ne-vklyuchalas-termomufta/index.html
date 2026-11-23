@@ -1,0 +1,211 @@
+<!doctype html>
+<!-- © 2026 Дмитриев Олег Сергеевич · АвтоЭлектрик PRO · собрано tools/tilda_static.py -->
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>КамАЗ 2023 — не включалась термомуфта, перегрев двигателя, ремонт разъёма</title>
+<meta name="description" content="Компьютерная диагностика КамАЗ 2023 года при жалобе на не включение термомуфты и перегрев двигателя. Выявлены ошибки 1242, 23770 и 0559. При ручной проверке…">
+<meta name="author" content="Дмитриев Олег Сергеевич">
+<meta name="color-scheme" content="dark light">
+<meta name="robots" content="noindex,follow">
+<link rel="canonical" href="https://avtoelektrik-pro.kz/novosti-i-rekomendatsii/cl8sfalzi1-kamaz-2023-ne-vklyuchalas-termomufta">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="АвтоЭлектрик PRO">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:title" content="КамАЗ 2023 — не включалась термомуфта, перегрев двигателя, ремонт разъёма">
+<meta property="og:description" content="Компьютерная диагностика КамАЗ 2023 года при жалобе на не включение термомуфты и перегрев двигателя. Выявлены ошибки 1242, 23770 и 0559. При ручной проверке…">
+<meta property="og:url" content="https://avtoelektrik-pro.kz/novosti-i-rekomendatsii/cl8sfalzi1-kamaz-2023-ne-vklyuchalas-termomufta">
+<meta property="og:image" content="https://avtoelektrik-pro.kz/og.png?v=c024d92a">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.ico?v=17ea34c9" sizes="48x48"><link rel="icon" href="/favicon.svg?v=c18aea20" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-touch-icon.png?v=760bba30">
+<style>*{box-sizing:border-box}
+:root{--bg:#111315;--panel:#1b1e21;--acc:#FFA500;--tx:#f2f2f2;--mut:#9aa0a6;--ln:#2a2e33}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.65 'Golos Text',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+.wrap{max-width:900px;margin:0 auto;padding:0 16px}
+a{color:var(--acc);text-decoration:none}
+a:hover{text-decoration:underline}
+.bar{position:sticky;top:0;z-index:5;background:rgba(17,19,21,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--ln)}
+.bar .wrap{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding-top:10px;padding-bottom:10px}
+.logo{display:flex;align-items:center;gap:8px;color:var(--tx);font-weight:800;font-size:18px}
+.logo i{width:20px;height:20px;background:var(--acc);display:inline-block;clip-path:polygon(55% 0,12% 56%,47% 56%,40% 100%,88% 40%,52% 40%)}
+.menu{display:flex;gap:14px;flex-wrap:wrap;font-size:14px;margin-right:auto}
+.menu a{color:var(--mut)}
+.call{color:var(--acc);font-weight:700;white-space:nowrap}
+.stripe{height:3px;background:linear-gradient(90deg,var(--acc),transparent)}
+main{padding:22px 0 40px}
+h1{font-size:28px;line-height:1.25;margin:.2em 0 .5em}
+h2{font-size:21px;margin:1.4em 0 .5em}
+h3{font-size:18px;margin:1.2em 0 .4em}
+.crumbs{color:var(--mut);font-size:13px;margin-bottom:14px}
+.crumbs a{color:var(--mut)}
+.crumbs span{color:var(--tx)}
+.pmeta{color:var(--mut);font-size:13px;margin:-6px 0 14px}
+.body img{max-width:100%;height:auto;border-radius:10px;margin:14px 0;background:var(--panel)}
+.body ul,.body ol{padding-left:22px}
+.body figure{margin:14px 0}
+.body .wp-block-buttons,.f-cta{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0}
+.btn,.wp-block-button__link{display:inline-block;background:var(--acc);color:#111;font-weight:700;padding:11px 18px;border-radius:10px}
+.btn:hover,.wp-block-button__link:hover{text-decoration:none;filter:brightness(1.08)}
+.btn.wa,.wa .wp-block-button__link{background:#25D366;color:#073}
+.ao a{display:inline-block;background:var(--panel);border:1px solid var(--acc);border-radius:10px;padding:10px 14px;margin:8px 0}
+details{background:var(--panel);border:1px solid var(--ln);border-radius:10px;padding:10px 14px;margin:10px 0}
+summary{cursor:pointer;font-weight:600}
+.post-list{list-style:none;padding:0;margin:14px 0;display:grid;gap:8px}
+.post-list li{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid var(--ln);padding:7px 0}
+.post-list time{color:var(--mut);font-size:13px;white-space:nowrap}
+.more{margin:10px 0}
+.related{margin:30px 0 0;padding:18px;background:var(--panel);border:1px solid var(--ln);border-radius:14px}
+.related h2{margin:0 0 10px;font-size:17px}
+.related ul{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:8px}
+hr{border:0;border-top:1px solid var(--ln);margin:20px 0}
+footer{border-top:1px solid var(--ln);background:var(--panel);padding:24px 0;margin-top:30px}
+footer .small{color:var(--mut);font-size:13px}
+@media(max-width:560px){h1{font-size:23px}.menu{display:none}.bar .wrap{gap:10px}}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "АвтоЭлектрик PRO", "item": "https://avtoelektrik-pro.kz/"}, {"@type": "ListItem", "position": 2, "name": "101 ошибка — блог", "item": "https://avtoelektrik-pro.kz/novosti-i-rekomendatsii"}, {"@type": "ListItem", "position": 3, "name": "КамАЗ 2023", "item": "https://avtoelektrik-pro.kz/novosti-i-rekomendatsii/cl8sfalzi1-kamaz-2023-ne-vklyuchalas-termomufta"}]}, {"@type": "Article", "headline": "КамАЗ 2023 — не включалась термомуфта", "inLanguage": "ru", "datePublished": "2026-08-09", "dateModified": "2026-10-23", "author": {"@type": "Person", "name": "Дмитриев Олег Сергеевич"}, "image": "https://static.tildacdn.com/tild3462-6436-4464-a633-363137653330/_2023____-___.jpg", "publisher": {"@type": "Organization", "name": "АвтоЭлектрик PRO", "logo": {"@type": "ImageObject", "url": "https://avtoelektrik-pro.kz/og.png"}}, "mainEntityOfPage": "https://avtoelektrik-pro.kz/novosti-i-rekomendatsii/cl8sfalzi1-kamaz-2023-ne-vklyuchalas-termomufta"}]}</script>
+</head>
+<body>
+<header class="bar"><div class="wrap"><a class="logo" href="/"><i aria-hidden="true"></i>АвтоЭлектрик PRO</a>
+<nav class="menu" aria-label="Меню"><a href="/">Главная</a><a href="/servis">Услуги автоэлектрика</a><a href="/novosti-i-rekomendatsii">101 ошибка, которую я нахожу</a><a href="/#rec1273352971">Отзывы</a><a href="/#rec1095068866">Контакты</a><a href="https://help.avtoelektrik-pro.kz/kursy/">Курсы автоэлектрика</a><a href="https://help.avtoelektrik-pro.kz/kody/">Коды ошибок</a></nav>
+<a class="call" href="tel:+77011211110">+7 701 121 11 10</a></div></header>
+<div class="stripe" aria-hidden="true"></div>
+<main class="wrap">
+<nav class="crumbs" aria-label="Хлебные крошки"><a href="/">АвтоЭлектрик PRO</a> › <a href="/novosti-i-rekomendatsii">101 ошибка — блог</a> › <span>КамАЗ 2023</span></nav>
+<h1>КамАЗ 2023 — не включалась термомуфта</h1>
+<p class="pmeta">Статья · <time datetime="2026-08-09">09.08.2026</time> · Олег, автоэлектрик</p>
+<article class="body">
+<h2 class="wp-block-heading">🚛 КамАЗ 2023 — перегрев двигателя из-за неисправности разъёма термомуфты</h2>
+
+<h3 class="wp-block-heading">🚨 Жалоба владельца</h3>
+
+<p>На компьютерную диагностику поступил <strong>КамАЗ 2023 года выпуска</strong>.</p>
+
+<p>Основная жалоба — <strong>не включалась термомуфта вентилятора</strong>, из-за чего двигатель начал перегреваться.</p>
+
+<p>Для определения причины была проведена компьютерная и ручная диагностика системы управления вентилятором.</p>
+
+<h2 class="wp-block-heading">🔍 Что показала компьютерная диагностика?</h2>
+
+<figure class="wp-block-image size-large"><img loading="lazy" src="https://static.tildacdn.com/tild3262-3263-4365-b833-663433633338/5c5e8be4-76b4-4c59-8.jpg" alt="Что показала компьютерная диагностика — КамАЗ 2023"/></figure>
+
+<p>При подключении диагностического оборудования были обнаружены ошибки:</p>
+
+<ul class="wp-block-list">
+<li>⚠️ <strong>1242</strong> — датчик положения педали акселератора, 1-й канал: некорректные данные.</li>
+
+<li>⚠️ <strong>23770</strong> — цепь управления вентилятором: напряжение выше нормы либо короткое замыкание в цепи высокого напряжения.</li>
+
+<li>⚠️ <strong>0559</strong> — цепь датчика давления в общей топливной рампе: сигнал выше нормы.</li>
+</ul>
+
+<p>Основное внимание при диагностике было уделено системе управления вентилятором, поскольку именно её неисправность могла привести к отсутствию включения термомуфты и перегреву двигателя.</p>
+
+<figure class="wp-block-image size-large"><img loading="lazy" src="https://static.tildacdn.com/tild6138-3132-4265-b532-376633653138/4c34ffaa-dbae-4e19-b.jpg" alt="Что показала компьютерная диагностика — КамАЗ 2023 — фото 2"/></figure>
+
+<h2 class="wp-block-heading">🛠️ Поиск причины неисправности</h2>
+
+<p>После компьютерной диагностики была проведена <strong>ручная проверка системы</strong>:</p>
+
+<ul class="wp-block-list">
+<li>🔌 осмотр проводки;</li>
+
+<li>⚡ проверка цепей;</li>
+
+<li>🧰 проверка предохранителей;</li>
+
+<li>🔍 осмотр разъёма термомуфты;</li>
+
+<li>📊 проверка состояния электрического соединения.</li>
+</ul>
+
+<p>В процессе проверки был обнаружен <strong>дефект фишки разъёма термомуфты</strong>.</p>
+
+<p>Из-за неисправного контакта управление термомуфтой происходило некорректно, вследствие чего вентилятор не включался в необходимый момент.</p>
+
+<h2 class="wp-block-heading">🔧 Выполненные работы</h2>
+
+<p>Для устранения неисправности было выполнено:</p>
+
+<ul class="wp-block-list">
+<li>✅ восстановление фишки разъёма термомуфты;</li>
+
+<li>✅ проверка проводки;</li>
+
+<li>✅ проверка предохранителей;</li>
+
+<li>✅ проверка работы системы управления вентилятором;</li>
+
+<li>✅ повторная компьютерная диагностика.</li>
+</ul>
+
+<figure class="wp-block-image size-large"><img loading="lazy" src="https://static.tildacdn.com/tild6365-6661-4639-a162-383939343264/6d6359ef-2423-49bd-a.jpg" alt="Выполненные работы — КамАЗ 2023"/></figure>
+
+<h2 class="wp-block-heading">🔄 Результат</h2>
+
+<p>После восстановления разъёма термомуфты система была повторно проверена.</p>
+
+<p><strong>Ошибок при повторной диагностике не обнаружено.</strong></p>
+
+<p>Термомуфта начала работать в штатном режиме, система охлаждения двигателя восстановила нормальную работу.</p>
+
+<p>✔ Термомуфта включается.</p>
+
+<p>✔ Управление вентилятором восстановлено.</p>
+
+<p>✔ Перегрев из-за данной неисправности устранён.</p>
+
+<p>✔ Повторная диагностика ошибок не выявила.</p>
+
+<h2 class="wp-block-heading">📋 Что делать с остальными ошибками?</h2>
+
+<p>По остальным кодам неисправностей владельцу была рекомендована <strong>повторная и более детальная диагностика</strong>.</p>
+
+<p>Это позволяет определить, являются ли данные ошибки текущими неисправностями или они были сохранены в памяти ранее.</p>
+
+<p>Такой подход помогает избежать ненужной замены дорогостоящих деталей.</p>
+
+<p><strong>Не каждую ошибку необходимо сразу устранять заменой блока, датчика или другого компонента. Сначала нужно подтвердить, что неисправность действительно присутствует.</strong></p>
+
+<h2 class="wp-block-heading">💡 Полезный совет автоэлектрика</h2>
+
+<p>При перегреве двигателя и отсутствии включения вентилятора не стоит сразу менять термомуфту или другие дорогостоящие компоненты.</p>
+
+<p>Сначала необходимо проверить:</p>
+
+<ul class="wp-block-list">
+<li>🔌 разъёмы;</li>
+
+<li>⚡ проводку;</li>
+
+<li>🧰 предохранители;</li>
+
+<li>📊 сигналы управления;</li>
+
+<li>💻 ошибки электронного блока;</li>
+
+<li>🔧 фактическую работу исполнительного механизма.</li>
+</ul>
+
+<p>В данном случае причиной оказался <strong>неисправный разъём термомуфты</strong>, а не сама муфта.</p>
+
+<p>👨‍🔧 <strong>Работы выполнил автоэлектрик Олег.</strong></p>
+
+<p><a href="https://avtoelektrik-pro.kz/gruzovoy-avtoelektrik">🌐 Грузовой автоэлектрик в Алматы</a></p>
+
+<p>☎️ <strong><a href="tel:+7(701)121-11-10">8-701-121-11-10</a> Олег</strong></p>
+
+<p><strong>Читайте также:</strong> «<a href="https://avtoelektrik-pro.kz/novosti-i-rekomendatsii/a8dd1du9j1-diagnostika-kamaz-2020-posle-remonta">Диагностика КАМАЗ 2020 после ремонта</a>» и «<a href="https://avtoelektrik-pro.kz/novosti-i-rekomendatsii/hh8g86rzu1-kak-prokachat-toplivnuyu-sistemu">Как прокачать топливную систему</a>».</p>
+</article>
+<nav class="related" aria-label="Разделы сайта"><h2>Разделы и услуги</h2><ul><li><a href="/">Главная</a></li><li><a href="/servis">Услуги автоэлектрика</a></li><li><a href="/novosti-i-rekomendatsii">101 ошибка — блог</a></li><li><a href="/kompyuternaya-diagnostika-avto-v-almaty">Компьютерная диагностика автомобиля</a></li><li><a href="/otogrev-avtomobilya">Отогрев автомобиля</a></li><li><a href="/remont-avtokompyutera">Ремонт ЭБУ</a></li><li><a href="/remont-immobilayzera">Ремонт иммобилайзера</a></li><li><a href="/adaptatsiya-akpp">Адаптация АКПП</a></li><li><a href="/adaptatsiya-drosselnoy-zaslonki">Адаптация дроссельной заслонки</a></li></ul></nav>
+</main>
+<footer><div class="wrap">
+<p class="f-cta"><a class="btn" href="tel:+77011211110">Позвонить +7 701 121 11 10</a>
+<a class="btn wa" href="https://wa.me/77011211110">Написать в WhatsApp</a></p>
+<p><a href="https://help.avtoelektrik-pro.kz/kody/">Коды ошибок</a> · <a href="https://help.avtoelektrik-pro.kz/kursy/">Курсы автоэлектрика</a> · <a href="https://help.avtoelektrik-pro.kz/">Приложение АвтоЭлектрик PRO</a></p>
+<p class="small">© 2026 АвтоЭлектрик PRO · Дмитриев Олег Сергеевич · Алматы</p>
+</div></footer>
+</body>
+</html>

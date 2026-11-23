@@ -1,0 +1,229 @@
+<!doctype html>
+<!-- © 2026 Дмитриев Олег Сергеевич · АвтоЭлектрик PRO · собрано tools/tilda_static.py -->
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Как правильно проверить текущие параметры двигателя через диагностику — нормы и отклонения</title>
+<meta name="description" content="Разбираем, какие параметры двигателя нужно смотреть через сканер: давление воздуха, температура, топливо. Нормы для бензина и дизеля.">
+<meta name="author" content="Дмитриев Олег Сергеевич">
+<meta name="color-scheme" content="dark light">
+<meta name="robots" content="noindex,follow">
+<link rel="canonical" href="https://avtoelektrik-pro.kz/novosti-i-rekomendatsii/udl61mj531-kak-pravilno-proverit-tekuschie-parametr">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="АвтоЭлектрик PRO">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:title" content="Как правильно проверить текущие параметры двигателя через диагностику — нормы и отклонения">
+<meta property="og:description" content="Разбираем, какие параметры двигателя нужно смотреть через сканер: давление воздуха, температура, топливо. Нормы для бензина и дизеля.">
+<meta property="og:url" content="https://avtoelektrik-pro.kz/novosti-i-rekomendatsii/udl61mj531-kak-pravilno-proverit-tekuschie-parametr">
+<meta property="og:image" content="https://avtoelektrik-pro.kz/og.png?v=c024d92a">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.ico?v=17ea34c9" sizes="48x48"><link rel="icon" href="/favicon.svg?v=c18aea20" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-touch-icon.png?v=760bba30">
+<style>*{box-sizing:border-box}
+:root{--bg:#111315;--panel:#1b1e21;--acc:#FFA500;--tx:#f2f2f2;--mut:#9aa0a6;--ln:#2a2e33}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.65 'Golos Text',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+.wrap{max-width:900px;margin:0 auto;padding:0 16px}
+a{color:var(--acc);text-decoration:none}
+a:hover{text-decoration:underline}
+.bar{position:sticky;top:0;z-index:5;background:rgba(17,19,21,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--ln)}
+.bar .wrap{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding-top:10px;padding-bottom:10px}
+.logo{display:flex;align-items:center;gap:8px;color:var(--tx);font-weight:800;font-size:18px}
+.logo i{width:20px;height:20px;background:var(--acc);display:inline-block;clip-path:polygon(55% 0,12% 56%,47% 56%,40% 100%,88% 40%,52% 40%)}
+.menu{display:flex;gap:14px;flex-wrap:wrap;font-size:14px;margin-right:auto}
+.menu a{color:var(--mut)}
+.call{color:var(--acc);font-weight:700;white-space:nowrap}
+.stripe{height:3px;background:linear-gradient(90deg,var(--acc),transparent)}
+main{padding:22px 0 40px}
+h1{font-size:28px;line-height:1.25;margin:.2em 0 .5em}
+h2{font-size:21px;margin:1.4em 0 .5em}
+h3{font-size:18px;margin:1.2em 0 .4em}
+.crumbs{color:var(--mut);font-size:13px;margin-bottom:14px}
+.crumbs a{color:var(--mut)}
+.crumbs span{color:var(--tx)}
+.pmeta{color:var(--mut);font-size:13px;margin:-6px 0 14px}
+.body img{max-width:100%;height:auto;border-radius:10px;margin:14px 0;background:var(--panel)}
+.body ul,.body ol{padding-left:22px}
+.body figure{margin:14px 0}
+.body .wp-block-buttons,.f-cta{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0}
+.btn,.wp-block-button__link{display:inline-block;background:var(--acc);color:#111;font-weight:700;padding:11px 18px;border-radius:10px}
+.btn:hover,.wp-block-button__link:hover{text-decoration:none;filter:brightness(1.08)}
+.btn.wa,.wa .wp-block-button__link{background:#25D366;color:#073}
+.ao a{display:inline-block;background:var(--panel);border:1px solid var(--acc);border-radius:10px;padding:10px 14px;margin:8px 0}
+details{background:var(--panel);border:1px solid var(--ln);border-radius:10px;padding:10px 14px;margin:10px 0}
+summary{cursor:pointer;font-weight:600}
+.post-list{list-style:none;padding:0;margin:14px 0;display:grid;gap:8px}
+.post-list li{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid var(--ln);padding:7px 0}
+.post-list time{color:var(--mut);font-size:13px;white-space:nowrap}
+.more{margin:10px 0}
+.related{margin:30px 0 0;padding:18px;background:var(--panel);border:1px solid var(--ln);border-radius:14px}
+.related h2{margin:0 0 10px;font-size:17px}
+.related ul{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:8px}
+hr{border:0;border-top:1px solid var(--ln);margin:20px 0}
+footer{border-top:1px solid var(--ln);background:var(--panel);padding:24px 0;margin-top:30px}
+footer .small{color:var(--mut);font-size:13px}
+@media(max-width:560px){h1{font-size:23px}.menu{display:none}.bar .wrap{gap:10px}}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "АвтоЭлектрик PRO", "item": "https://avtoelektrik-pro.kz/"}, {"@type": "ListItem", "position": 2, "name": "101 ошибка — блог", "item": "https://avtoelektrik-pro.kz/novosti-i-rekomendatsii"}, {"@type": "ListItem", "position": 3, "name": "Как правильно проверить текущие параметры двиг", "item": "https://avtoelektrik-pro.kz/novosti-i-rekomendatsii/udl61mj531-kak-pravilno-proverit-tekuschie-parametr"}]}, {"@type": "Article", "headline": "Как правильно проверить текущие параметры двигателя", "inLanguage": "ru", "datePublished": "2026-04-06", "dateModified": "2026-10-19", "author": {"@type": "Person", "name": "Дмитриев Олег Сергеевич"}, "image": "https://static.tildacdn.com/tild6637-3863-4430-b864-386532643466/_____.jpg", "publisher": {"@type": "Organization", "name": "АвтоЭлектрик PRO", "logo": {"@type": "ImageObject", "url": "https://avtoelektrik-pro.kz/og.png"}}, "mainEntityOfPage": "https://avtoelektrik-pro.kz/novosti-i-rekomendatsii/udl61mj531-kak-pravilno-proverit-tekuschie-parametr"}]}</script>
+</head>
+<body>
+<header class="bar"><div class="wrap"><a class="logo" href="/"><i aria-hidden="true"></i>АвтоЭлектрик PRO</a>
+<nav class="menu" aria-label="Меню"><a href="/">Главная</a><a href="/servis">Услуги автоэлектрика</a><a href="/novosti-i-rekomendatsii">101 ошибка, которую я нахожу</a><a href="/#rec1273352971">Отзывы</a><a href="/#rec1095068866">Контакты</a><a href="https://help.avtoelektrik-pro.kz/kursy/">Курсы автоэлектрика</a><a href="https://help.avtoelektrik-pro.kz/kody/">Коды ошибок</a></nav>
+<a class="call" href="tel:+77011211110">+7 701 121 11 10</a></div></header>
+<div class="stripe" aria-hidden="true"></div>
+<main class="wrap">
+<nav class="crumbs" aria-label="Хлебные крошки"><a href="/">АвтоЭлектрик PRO</a> › <a href="/novosti-i-rekomendatsii">101 ошибка — блог</a> › <span>Как правильно проверить текущие параметры двиг</span></nav>
+<h1>Как правильно проверить текущие параметры двигателя</h1>
+<p class="pmeta">Статья · <time datetime="2026-04-06">06.04.2026</time> · Олег, автоэлектрик</p>
+<article class="body">
+<h2 class="wp-block-heading">Как правильно посмотреть текущие параметры двигателя через диагностику</h2>
+
+<p>Современные автомобили позволяют в реальном времени отслеживать работу двигателя через диагностический сканер. Это один из самых быстрых способов понять, есть ли проблемы, даже если ошибка ещё не появилась.</p>
+
+<p>Разберём основные параметры, на которые стоит обращать внимание.</p>
+
+<h2 class="wp-block-heading">1. Барометрическое давление (BARO)</h2>
+
+<ul class="wp-block-list">
+<li>В норме: <strong>около 900–1000 мбар</strong> (в зависимости от региона и высоты)</li>
+
+<li>На заведённом двигателе: может опускаться примерно до <strong>250–350 мбар</strong></li>
+</ul>
+
+<p>👉 Если значения сильно отличаются — это может говорить о проблеме с датчиком или о том, что двигатель <strong>не получает достаточного количества воздуха</strong>.</p>
+
+<h2 class="wp-block-heading">2. Температура охлаждающей жидкости</h2>
+
+<ul class="wp-block-list">
+<li>На холодном двигателе: равна температуре окружающей среды</li>
+
+<li>В рабочем режиме: <strong>85–105°C</strong></li>
+</ul>
+
+<p>👉 Если температура сильно ниже — двигатель не выходит на рабочий режим.</p>
+
+<p>👉 Если выше — возможен перегрев.</p>
+
+<h2 class="wp-block-heading">3. Температура воздуха на впуске</h2>
+
+<ul class="wp-block-list">
+<li>Должна быть близка к окружающей температуре</li>
+
+<li>При работе двигателя может быть немного выше</li>
+</ul>
+
+<p>👉 Если показывает нереальные значения — проблема с датчиком температуры воздуха.</p>
+
+<h2 class="wp-block-heading">4. Температура катализатора</h2>
+
+<ul class="wp-block-list">
+<li>В рабочем режиме: примерно <strong>400–800°C</strong></li>
+</ul>
+
+<p>👉 Слишком низкая температура — катализатор не работает эффективно</p>
+
+<p>👉 Слишком высокая — возможен перегрев или богатая смесь</p>
+
+<h2 class="wp-block-heading">5. Температура масла</h2>
+
+<ul class="wp-block-list">
+<li>В норме: <strong>80–120°C</strong></li>
+</ul>
+
+<p>👉 Если масло не прогревается — повышенный износ двигателя</p>
+
+<p>👉 Если перегревается — проблема с системой охлаждения или нагрузкой</p>
+
+<h2 class="wp-block-heading">6. Температура топлива</h2>
+
+<ul class="wp-block-list">
+<li>Обычно: <strong>20–60°C</strong></li>
+</ul>
+
+<p>👉 Высокая температура может говорить о перегреве топливной системы</p>
+
+<p>👉 Низкая — норма при холодном запуске</p>
+
+<h2 class="wp-block-heading">7. Давление топлива (очень важный параметр)</h2>
+
+<h3 class="wp-block-heading">Бензиновый двигатель:</h3>
+
+<ul class="wp-block-list">
+<li>В рампе: <strong>3–4 бар</strong> (в зависимости от авто)</li>
+</ul>
+
+<p>👉 Низкое давление — слабый насос, забит фильтр</p>
+
+<p>👉 Высокое — неисправен регулятор давления</p>
+
+<h3 class="wp-block-heading">Дизельный двигатель (Common Rail):</h3>
+
+<ul class="wp-block-list">
+<li>На холостом ходу: <strong>250–350 бар</strong></li>
+
+<li>Под нагрузкой: до <strong>1500–2500 бар</strong></li>
+</ul>
+
+<p>👉 Если давление ниже нормы — проблемы с ТНВД, форсунками или утечкой</p>
+
+<p>👉 Если скачет — возможны проблемы с датчиком или регулятором</p>
+
+<h2 class="wp-block-heading">8. Обороты двигателя</h2>
+
+<ul class="wp-block-list">
+<li>Холостой ход: <strong>700–900 об/мин</strong></li>
+</ul>
+
+<p>👉 Плавающие обороты — подсос воздуха, грязная дроссельная заслонка или проблемы с датчиками</p>
+
+<h2 class="wp-block-heading">9. Положение дроссельной заслонки</h2>
+
+<ul class="wp-block-list">
+<li>На холостом ходу: <strong>0–5%</strong></li>
+
+<li>При нажатии газа — плавное увеличение</li>
+</ul>
+
+<p>👉 Рывки или некорректные значения — требуется адаптация или чистка</p>
+
+<h2 class="wp-block-heading">Вывод</h2>
+
+<p>Правильный анализ текущих параметров двигателя позволяет:</p>
+
+<ul class="wp-block-list">
+<li>выявить проблему ещё до появления ошибки</li>
+
+<li>понять причину плохого запуска</li>
+
+<li>снизить расход топлива</li>
+
+<li>продлить ресурс двигателя</li>
+</ul>
+
+<p>Если вы видите отклонения по нескольким параметрам сразу — лучше не затягивать с диагностикой.</p>
+
+<h2 class="wp-block-heading">Важно</h2>
+
+<p>Даже если один параметр немного выходит за пределы — это не всегда критично.</p>
+
+<p>Но <strong>совокупность отклонений</strong> почти всегда указывает на неисправность.</p>
+
+<p>Если нужна точная диагностика на месте — можно обратиться к автоэлектрику, который проверит все параметры и сразу скажет причину неисправности.</p>
+
+<p>🌐 <strong><a href="https://avtoelektrik-pro.kz/">Вызвать автоэлектрика в Алматы</a></strong></p>
+
+<p>☎️ <strong><a href="tel:+7(701)121-11-10">8-701-121-11-10</a></strong></p>
+
+<p><strong>Читайте также:</strong> «<a href="https://avtoelektrik-pro.kz/novosti-i-rekomendatsii/cs5cbrb771-kak-proverit-parametri-akpp-cherez-diagn">Как проверить параметры АКПП через диагностику</a>» и «<a href="https://avtoelektrik-pro.kz/novosti-i-rekomendatsii/ypjstsf2j1-kak-proverit-svechu-nakala">Как проверить свечу накала</a>».<br><strong>Нужна помощь?</strong> <a href="https://avtoelektrik-pro.kz/kompyuternaya-diagnostika-avto-v-almaty">Компьютерная диагностика авто в Алматы</a> — выезд по городу и области.</p>
+</article>
+<nav class="related" aria-label="Разделы сайта"><h2>Разделы и услуги</h2><ul><li><a href="/">Главная</a></li><li><a href="/servis">Услуги автоэлектрика</a></li><li><a href="/novosti-i-rekomendatsii">101 ошибка — блог</a></li><li><a href="/kompyuternaya-diagnostika-avto-v-almaty">Компьютерная диагностика автомобиля</a></li><li><a href="/otogrev-avtomobilya">Отогрев автомобиля</a></li><li><a href="/remont-avtokompyutera">Ремонт ЭБУ</a></li><li><a href="/remont-immobilayzera">Ремонт иммобилайзера</a></li><li><a href="/adaptatsiya-akpp">Адаптация АКПП</a></li><li><a href="/adaptatsiya-drosselnoy-zaslonki">Адаптация дроссельной заслонки</a></li></ul></nav>
+</main>
+<footer><div class="wrap">
+<p class="f-cta"><a class="btn" href="tel:+77011211110">Позвонить +7 701 121 11 10</a>
+<a class="btn wa" href="https://wa.me/77011211110">Написать в WhatsApp</a></p>
+<p><a href="https://help.avtoelektrik-pro.kz/kody/">Коды ошибок</a> · <a href="https://help.avtoelektrik-pro.kz/kursy/">Курсы автоэлектрика</a> · <a href="https://help.avtoelektrik-pro.kz/">Приложение АвтоЭлектрик PRO</a></p>
+<p class="small">© 2026 АвтоЭлектрик PRO · Дмитриев Олег Сергеевич · Алматы</p>
+</div></footer>
+</body>
+</html>

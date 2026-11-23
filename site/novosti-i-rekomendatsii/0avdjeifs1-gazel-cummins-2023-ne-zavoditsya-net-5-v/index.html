@@ -1,0 +1,165 @@
+<!doctype html>
+<!-- © 2026 Дмитриев Олег Сергеевич · АвтоЭлектрик PRO · собрано tools/tilda_static.py -->
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Газель Cummins 2023 не заводится — нет 5 В, проверка ЭБУ с выездом</title>
+<meta name="description" content="Выездная диагностика Газели 2023 с двигателем Cummins. Двигатель не запускается, на датчиках отсутствуют 5 В. Предохранители и реле исправны. Проверка ЭБУ на…">
+<meta name="author" content="Дмитриев Олег Сергеевич">
+<meta name="color-scheme" content="dark light">
+<meta name="robots" content="noindex,follow">
+<link rel="canonical" href="https://avtoelektrik-pro.kz/novosti-i-rekomendatsii/0avdjeifs1-gazel-cummins-2023-ne-zavoditsya-net-5-v">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="АвтоЭлектрик PRO">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:title" content="Газель Cummins 2023 не заводится — нет 5 В, проверка ЭБУ с выездом">
+<meta property="og:description" content="Выездная диагностика Газели 2023 с двигателем Cummins. Двигатель не запускается, на датчиках отсутствуют 5 В. Предохранители и реле исправны. Проверка ЭБУ на…">
+<meta property="og:url" content="https://avtoelektrik-pro.kz/novosti-i-rekomendatsii/0avdjeifs1-gazel-cummins-2023-ne-zavoditsya-net-5-v">
+<meta property="og:image" content="https://avtoelektrik-pro.kz/og.png?v=c024d92a">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.ico?v=17ea34c9" sizes="48x48"><link rel="icon" href="/favicon.svg?v=c18aea20" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-touch-icon.png?v=760bba30">
+<style>*{box-sizing:border-box}
+:root{--bg:#111315;--panel:#1b1e21;--acc:#FFA500;--tx:#f2f2f2;--mut:#9aa0a6;--ln:#2a2e33}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.65 'Golos Text',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+.wrap{max-width:900px;margin:0 auto;padding:0 16px}
+a{color:var(--acc);text-decoration:none}
+a:hover{text-decoration:underline}
+.bar{position:sticky;top:0;z-index:5;background:rgba(17,19,21,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--ln)}
+.bar .wrap{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding-top:10px;padding-bottom:10px}
+.logo{display:flex;align-items:center;gap:8px;color:var(--tx);font-weight:800;font-size:18px}
+.logo i{width:20px;height:20px;background:var(--acc);display:inline-block;clip-path:polygon(55% 0,12% 56%,47% 56%,40% 100%,88% 40%,52% 40%)}
+.menu{display:flex;gap:14px;flex-wrap:wrap;font-size:14px;margin-right:auto}
+.menu a{color:var(--mut)}
+.call{color:var(--acc);font-weight:700;white-space:nowrap}
+.stripe{height:3px;background:linear-gradient(90deg,var(--acc),transparent)}
+main{padding:22px 0 40px}
+h1{font-size:28px;line-height:1.25;margin:.2em 0 .5em}
+h2{font-size:21px;margin:1.4em 0 .5em}
+h3{font-size:18px;margin:1.2em 0 .4em}
+.crumbs{color:var(--mut);font-size:13px;margin-bottom:14px}
+.crumbs a{color:var(--mut)}
+.crumbs span{color:var(--tx)}
+.pmeta{color:var(--mut);font-size:13px;margin:-6px 0 14px}
+.body img{max-width:100%;height:auto;border-radius:10px;margin:14px 0;background:var(--panel)}
+.body ul,.body ol{padding-left:22px}
+.body figure{margin:14px 0}
+.body .wp-block-buttons,.f-cta{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0}
+.btn,.wp-block-button__link{display:inline-block;background:var(--acc);color:#111;font-weight:700;padding:11px 18px;border-radius:10px}
+.btn:hover,.wp-block-button__link:hover{text-decoration:none;filter:brightness(1.08)}
+.btn.wa,.wa .wp-block-button__link{background:#25D366;color:#073}
+.ao a{display:inline-block;background:var(--panel);border:1px solid var(--acc);border-radius:10px;padding:10px 14px;margin:8px 0}
+details{background:var(--panel);border:1px solid var(--ln);border-radius:10px;padding:10px 14px;margin:10px 0}
+summary{cursor:pointer;font-weight:600}
+.post-list{list-style:none;padding:0;margin:14px 0;display:grid;gap:8px}
+.post-list li{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid var(--ln);padding:7px 0}
+.post-list time{color:var(--mut);font-size:13px;white-space:nowrap}
+.more{margin:10px 0}
+.related{margin:30px 0 0;padding:18px;background:var(--panel);border:1px solid var(--ln);border-radius:14px}
+.related h2{margin:0 0 10px;font-size:17px}
+.related ul{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:8px}
+hr{border:0;border-top:1px solid var(--ln);margin:20px 0}
+footer{border-top:1px solid var(--ln);background:var(--panel);padding:24px 0;margin-top:30px}
+footer .small{color:var(--mut);font-size:13px}
+@media(max-width:560px){h1{font-size:23px}.menu{display:none}.bar .wrap{gap:10px}}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "АвтоЭлектрик PRO", "item": "https://avtoelektrik-pro.kz/"}, {"@type": "ListItem", "position": 2, "name": "101 ошибка — блог", "item": "https://avtoelektrik-pro.kz/novosti-i-rekomendatsii"}, {"@type": "ListItem", "position": 3, "name": "Газель Cummins 2023 не заводится", "item": "https://avtoelektrik-pro.kz/novosti-i-rekomendatsii/0avdjeifs1-gazel-cummins-2023-ne-zavoditsya-net-5-v"}]}, {"@type": "Article", "headline": "Газель Cummins 2023 не заводится — нет 5 В, проверка ЭБУ с выездом", "inLanguage": "ru", "datePublished": "2026-10-30", "dateModified": "2026-10-30", "author": {"@type": "Person", "name": "Дмитриев Олег Сергеевич"}, "image": "https://static.tildacdn.com/tila6436-3935-4162-b662-663639633433/c42ac9ca-ea88-4bd6-8.jpg", "publisher": {"@type": "Organization", "name": "АвтоЭлектрик PRO", "logo": {"@type": "ImageObject", "url": "https://avtoelektrik-pro.kz/og.png"}}, "mainEntityOfPage": "https://avtoelektrik-pro.kz/novosti-i-rekomendatsii/0avdjeifs1-gazel-cummins-2023-ne-zavoditsya-net-5-v"}]}</script>
+</head>
+<body>
+<header class="bar"><div class="wrap"><a class="logo" href="/"><i aria-hidden="true"></i>АвтоЭлектрик PRO</a>
+<nav class="menu" aria-label="Меню"><a href="/">Главная</a><a href="/servis">Услуги автоэлектрика</a><a href="/novosti-i-rekomendatsii">101 ошибка, которую я нахожу</a><a href="/#rec1273352971">Отзывы</a><a href="/#rec1095068866">Контакты</a><a href="https://help.avtoelektrik-pro.kz/kursy/">Курсы автоэлектрика</a><a href="https://help.avtoelektrik-pro.kz/kody/">Коды ошибок</a></nav>
+<a class="call" href="tel:+77011211110">+7 701 121 11 10</a></div></header>
+<div class="stripe" aria-hidden="true"></div>
+<main class="wrap">
+<nav class="crumbs" aria-label="Хлебные крошки"><a href="/">АвтоЭлектрик PRO</a> › <a href="/novosti-i-rekomendatsii">101 ошибка — блог</a> › <span>Газель Cummins 2023 не заводится</span></nav>
+<h1>Газель Cummins 2023 не заводится — нет 5 В, проверка ЭБУ с выездом</h1>
+<p class="pmeta">Статья · <time datetime="2026-10-30">30.10.2026</time> · Олег, автоэлектрик</p>
+<article class="body">
+<h2 class="wp-block-heading">🚐 Газель 2023 Cummins — двигатель не заводится, нет 5 В на датчиках: диагностика ЭБУ с выездом</h2>
+
+<p>Поступила заявка на <strong>выезд автоэлектрика к Газели 2023 года с дизельным двигателем Cummins</strong>. Автомобиль перестал запускаться.</p>
+
+<p>Со слов владельца, предыдущие автоэлектрики предположили неисправность электронного блока управления двигателем (ЭБУ), поскольку под капотом отсутствовало опорное напряжение <strong>5 В на датчиках температуры, давления и других элементах системы управления</strong>.</p>
+
+<h3 class="wp-block-heading">⚡ Диагностика электрооборудования</h3>
+
+<figure class="wp-block-image size-large"><img loading="lazy" src="https://static.tildacdn.com/tila6138-3265-4233-a561-633639383365/98c649ea-b163-43b8-a.jpg" alt="Сканер подключается к Газели Cummins 2023 через OBD II"/></figure>
+
+<p>После прибытия выполнили <strong><a href="https://avtoelektrik-pro.kz/kompyuternaya-diagnostika-avto-v-almaty">компьютерную диагностику</a></strong> и проверку электрических цепей.</p>
+
+<p>Первоначально подтвердилось отсутствие необходимых 5 В на датчиках. При этом:</p>
+
+<ul class="wp-block-list">
+<li>🔹 Предохранители оказались исправными.</li>
+
+<li>🔹 Реле включения ЭБУ работали.</li>
+
+<li>🔹 Причина отсутствия опорного напряжения оставалась невыясненной.</li>
+</ul>
+
+<p>Для проверки работоспособности блока управления было принято решение снять ЭБУ и протестировать его на столе.</p>
+
+<h3 class="wp-block-heading">💻 <a href="https://avtoelektrik-pro.kz/remont-avtokompyutera">Проверка ЭБУ </a>Cummins на столе</h3>
+
+<p>При подключении блока к диагностическому оборудованию вне автомобиля выяснилось:</p>
+
+<p>✅ <strong>ЭБУ включается и выходит на связь.</strong></p>
+
+<p>✅ <strong><a href="https://avtoelektrik-pro.kz/kompyuternaya-diagnostika-avto-v-almaty">Диагностический сканер считывает ошибки.</a></strong></p>
+
+<p>Таким образом, первоначальное предположение о полностью неработоспособном ЭБУ не подтвердилось. Однако проверка на столе ещё не исключает всех возможных внутренних неисправностей блока.</p>
+
+<figure class="wp-block-image size-large"><img loading="lazy" src="https://static.tildacdn.com/tila3536-6332-4536-a438-373161643334/72ef749b-c771-4128-b.jpg" alt="Проверка ЭБУ Cummins на столе"/></figure>
+
+<h3 class="wp-block-heading">🔧 Дальнейший план диагностики</h3>
+
+<p>Для точного определения причины отсутствия запуска предстоит:</p>
+
+<ol class="wp-block-list">
+<li>Проверить непосредственно на разъёме ЭБУ все необходимые питания и массы, в том числе под нагрузкой.</li>
+
+<li>Проверить наличие опорного напряжения 5 В и состояние соответствующих электрических цепей.</li>
+
+<li>При исправном питании ЭБУ последовательно проверить датчики, подключённые к пятивольтовым цепям.</li>
+</ol>
+
+<p><strong>Важный момент:</strong> неисправный датчик или короткое замыкание в его проводке способны просадить общую линию 5 В. В результате сразу несколько датчиков перестают работать, а двигатель может не запускаться.</p>
+
+<h3 class="wp-block-heading">📋 Предварительный результат</h3>
+
+<p>🚐 <strong>Автомобиль:</strong> Газель, 2023 год, двигатель Cummins</p>
+
+<p>⚠️ <strong>Жалоба:</strong> двигатель не запускается, отсутствует опорное напряжение 5 В</p>
+
+<p>🔍 <strong>Проверено:</strong> предохранители, реле включения ЭБУ, наличие напряжения на датчиках</p>
+
+<p>💻 <strong>Проверка на столе:</strong> ЭБУ выходит на связь, ошибки считываются</p>
+
+<p>📌 <strong>Следующий этап:</strong> проверка питания и массы на разъёме ЭБУ, затем диагностика пятивольтовых цепей и датчиков</p>
+
+<p><strong>Работа по поиску неисправности продолжается. Окончательная причина отсутствия запуска пока не установлена.</strong></p>
+
+<h3 class="wp-block-heading">🚐 Автоэлектрик с выездом — диагностика ЭБУ Cummins</h3>
+
+<p>Если дизельный двигатель не запускается, отсутствует связь с ЭБУ или пропадает опорное напряжение 5 В, не стоит сразу покупать новый блок управления.</p>
+
+<p>Выполняем выездную диагностику грузовой и коммерческой техники, проверку питания ЭБУ, датчиков, проводки и электронных систем двигателя.</p>
+
+<p><strong>Правильная диагностика позволяет исключить необоснованную замену дорогостоящего блока управления и найти действительную причину неисправности.</strong></p>
+
+<p>👨‍🔧 <strong>Работы выполнил <a href="https://avtoelektrik-pro.kz/">автоэлектрик Олег</a></strong></p>
+
+<p>☎️ <strong><a href="tel:+7(701)121-11-10">8-701-121-11-10</a></strong></p>
+</article>
+<nav class="related" aria-label="Разделы сайта"><h2>Разделы и услуги</h2><ul><li><a href="/">Главная</a></li><li><a href="/servis">Услуги автоэлектрика</a></li><li><a href="/novosti-i-rekomendatsii">101 ошибка — блог</a></li><li><a href="/kompyuternaya-diagnostika-avto-v-almaty">Компьютерная диагностика автомобиля</a></li><li><a href="/otogrev-avtomobilya">Отогрев автомобиля</a></li><li><a href="/remont-avtokompyutera">Ремонт ЭБУ</a></li><li><a href="/remont-immobilayzera">Ремонт иммобилайзера</a></li><li><a href="/adaptatsiya-akpp">Адаптация АКПП</a></li><li><a href="/adaptatsiya-drosselnoy-zaslonki">Адаптация дроссельной заслонки</a></li></ul></nav>
+</main>
+<footer><div class="wrap">
+<p class="f-cta"><a class="btn" href="tel:+77011211110">Позвонить +7 701 121 11 10</a>
+<a class="btn wa" href="https://wa.me/77011211110">Написать в WhatsApp</a></p>
+<p><a href="https://help.avtoelektrik-pro.kz/kody/">Коды ошибок</a> · <a href="https://help.avtoelektrik-pro.kz/kursy/">Курсы автоэлектрика</a> · <a href="https://help.avtoelektrik-pro.kz/">Приложение АвтоЭлектрик PRO</a></p>
+<p class="small">© 2026 АвтоЭлектрик PRO · Дмитриев Олег Сергеевич · Алматы</p>
+</div></footer>
+</body>
+</html>

@@ -1,0 +1,249 @@
+<!doctype html>
+<!-- © 2026 Дмитриев Олег Сергеевич · АвтоЭлектрик PRO · собрано tools/tilda_static.py -->
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Mercedes-Benz Vito 2019 — ошибка AdBlue P13E400 и принудительный прожиг сажевого фильтра DPF</title>
+<meta name="description" content="Выполнена компьютерная диагностика Mercedes-Benz Vito 2019 с пробегом 110 000 км. Выявлены ошибки P204F97, P204F96, P14031F, P13E400, P208E73 и P20E900 по…">
+<meta name="author" content="Дмитриев Олег Сергеевич">
+<meta name="color-scheme" content="dark light">
+<meta name="robots" content="noindex,follow">
+<link rel="canonical" href="https://avtoelektrik-pro.kz/novosti-i-rekomendatsii/2d1198yop1-mercedes-benz-vito-2019-oshibka-p13e400">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="АвтоЭлектрик PRO">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:title" content="Mercedes-Benz Vito 2019 — ошибка AdBlue P13E400 и принудительный прожиг сажевого фильтра DPF">
+<meta property="og:description" content="Выполнена компьютерная диагностика Mercedes-Benz Vito 2019 с пробегом 110 000 км. Выявлены ошибки P204F97, P204F96, P14031F, P13E400, P208E73 и P20E900 по…">
+<meta property="og:url" content="https://avtoelektrik-pro.kz/novosti-i-rekomendatsii/2d1198yop1-mercedes-benz-vito-2019-oshibka-p13e400">
+<meta property="og:image" content="https://avtoelektrik-pro.kz/og.png?v=c024d92a">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.ico?v=17ea34c9" sizes="48x48"><link rel="icon" href="/favicon.svg?v=c18aea20" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-touch-icon.png?v=760bba30">
+<style>*{box-sizing:border-box}
+:root{--bg:#111315;--panel:#1b1e21;--acc:#FFA500;--tx:#f2f2f2;--mut:#9aa0a6;--ln:#2a2e33}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.65 'Golos Text',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+.wrap{max-width:900px;margin:0 auto;padding:0 16px}
+a{color:var(--acc);text-decoration:none}
+a:hover{text-decoration:underline}
+.bar{position:sticky;top:0;z-index:5;background:rgba(17,19,21,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--ln)}
+.bar .wrap{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding-top:10px;padding-bottom:10px}
+.logo{display:flex;align-items:center;gap:8px;color:var(--tx);font-weight:800;font-size:18px}
+.logo i{width:20px;height:20px;background:var(--acc);display:inline-block;clip-path:polygon(55% 0,12% 56%,47% 56%,40% 100%,88% 40%,52% 40%)}
+.menu{display:flex;gap:14px;flex-wrap:wrap;font-size:14px;margin-right:auto}
+.menu a{color:var(--mut)}
+.call{color:var(--acc);font-weight:700;white-space:nowrap}
+.stripe{height:3px;background:linear-gradient(90deg,var(--acc),transparent)}
+main{padding:22px 0 40px}
+h1{font-size:28px;line-height:1.25;margin:.2em 0 .5em}
+h2{font-size:21px;margin:1.4em 0 .5em}
+h3{font-size:18px;margin:1.2em 0 .4em}
+.crumbs{color:var(--mut);font-size:13px;margin-bottom:14px}
+.crumbs a{color:var(--mut)}
+.crumbs span{color:var(--tx)}
+.pmeta{color:var(--mut);font-size:13px;margin:-6px 0 14px}
+.body img{max-width:100%;height:auto;border-radius:10px;margin:14px 0;background:var(--panel)}
+.body ul,.body ol{padding-left:22px}
+.body figure{margin:14px 0}
+.body .wp-block-buttons,.f-cta{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0}
+.btn,.wp-block-button__link{display:inline-block;background:var(--acc);color:#111;font-weight:700;padding:11px 18px;border-radius:10px}
+.btn:hover,.wp-block-button__link:hover{text-decoration:none;filter:brightness(1.08)}
+.btn.wa,.wa .wp-block-button__link{background:#25D366;color:#073}
+.ao a{display:inline-block;background:var(--panel);border:1px solid var(--acc);border-radius:10px;padding:10px 14px;margin:8px 0}
+details{background:var(--panel);border:1px solid var(--ln);border-radius:10px;padding:10px 14px;margin:10px 0}
+summary{cursor:pointer;font-weight:600}
+.post-list{list-style:none;padding:0;margin:14px 0;display:grid;gap:8px}
+.post-list li{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid var(--ln);padding:7px 0}
+.post-list time{color:var(--mut);font-size:13px;white-space:nowrap}
+.more{margin:10px 0}
+.related{margin:30px 0 0;padding:18px;background:var(--panel);border:1px solid var(--ln);border-radius:14px}
+.related h2{margin:0 0 10px;font-size:17px}
+.related ul{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:8px}
+hr{border:0;border-top:1px solid var(--ln);margin:20px 0}
+footer{border-top:1px solid var(--ln);background:var(--panel);padding:24px 0;margin-top:30px}
+footer .small{color:var(--mut);font-size:13px}
+@media(max-width:560px){h1{font-size:23px}.menu{display:none}.bar .wrap{gap:10px}}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "АвтоЭлектрик PRO", "item": "https://avtoelektrik-pro.kz/"}, {"@type": "ListItem", "position": 2, "name": "101 ошибка — блог", "item": "https://avtoelektrik-pro.kz/novosti-i-rekomendatsii"}, {"@type": "ListItem", "position": 3, "name": "Mercedes-Benz Vito 2019", "item": "https://avtoelektrik-pro.kz/novosti-i-rekomendatsii/2d1198yop1-mercedes-benz-vito-2019-oshibka-p13e400"}]}, {"@type": "Article", "headline": "Mercedes-Benz Vito 2019 — ошибка P13E400", "inLanguage": "ru", "datePublished": "2026-08-06", "dateModified": "2026-10-23", "author": {"@type": "Person", "name": "Дмитриев Олег Сергеевич"}, "image": "https://static.tildacdn.com/tild6139-3965-4234-b063-373266303561/Mercedes-Benz_Vito_2.jpg", "publisher": {"@type": "Organization", "name": "АвтоЭлектрик PRO", "logo": {"@type": "ImageObject", "url": "https://avtoelektrik-pro.kz/og.png"}}, "mainEntityOfPage": "https://avtoelektrik-pro.kz/novosti-i-rekomendatsii/2d1198yop1-mercedes-benz-vito-2019-oshibka-p13e400"}]}</script>
+</head>
+<body>
+<header class="bar"><div class="wrap"><a class="logo" href="/"><i aria-hidden="true"></i>АвтоЭлектрик PRO</a>
+<nav class="menu" aria-label="Меню"><a href="/">Главная</a><a href="/servis">Услуги автоэлектрика</a><a href="/novosti-i-rekomendatsii">101 ошибка, которую я нахожу</a><a href="/#rec1273352971">Отзывы</a><a href="/#rec1095068866">Контакты</a><a href="https://help.avtoelektrik-pro.kz/kursy/">Курсы автоэлектрика</a><a href="https://help.avtoelektrik-pro.kz/kody/">Коды ошибок</a></nav>
+<a class="call" href="tel:+77011211110">+7 701 121 11 10</a></div></header>
+<div class="stripe" aria-hidden="true"></div>
+<main class="wrap">
+<nav class="crumbs" aria-label="Хлебные крошки"><a href="/">АвтоЭлектрик PRO</a> › <a href="/novosti-i-rekomendatsii">101 ошибка — блог</a> › <span>Mercedes-Benz Vito 2019</span></nav>
+<h1>Mercedes-Benz Vito 2019 — ошибка P13E400</h1>
+<p class="pmeta">Статья · <time datetime="2026-08-06">06.08.2026</time> · Олег, автоэлектрик</p>
+<article class="body">
+<h2 class="wp-block-heading">🚐 Mercedes-Benz Vito 2019 — принудительный прожиг сажевого фильтра DPF и диагностика системы AdBlue</h2>
+
+<h3 class="wp-block-heading">🚨 Жалоба владельца</h3>
+
+<p>На компьютерную диагностику поступил <strong>Mercedes-Benz Vito 2019 года выпуска</strong> с пробегом <strong>110 000 км</strong>.</p>
+
+<p>Со слов владельца автомобиль периодически ограничивал мощность двигателя, на панели приборов отображались предупреждения о неисправности системы <strong>AdBlue</strong>, а также возникали ошибки по системе очистки выхлопных газов.</p>
+
+<p>Для определения причины была проведена комплексная компьютерная диагностика двигателя, системы AdBlue и сажевого фильтра DPF.</p>
+
+<h2 class="wp-block-heading">🔍 Что показала компьютерная диагностика?</h2>
+
+<figure class="wp-block-image size-large"><img loading="lazy" src="https://static.tildacdn.com/tild3633-3238-4133-a338-663766343034/9950eb4e-532d-4de3-a.jpg" alt="Что показала компьютерная диагностика — Mercedes-Benz Vito 2019"/></figure>
+
+<p>После подключения профессионального диагностического оборудования были считаны ошибки электронных блоков управления.</p>
+
+<p>В памяти автомобиля присутствовали следующие неисправности:</p>
+
+<h4 class="wp-block-heading">Система управления двигателем (CDI)</h4>
+
+<ul class="wp-block-list">
+<li>⚠️ <strong>P204F97</strong> — функциональная неисправность системы AdBlue, узел деактивирован.</li>
+
+<li>⚠️ <strong>P204F96</strong> — функциональная неисправность блока управления AdBlue.</li>
+
+<li>⚠️ <strong>P14031F</strong> — внезапная неисправность блока управления AdBlue.</li>
+
+<li>⚠️ <strong>P13E400</strong> — предупреждение второго уровня, ограничение остаточного пробега из-за неисправности системы AdBlue.</li>
+</ul>
+
+<h4 class="wp-block-heading">Блок управления SCR</h4>
+
+<ul class="wp-block-list">
+<li>⚠️ <strong>P13DF00</strong> — функциональная неисправность системы AdBlue.</li>
+
+<li>⚠️ <strong>P208E73</strong> — дозирующий клапан AdBlue не открывается.</li>
+
+<li>⚠️ <strong>P20E900</strong> — повышенное давление в системе AdBlue.</li>
+</ul>
+
+<h4 class="wp-block-heading">Дополнительные ошибки</h4>
+
+<ul class="wp-block-list">
+<li>⚠️ <strong>U015531</strong> — отсутствует связь с комбинацией приборов (сохранённая ошибка).</li>
+</ul>
+
+<p>Полученные данные свидетельствовали о наличии неисправностей в системе SCR (AdBlue), из-за которых не выполнялась нормальная работа системы очистки выхлопных газов.</p>
+
+<h2 class="wp-block-heading">🛠️ Выполненные работы</h2>
+
+<p>Для восстановления нормальной работы автомобиля были выполнены:</p>
+
+<ul class="wp-block-list">
+<li>✅ полная компьютерная диагностика всех электронных блоков;</li>
+
+<li>✅ анализ текущих параметров системы SCR;</li>
+
+<li>✅ выполнение сервисных тестов исполнительных механизмов AdBlue;</li>
+
+<li>✅ проверка работы дозирующего клапана;</li>
+
+<li>✅ сброс сохранённых ошибок;</li>
+
+<li>✅ подготовка автомобиля к принудительной регенерации сажевого фильтра;</li>
+
+<li>✅ запуск сервисного прожига DPF.</li>
+</ul>
+
+<p>Процесс принудительной регенерации занял <strong>1 час 20 минут</strong>.</p>
+
+<p>Во время прожига контролировались:</p>
+
+<ul class="wp-block-list">
+<li>🌡️ температура выхлопных газов;</li>
+
+<li>📊 степень заполнения сажевого фильтра;</li>
+
+<li>💨 работа системы SCR и AdBlue;</li>
+
+<li>📈 текущие параметры двигателя.</li>
+</ul>
+
+<h2 class="wp-block-heading">🔄 Повторная диагностика</h2>
+
+<figure class="wp-block-image size-large"><img loading="lazy" src="https://static.tildacdn.com/tild6533-6135-4537-b235-363534373465/7788fe32-f18e-4585-8.jpg" alt="Повторная диагностика — Mercedes-Benz Vito 2019"/></figure>
+
+<p>После завершения регенерации была выполнена повторная компьютерная диагностика.</p>
+
+<p>По результатам проверки:</p>
+
+<ul class="wp-block-list">
+<li>✔️ активных ошибок не обнаружено;</li>
+
+<li>✔️ система AdBlue работает корректно;</li>
+
+<li>✔️ сажевый фильтр успешно прошёл регенерацию;</li>
+
+<li>✔️ все параметры двигателя соответствуют норме.</li>
+</ul>
+
+<h2 class="wp-block-heading">✅ Результат</h2>
+
+<p>После выполненных работ:</p>
+
+<ul class="wp-block-list">
+<li>✔️ прожиг сажевого фильтра завершён успешно;</li>
+
+<li>✔️ восстановлена корректная работа системы очистки выхлопных газов;</li>
+
+<li>✔️ ошибки по системе AdBlue отсутствуют;</li>
+
+<li>✔️ ограничения мощности двигателя сняты;</li>
+
+<li>✔️ автомобиль работает в штатном режиме.</li>
+</ul>
+
+<h2 class="wp-block-heading">💡 Полезный совет автоэлектрика</h2>
+
+<p>Ошибки по системе <strong>AdBlue</strong> не всегда означают неисправность насоса, форсунки или блока управления.</p>
+
+<p>Во многих случаях необходимо сначала выполнить:</p>
+
+<ul class="wp-block-list">
+<li>🔍 профессиональную компьютерную диагностику;</li>
+
+<li>⚙️ проверку исполнительных механизмов системы SCR;</li>
+
+<li>🔥 принудительную регенерацию сажевого фильтра;</li>
+
+<li>📊 анализ текущих параметров работы двигателя.</li>
+</ul>
+
+<p>Только после этого можно принимать решение о ремонте или замене компонентов системы AdBlue.</p>
+
+<h2 class="wp-block-heading">❓ Когда необходимо обратиться на диагностику?</h2>
+
+<p>Рекомендуется провести диагностику, если:</p>
+
+<ul class="wp-block-list">
+<li>загорелся индикатор <strong>Check Engine</strong>;</li>
+
+<li>появились ошибки <strong>AdBlue</strong>;</li>
+
+<li>автомобиль ограничил мощность;</li>
+
+<li>увеличился расход топлива;</li>
+
+<li>не выполняется автоматическая регенерация DPF;</li>
+
+<li>отображается сообщение об ограничении остаточного пробега.</li>
+</ul>
+
+<p>👨‍🔧 <strong>Работы выполнил автоэлектрик Олег.</strong></p>
+
+<p>🌐 <strong><a href="https://avtoelektrik-pro.kz/prozhig-sazhevogo-filtra-dpf">Прожиг сажевого фильтра DPF в Алматы</a></strong></p>
+
+<p>☎️ <strong><a href="tel:+7(701)121-11-10">8-701-121-11-10</a> Олег</strong></p>
+
+<p><strong>Читайте также:</strong> «<a href="https://avtoelektrik-pro.kz/novosti-i-rekomendatsii/adp9msk641-forland-2023-avariinii-rezhim-oshibka-p2">Forland 2023 — аварийный режим, ошибка P246C</a>» и «<a href="https://avtoelektrik-pro.kz/novosti-i-rekomendatsii/zh5efy6zn1-volvo-fh-2015-oshibka-p24a100-prozhig">Volvo FH 2015 — ошибка P24A100 прожиг</a>».</p>
+</article>
+<nav class="related" aria-label="Разделы сайта"><h2>Разделы и услуги</h2><ul><li><a href="/">Главная</a></li><li><a href="/servis">Услуги автоэлектрика</a></li><li><a href="/novosti-i-rekomendatsii">101 ошибка — блог</a></li><li><a href="/kompyuternaya-diagnostika-avto-v-almaty">Компьютерная диагностика автомобиля</a></li><li><a href="/otogrev-avtomobilya">Отогрев автомобиля</a></li><li><a href="/remont-avtokompyutera">Ремонт ЭБУ</a></li><li><a href="/remont-immobilayzera">Ремонт иммобилайзера</a></li><li><a href="/adaptatsiya-akpp">Адаптация АКПП</a></li><li><a href="/adaptatsiya-drosselnoy-zaslonki">Адаптация дроссельной заслонки</a></li></ul></nav>
+</main>
+<footer><div class="wrap">
+<p class="f-cta"><a class="btn" href="tel:+77011211110">Позвонить +7 701 121 11 10</a>
+<a class="btn wa" href="https://wa.me/77011211110">Написать в WhatsApp</a></p>
+<p><a href="https://help.avtoelektrik-pro.kz/kody/">Коды ошибок</a> · <a href="https://help.avtoelektrik-pro.kz/kursy/">Курсы автоэлектрика</a> · <a href="https://help.avtoelektrik-pro.kz/">Приложение АвтоЭлектрик PRO</a></p>
+<p class="small">© 2026 АвтоЭлектрик PRO · Дмитриев Олег Сергеевич · Алматы</p>
+</div></footer>
+</body>
+</html>

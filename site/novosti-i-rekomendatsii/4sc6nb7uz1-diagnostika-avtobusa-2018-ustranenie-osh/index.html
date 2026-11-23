@@ -1,0 +1,209 @@
+<!doctype html>
+<!-- © 2026 Дмитриев Олег Сергеевич · АвтоЭлектрик PRO · собрано tools/tilda_static.py -->
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Диагностика автобуса 2018 — устранение ошибки SPN 653 и восстановление работы двигателя</title>
+<meta name="description" content="Компьютерная диагностика автобуса 2018 года. Жалобы на троение двигателя и потерю мощности. Обнаружена ошибка SPN 653, выполнена перепиновка разъёма форсунки…">
+<meta name="author" content="Дмитриев Олег Сергеевич">
+<meta name="color-scheme" content="dark light">
+<meta name="robots" content="noindex,follow">
+<link rel="canonical" href="https://avtoelektrik-pro.kz/novosti-i-rekomendatsii/4sc6nb7uz1-diagnostika-avtobusa-2018-ustranenie-osh">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="АвтоЭлектрик PRO">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:title" content="Диагностика автобуса 2018 — устранение ошибки SPN 653 и восстановление работы двигателя">
+<meta property="og:description" content="Компьютерная диагностика автобуса 2018 года. Жалобы на троение двигателя и потерю мощности. Обнаружена ошибка SPN 653, выполнена перепиновка разъёма форсунки…">
+<meta property="og:url" content="https://avtoelektrik-pro.kz/novosti-i-rekomendatsii/4sc6nb7uz1-diagnostika-avtobusa-2018-ustranenie-osh">
+<meta property="og:image" content="https://avtoelektrik-pro.kz/og.png?v=c024d92a">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.ico?v=17ea34c9" sizes="48x48"><link rel="icon" href="/favicon.svg?v=c18aea20" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-touch-icon.png?v=760bba30">
+<style>*{box-sizing:border-box}
+:root{--bg:#111315;--panel:#1b1e21;--acc:#FFA500;--tx:#f2f2f2;--mut:#9aa0a6;--ln:#2a2e33}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.65 'Golos Text',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+.wrap{max-width:900px;margin:0 auto;padding:0 16px}
+a{color:var(--acc);text-decoration:none}
+a:hover{text-decoration:underline}
+.bar{position:sticky;top:0;z-index:5;background:rgba(17,19,21,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--ln)}
+.bar .wrap{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding-top:10px;padding-bottom:10px}
+.logo{display:flex;align-items:center;gap:8px;color:var(--tx);font-weight:800;font-size:18px}
+.logo i{width:20px;height:20px;background:var(--acc);display:inline-block;clip-path:polygon(55% 0,12% 56%,47% 56%,40% 100%,88% 40%,52% 40%)}
+.menu{display:flex;gap:14px;flex-wrap:wrap;font-size:14px;margin-right:auto}
+.menu a{color:var(--mut)}
+.call{color:var(--acc);font-weight:700;white-space:nowrap}
+.stripe{height:3px;background:linear-gradient(90deg,var(--acc),transparent)}
+main{padding:22px 0 40px}
+h1{font-size:28px;line-height:1.25;margin:.2em 0 .5em}
+h2{font-size:21px;margin:1.4em 0 .5em}
+h3{font-size:18px;margin:1.2em 0 .4em}
+.crumbs{color:var(--mut);font-size:13px;margin-bottom:14px}
+.crumbs a{color:var(--mut)}
+.crumbs span{color:var(--tx)}
+.pmeta{color:var(--mut);font-size:13px;margin:-6px 0 14px}
+.body img{max-width:100%;height:auto;border-radius:10px;margin:14px 0;background:var(--panel)}
+.body ul,.body ol{padding-left:22px}
+.body figure{margin:14px 0}
+.body .wp-block-buttons,.f-cta{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0}
+.btn,.wp-block-button__link{display:inline-block;background:var(--acc);color:#111;font-weight:700;padding:11px 18px;border-radius:10px}
+.btn:hover,.wp-block-button__link:hover{text-decoration:none;filter:brightness(1.08)}
+.btn.wa,.wa .wp-block-button__link{background:#25D366;color:#073}
+.ao a{display:inline-block;background:var(--panel);border:1px solid var(--acc);border-radius:10px;padding:10px 14px;margin:8px 0}
+details{background:var(--panel);border:1px solid var(--ln);border-radius:10px;padding:10px 14px;margin:10px 0}
+summary{cursor:pointer;font-weight:600}
+.post-list{list-style:none;padding:0;margin:14px 0;display:grid;gap:8px}
+.post-list li{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid var(--ln);padding:7px 0}
+.post-list time{color:var(--mut);font-size:13px;white-space:nowrap}
+.more{margin:10px 0}
+.related{margin:30px 0 0;padding:18px;background:var(--panel);border:1px solid var(--ln);border-radius:14px}
+.related h2{margin:0 0 10px;font-size:17px}
+.related ul{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:8px}
+hr{border:0;border-top:1px solid var(--ln);margin:20px 0}
+footer{border-top:1px solid var(--ln);background:var(--panel);padding:24px 0;margin-top:30px}
+footer .small{color:var(--mut);font-size:13px}
+@media(max-width:560px){h1{font-size:23px}.menu{display:none}.bar .wrap{gap:10px}}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "АвтоЭлектрик PRO", "item": "https://avtoelektrik-pro.kz/"}, {"@type": "ListItem", "position": 2, "name": "101 ошибка — блог", "item": "https://avtoelektrik-pro.kz/novosti-i-rekomendatsii"}, {"@type": "ListItem", "position": 3, "name": "Диагностика автобуса 2018", "item": "https://avtoelektrik-pro.kz/novosti-i-rekomendatsii/4sc6nb7uz1-diagnostika-avtobusa-2018-ustranenie-osh"}]}, {"@type": "Article", "headline": "Диагностика автобуса 2018 — устранение ошибки SPN 653", "inLanguage": "ru", "datePublished": "2026-07-25", "dateModified": "2026-10-23", "author": {"@type": "Person", "name": "Дмитриев Олег Сергеевич"}, "image": "https://static.tildacdn.com/tild3231-3063-4330-b036-313334303534/__2018_______.jpg", "publisher": {"@type": "Organization", "name": "АвтоЭлектрик PRO", "logo": {"@type": "ImageObject", "url": "https://avtoelektrik-pro.kz/og.png"}}, "mainEntityOfPage": "https://avtoelektrik-pro.kz/novosti-i-rekomendatsii/4sc6nb7uz1-diagnostika-avtobusa-2018-ustranenie-osh"}]}</script>
+</head>
+<body>
+<header class="bar"><div class="wrap"><a class="logo" href="/"><i aria-hidden="true"></i>АвтоЭлектрик PRO</a>
+<nav class="menu" aria-label="Меню"><a href="/">Главная</a><a href="/servis">Услуги автоэлектрика</a><a href="/novosti-i-rekomendatsii">101 ошибка, которую я нахожу</a><a href="/#rec1273352971">Отзывы</a><a href="/#rec1095068866">Контакты</a><a href="https://help.avtoelektrik-pro.kz/kursy/">Курсы автоэлектрика</a><a href="https://help.avtoelektrik-pro.kz/kody/">Коды ошибок</a></nav>
+<a class="call" href="tel:+77011211110">+7 701 121 11 10</a></div></header>
+<div class="stripe" aria-hidden="true"></div>
+<main class="wrap">
+<nav class="crumbs" aria-label="Хлебные крошки"><a href="/">АвтоЭлектрик PRO</a> › <a href="/novosti-i-rekomendatsii">101 ошибка — блог</a> › <span>Диагностика автобуса 2018</span></nav>
+<h1>Диагностика автобуса 2018 — устранение ошибки SPN 653</h1>
+<p class="pmeta">Статья · <time datetime="2026-07-25">25.07.2026</time> · Олег, автоэлектрик</p>
+<article class="body">
+<h2 class="wp-block-heading">🚌 Диагностика автобуса 2018 — устранение троения двигателя и восстановление мощности</h2>
+
+<h3 class="wp-block-heading">Автобус 2018 года: двигатель троил и потерял мощность</h3>
+
+<p>В наш автосервис поступил <strong>автобус 2018 года выпуска</strong> с жалобами на нестабильную работу двигателя. Со слов владельца, двигатель начал троить, заметно снизилась мощность, а при движении автомобиль плохо набирал скорость.</p>
+
+<p>Для определения причины была проведена комплексная компьютерная диагностика двигателя с анализом текущих параметров и проверкой системы управления.</p>
+
+<h3 class="wp-block-heading">🔍 Что показала диагностика?</h3>
+
+<figure class="wp-block-image size-large"><img loading="lazy" src="https://static.tildacdn.com/tild3963-6663-4931-b935-343162316338/__2018_______.jpg" alt="SPN 653 — неисправность, связанная с цепью управления форсункой 3-го цилиндра"/></figure>
+
+<p>После подключения диагностического оборудования была обнаружена ошибка:</p>
+
+<ul class="wp-block-list">
+<li>⚠️ <strong>SPN 653</strong> — неисправность, связанная с цепью управления форсункой <strong>3-го цилиндра</strong>.</li>
+</ul>
+
+<p>Для точного определения причины были выполнены дополнительные проверки.</p>
+
+<h3 class="wp-block-heading">🛠 Выполненные работы</h3>
+
+<p>В ходе диагностики специалисты выполнили:</p>
+
+<ul class="wp-block-list">
+<li>✅ компьютерную диагностику двигателя;</li>
+
+<li>✅ проверку электрической проводки форсунки 4-го цилиндра;</li>
+
+<li>✅ прозвонку цепей питания и управления;</li>
+
+<li>✅ проверку самой форсунки;</li>
+
+<li>✅ диагностику электронного блока управления двигателем;</li>
+
+<li>✅ осмотр разъёмов и контактов.</li>
+</ul>
+
+<p>В результате было установлено, что причиной неисправности оказался <strong>повреждённый контакт в разъёме форсунки</strong>.</p>
+
+<figure class="wp-block-image size-large"><img loading="lazy" src="https://static.tildacdn.com/tild3630-6162-4661-b931-653962623733/____.jpg" alt="Выполненные работы — Диагностика автобуса 2018"/></figure>
+
+<p>Для устранения проблемы были выполнены:</p>
+
+<ul class="wp-block-list">
+<li>🔧 перепиновка разъёма;</li>
+
+<li>🔧 восстановление надёжного электрического контакта;</li>
+
+<li>🔧 очистка памяти неисправностей;</li>
+
+<li>🔧 тест исполнительных механизмов;</li>
+
+<li>🔧 повторная компьютерная диагностика.</li>
+</ul>
+
+<h3 class="wp-block-heading">📈 Результат</h3>
+
+<p>После восстановления разъёма:</p>
+
+<ul class="wp-block-list">
+<li>✔ ошибка <strong>SPN 653</strong> исчезла;</li>
+
+<li>✔ двигатель перестал троить;</li>
+
+<li>✔ восстановилась мощность;</li>
+
+<li>✔ работа двигателя стала стабильной;</li>
+
+<li>✔ тест исполнительных механизмов прошёл без замечаний;</li>
+
+<li>✔ повторная диагностика не выявила новых неисправностей.</li>
+</ul>
+
+<figure class="wp-block-image size-large"><img loading="lazy" src="https://static.tildacdn.com/tild3336-3732-4464-b434-663964663161/_____.jpg" alt="повторная диагностика не выявила новых неисправностей."/></figure>
+
+<h3 class="wp-block-heading">Почему важно проводить комплексную диагностику?</h3>
+
+<p>Не всегда причиной ошибок являются дорогостоящие узлы. В данном случае неисправность была вызвана обычным нарушением контакта в разъёме форсунки.</p>
+
+<p>Комплексная диагностика позволяет определить истинную причину неисправности и избежать ненужной замены исправных деталей.</p>
+
+<p>Во время проверки мы анализируем:</p>
+
+<ul class="wp-block-list">
+<li>🔍 электронные блоки управления;</li>
+
+<li>⚡ состояние проводки и разъёмов;</li>
+
+<li>💉 работу форсунок;</li>
+
+<li>📊 текущие параметры двигателя;</li>
+
+<li>🔧 исполнительные механизмы;</li>
+
+<li>🚍 системы управления дизельным двигателем.</li>
+</ul>
+
+<h3 class="wp-block-heading">Почему выбирают нас?</h3>
+
+<ul class="wp-block-list">
+<li>✅ Профессиональная компьютерная диагностика коммерческого транспорта</li>
+
+<li>✅ Опыт ремонта автобусов и дизельных двигателей</li>
+
+<li>✅ Современное диагностическое оборудование</li>
+
+<li>✅ Проверка электронных систем и проводки</li>
+
+<li>✅ Поиск неисправностей без лишней замены деталей</li>
+
+<li>✅ Контроль результата после выполненных работ</li>
+</ul>
+
+<p><a href="https://avtoelektrik-pro.kz/gruzovoy-avtoelektrik">🌐 Грузовой автоэлектрик в Алматы</a></p>
+
+<p>☎️ <strong><a href="tel:+7(701)121-11-10">8-701-121-11-10</a> Олег</strong></p>
+
+<p><strong>Читайте также:</strong> «<a href="https://avtoelektrik-pro.kz/novosti-i-rekomendatsii/a8dd1du9j1-diagnostika-kamaz-2020-posle-remonta">Диагностика КАМАЗ 2020 после ремонта</a>» и «<a href="https://avtoelektrik-pro.kz/novosti-i-rekomendatsii/2p66pi9s31-daf-xf-105-2012-ne-pereklyuchaet-peredac">DAF XF 105 2012 не переключает передачи</a>».</p>
+</article>
+<nav class="related" aria-label="Разделы сайта"><h2>Разделы и услуги</h2><ul><li><a href="/">Главная</a></li><li><a href="/servis">Услуги автоэлектрика</a></li><li><a href="/novosti-i-rekomendatsii">101 ошибка — блог</a></li><li><a href="/kompyuternaya-diagnostika-avto-v-almaty">Компьютерная диагностика автомобиля</a></li><li><a href="/otogrev-avtomobilya">Отогрев автомобиля</a></li><li><a href="/remont-avtokompyutera">Ремонт ЭБУ</a></li><li><a href="/remont-immobilayzera">Ремонт иммобилайзера</a></li><li><a href="/adaptatsiya-akpp">Адаптация АКПП</a></li><li><a href="/adaptatsiya-drosselnoy-zaslonki">Адаптация дроссельной заслонки</a></li></ul></nav>
+</main>
+<footer><div class="wrap">
+<p class="f-cta"><a class="btn" href="tel:+77011211110">Позвонить +7 701 121 11 10</a>
+<a class="btn wa" href="https://wa.me/77011211110">Написать в WhatsApp</a></p>
+<p><a href="https://help.avtoelektrik-pro.kz/kody/">Коды ошибок</a> · <a href="https://help.avtoelektrik-pro.kz/kursy/">Курсы автоэлектрика</a> · <a href="https://help.avtoelektrik-pro.kz/">Приложение АвтоЭлектрик PRO</a></p>
+<p class="small">© 2026 АвтоЭлектрик PRO · Дмитриев Олег Сергеевич · Алматы</p>
+</div></footer>
+</body>
+</html>

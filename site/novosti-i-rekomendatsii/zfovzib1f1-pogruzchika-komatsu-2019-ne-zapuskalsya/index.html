@@ -1,0 +1,245 @@
+<!doctype html>
+<!-- © 2026 Дмитриев Олег Сергеевич · АвтоЭлектрик PRO · собрано tools/tilda_static.py -->
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Выездная диагностика погрузчика Komatsu 2019 — ошибка P1065, ремонт проводки реле ECCS</title>
+<meta name="description" content="Компания Flex Service заказала выездную компьютерную диагностику погрузчика Komatsu 2019 года с проблемой отсутствия запуска двигателя. В ходе диагностики…">
+<meta name="author" content="Дмитриев Олег Сергеевич">
+<meta name="color-scheme" content="dark light">
+<meta name="robots" content="noindex,follow">
+<link rel="canonical" href="https://avtoelektrik-pro.kz/novosti-i-rekomendatsii/zfovzib1f1-pogruzchika-komatsu-2019-ne-zapuskalsya">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="АвтоЭлектрик PRO">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:title" content="Выездная диагностика погрузчика Komatsu 2019 — ошибка P1065, ремонт проводки реле ECCS">
+<meta property="og:description" content="Компания Flex Service заказала выездную компьютерную диагностику погрузчика Komatsu 2019 года с проблемой отсутствия запуска двигателя. В ходе диагностики…">
+<meta property="og:url" content="https://avtoelektrik-pro.kz/novosti-i-rekomendatsii/zfovzib1f1-pogruzchika-komatsu-2019-ne-zapuskalsya">
+<meta property="og:image" content="https://avtoelektrik-pro.kz/og.png?v=c024d92a">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.ico?v=17ea34c9" sizes="48x48"><link rel="icon" href="/favicon.svg?v=c18aea20" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-touch-icon.png?v=760bba30">
+<style>*{box-sizing:border-box}
+:root{--bg:#111315;--panel:#1b1e21;--acc:#FFA500;--tx:#f2f2f2;--mut:#9aa0a6;--ln:#2a2e33}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.65 'Golos Text',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+.wrap{max-width:900px;margin:0 auto;padding:0 16px}
+a{color:var(--acc);text-decoration:none}
+a:hover{text-decoration:underline}
+.bar{position:sticky;top:0;z-index:5;background:rgba(17,19,21,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--ln)}
+.bar .wrap{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding-top:10px;padding-bottom:10px}
+.logo{display:flex;align-items:center;gap:8px;color:var(--tx);font-weight:800;font-size:18px}
+.logo i{width:20px;height:20px;background:var(--acc);display:inline-block;clip-path:polygon(55% 0,12% 56%,47% 56%,40% 100%,88% 40%,52% 40%)}
+.menu{display:flex;gap:14px;flex-wrap:wrap;font-size:14px;margin-right:auto}
+.menu a{color:var(--mut)}
+.call{color:var(--acc);font-weight:700;white-space:nowrap}
+.stripe{height:3px;background:linear-gradient(90deg,var(--acc),transparent)}
+main{padding:22px 0 40px}
+h1{font-size:28px;line-height:1.25;margin:.2em 0 .5em}
+h2{font-size:21px;margin:1.4em 0 .5em}
+h3{font-size:18px;margin:1.2em 0 .4em}
+.crumbs{color:var(--mut);font-size:13px;margin-bottom:14px}
+.crumbs a{color:var(--mut)}
+.crumbs span{color:var(--tx)}
+.pmeta{color:var(--mut);font-size:13px;margin:-6px 0 14px}
+.body img{max-width:100%;height:auto;border-radius:10px;margin:14px 0;background:var(--panel)}
+.body ul,.body ol{padding-left:22px}
+.body figure{margin:14px 0}
+.body .wp-block-buttons,.f-cta{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0}
+.btn,.wp-block-button__link{display:inline-block;background:var(--acc);color:#111;font-weight:700;padding:11px 18px;border-radius:10px}
+.btn:hover,.wp-block-button__link:hover{text-decoration:none;filter:brightness(1.08)}
+.btn.wa,.wa .wp-block-button__link{background:#25D366;color:#073}
+.ao a{display:inline-block;background:var(--panel);border:1px solid var(--acc);border-radius:10px;padding:10px 14px;margin:8px 0}
+details{background:var(--panel);border:1px solid var(--ln);border-radius:10px;padding:10px 14px;margin:10px 0}
+summary{cursor:pointer;font-weight:600}
+.post-list{list-style:none;padding:0;margin:14px 0;display:grid;gap:8px}
+.post-list li{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid var(--ln);padding:7px 0}
+.post-list time{color:var(--mut);font-size:13px;white-space:nowrap}
+.more{margin:10px 0}
+.related{margin:30px 0 0;padding:18px;background:var(--panel);border:1px solid var(--ln);border-radius:14px}
+.related h2{margin:0 0 10px;font-size:17px}
+.related ul{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:8px}
+hr{border:0;border-top:1px solid var(--ln);margin:20px 0}
+footer{border-top:1px solid var(--ln);background:var(--panel);padding:24px 0;margin-top:30px}
+footer .small{color:var(--mut);font-size:13px}
+@media(max-width:560px){h1{font-size:23px}.menu{display:none}.bar .wrap{gap:10px}}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "АвтоЭлектрик PRO", "item": "https://avtoelektrik-pro.kz/"}, {"@type": "ListItem", "position": 2, "name": "101 ошибка — блог", "item": "https://avtoelektrik-pro.kz/novosti-i-rekomendatsii"}, {"@type": "ListItem", "position": 3, "name": "Погрузчика Komatsu 2019 не запускался", "item": "https://avtoelektrik-pro.kz/novosti-i-rekomendatsii/zfovzib1f1-pogruzchika-komatsu-2019-ne-zapuskalsya"}]}, {"@type": "Article", "headline": "Погрузчика Komatsu 2019 не запускался", "inLanguage": "ru", "datePublished": "2026-07-26", "dateModified": "2026-10-23", "author": {"@type": "Person", "name": "Дмитриев Олег Сергеевич"}, "image": "https://static.tildacdn.com/tild3938-6635-4565-a638-373836303631/___Komatsu_2019___P1.jpg", "publisher": {"@type": "Organization", "name": "АвтоЭлектрик PRO", "logo": {"@type": "ImageObject", "url": "https://avtoelektrik-pro.kz/og.png"}}, "mainEntityOfPage": "https://avtoelektrik-pro.kz/novosti-i-rekomendatsii/zfovzib1f1-pogruzchika-komatsu-2019-ne-zapuskalsya"}]}</script>
+</head>
+<body>
+<header class="bar"><div class="wrap"><a class="logo" href="/"><i aria-hidden="true"></i>АвтоЭлектрик PRO</a>
+<nav class="menu" aria-label="Меню"><a href="/">Главная</a><a href="/servis">Услуги автоэлектрика</a><a href="/novosti-i-rekomendatsii">101 ошибка, которую я нахожу</a><a href="/#rec1273352971">Отзывы</a><a href="/#rec1095068866">Контакты</a><a href="https://help.avtoelektrik-pro.kz/kursy/">Курсы автоэлектрика</a><a href="https://help.avtoelektrik-pro.kz/kody/">Коды ошибок</a></nav>
+<a class="call" href="tel:+77011211110">+7 701 121 11 10</a></div></header>
+<div class="stripe" aria-hidden="true"></div>
+<main class="wrap">
+<nav class="crumbs" aria-label="Хлебные крошки"><a href="/">АвтоЭлектрик PRO</a> › <a href="/novosti-i-rekomendatsii">101 ошибка — блог</a> › <span>Погрузчика Komatsu 2019 не запускался</span></nav>
+<h1>Погрузчика Komatsu 2019 не запускался</h1>
+<p class="pmeta">Статья · <time datetime="2026-07-26">26.07.2026</time> · Олег, автоэлектрик</p>
+<article class="body">
+<h2 class="wp-block-heading">🚜 Выездная диагностика погрузчика Komatsu 2019 года — устранение проблемы с запуском</h2>
+
+<p>Компания <strong>Flex Service</strong> заказала выездную компьютерную диагностику погрузчика <strong>Komatsu 2019 года выпуска</strong> с жалобой на отсутствие запуска двигателя. Задача заключалась в оперативном поиске причины неисправности непосредственно на территории заказчика.</p>
+
+<h3 class="wp-block-heading">🔍 Что показала диагностика</h3>
+
+<figure class="wp-block-image size-large"><img loading="lazy" src="https://static.tildacdn.com/tild3066-3230-4264-b739-336333346133/___Komatsu_2019___P1.jpg" alt="диагностика погрузчика Komatsu 2019"/></figure>
+
+<p>После подключения профессионального диагностического оборудования была выявлена ошибка:</p>
+
+<p><strong>P1065 — неисправность цепи реле ECCS (главное реле системы управления двигателем).</strong></p>
+
+<p>Для точного определения причины были выполнены:</p>
+
+<ul class="wp-block-list">
+<li>✅ компьютерная диагностика системы управления двигателем;</li>
+
+<li>✅ проверка цепей питания ЭБУ;</li>
+
+<li>✅ проверка реле ECCS;</li>
+
+<li>✅ проверка предохранителей;</li>
+
+<li>✅ прозвонка проводки управления реле;</li>
+
+<li>✅ контроль напряжений и целостности электрических цепей.</li>
+</ul>
+
+<h3 class="wp-block-heading">⚙️ Что оказалось неисправно</h3>
+
+<figure class="wp-block-image size-large"><img loading="lazy" src="https://static.tildacdn.com/tild3861-3537-4536-a630-393364343530/1e37e381-66f5-4a18-a.jpg" alt="повреждение проводки в цепи управления реле"/></figure>
+
+<p>В ходе диагностики установлено, что само реле ECCS и цепи питания находились в исправном состоянии.</p>
+
+<p>Причиной отсутствия запуска стало <strong>повреждение проводки в цепи управления реле</strong>, из-за чего электронный блок управления не мог подать команду на включение питания системы.</p>
+
+<h3 class="wp-block-heading">🔧 Выполненные работы</h3>
+
+<p>В процессе ремонта были выполнены:</p>
+
+<ul class="wp-block-list">
+<li>🔹 восстановление повреждённой проводки;</li>
+
+<li>🔹 проверка работы цепи управления реле;</li>
+
+<li>🔹 повторная компьютерная диагностика;</li>
+
+<li>🔹 контроль отсутствия ошибок в памяти ЭБУ;</li>
+
+<li>🔹 проверка текущих параметров работы системы после запуска двигателя.</li>
+</ul>
+
+<h3 class="wp-block-heading">✅ Результат</h3>
+
+<p>После восстановления проводки погрузчик <strong>Komatsu 2019 года</strong> успешно запустился. Ошибка <strong>P1065</strong> больше не появлялась, двигатель работал стабильно, а все электронные системы функционировали в штатном режиме.</p>
+
+<figure class="wp-block-image size-large"><img loading="lazy" src="https://static.tildacdn.com/tild3766-3332-4434-a535-363131373739/_P1065___.jpg" alt="Результат — Погрузчика Komatsu 2019 не запускался"/></figure>
+
+<p>Этот случай ещё раз подтверждает, что не всегда причиной неисправности является сам электронный компонент. Грамотная компьютерная диагностика позволяет быстро обнаружить истинную причину, выполнить точный ремонт и избежать ненужной замены исправных деталей.</p>
+
+<p><strong>📍 Выездная компьютерная диагностика спецтехники и коммерческого транспорта с поиском неисправностей, ремонтом электропроводки и проверкой электронных систем.</strong></p>
+
+<h2 class="wp-block-heading">❓ Частые причины ошибки P1065 на погрузчиках Komatsu</h2>
+
+<p>Ошибка <strong>P1065</strong> связана с цепью управления главным реле <strong>ECCS (Electronic Concentrated Control System)</strong>. При её появлении двигатель может полностью перестать запускаться или запускаться нестабильно.</p>
+
+<p>Наиболее распространённые причины:</p>
+
+<ul class="wp-block-list">
+<li>⚠️ повреждение проводки цепи управления;</li>
+
+<li>⚠️ окисление или ослабление контактов в разъёмах;</li>
+
+<li>⚠️ неисправность реле ECCS;</li>
+
+<li>⚠️ перегоревший предохранитель;</li>
+
+<li>⚠️ отсутствие питания электронного блока управления двигателем (ECU);</li>
+
+<li>⚠️ повреждение проводов после ремонта или длительной эксплуатации техники.</li>
+</ul>
+
+<p>Во многих случаях проблема находится именно в электрической цепи, поэтому перед заменой дорогостоящих компонентов необходимо провести профессиональную компьютерную диагностику.</p>
+
+<h2 class="wp-block-heading">🚜 Когда необходима выездная диагностика спецтехники?</h2>
+
+<p>Выездная компьютерная диагностика позволяет быстро определить неисправность непосредственно на месте эксплуатации техники, без необходимости транспортировки в сервис.</p>
+
+<p>Рекомендуется обратиться за диагностикой, если:</p>
+
+<ul class="wp-block-list">
+<li>✅ погрузчик не запускается;</li>
+
+<li>✅ двигатель работает с перебоями;</li>
+
+<li>✅ загорелся индикатор неисправности двигателя;</li>
+
+<li>✅ появились ошибки в электронных системах;</li>
+
+<li>✅ техника перешла в аварийный режим;</li>
+
+<li>✅ пропала мощность двигателя;</li>
+
+<li>✅ возникли проблемы после ремонта или замены электрических компонентов;</li>
+
+<li>✅ требуется определить причину неисправности перед ремонтом.</li>
+</ul>
+
+<h2 class="wp-block-heading">⚙️ Что включает компьютерная диагностика погрузчика Komatsu?</h2>
+
+<p>Во время диагностики специалисты проверяют:</p>
+
+<ul class="wp-block-list">
+<li>💻 электронный блок управления двигателем (ECU);</li>
+
+<li>🔌 питание и массу ЭБУ;</li>
+
+<li>⚡ состояние электропроводки;</li>
+
+<li>📡 исполнительные механизмы;</li>
+
+<li>🔧 реле и предохранители;</li>
+
+<li>📊 текущие параметры работы двигателя;</li>
+
+<li>🌡️ показания датчиков;</li>
+
+<li>📋 память неисправностей;</li>
+
+<li>🔄 работу систем после устранения неисправности.</li>
+</ul>
+
+<p>После завершения ремонта обязательно выполняется <strong>контрольная компьютерная диагностика</strong>, чтобы убедиться в отсутствии ошибок и корректной работе всех систем.</p>
+
+<h2 class="wp-block-heading">⭐ Почему выбирают нас?</h2>
+
+<p>✔ Выездная компьютерная диагностика спецтехники и коммерческого транспорта.</p>
+
+<p>✔ Поиск неисправностей без необоснованной замены дорогостоящих деталей.</p>
+
+<p>✔ Проверка электронных систем, проводки, датчиков, реле и исполнительных механизмов.</p>
+
+<p>✔ Современное профессиональное диагностическое оборудование.</p>
+
+<p>✔ Контроль текущих параметров двигателя в режиме реального времени.</p>
+
+<p>✔ Повторная диагностика после ремонта с подтверждением результата.</p>
+
+<p>👨‍🔧 <strong>Работы выполняет мастер-диагност Олег</strong> — специалист по компьютерной диагностике легковых автомобилей, грузового транспорта и спецтехники.</p>
+
+<p><strong><a href="https://avtoelektrik-pro.kz/gruzovoy-avtoelektrik">Грузовой автоэлектрик</a></strong></p>
+
+<p>☎️ <strong><a href="tel:+7(701)121-11-10">8-701-121-11-10</a> Олег</strong></p>
+
+<p><strong>Читайте также:</strong> «<a href="https://avtoelektrik-pro.kz/novosti-i-rekomendatsii/ceiyhgb2c1-kombain-fendt-2023-ne-nabiral-oboroti">Комбайн Fendt 2023 не набирал обороты</a>» и «<a href="https://avtoelektrik-pro.kz/novosti-i-rekomendatsii/3zt2xbmsh1-ne-kachaet-tnvd">Что делать если не качает ТНВД</a>».</p>
+</article>
+<nav class="related" aria-label="Разделы сайта"><h2>Разделы и услуги</h2><ul><li><a href="/">Главная</a></li><li><a href="/servis">Услуги автоэлектрика</a></li><li><a href="/novosti-i-rekomendatsii">101 ошибка — блог</a></li><li><a href="/kompyuternaya-diagnostika-avto-v-almaty">Компьютерная диагностика автомобиля</a></li><li><a href="/otogrev-avtomobilya">Отогрев автомобиля</a></li><li><a href="/remont-avtokompyutera">Ремонт ЭБУ</a></li><li><a href="/remont-immobilayzera">Ремонт иммобилайзера</a></li><li><a href="/adaptatsiya-akpp">Адаптация АКПП</a></li><li><a href="/adaptatsiya-drosselnoy-zaslonki">Адаптация дроссельной заслонки</a></li></ul></nav>
+</main>
+<footer><div class="wrap">
+<p class="f-cta"><a class="btn" href="tel:+77011211110">Позвонить +7 701 121 11 10</a>
+<a class="btn wa" href="https://wa.me/77011211110">Написать в WhatsApp</a></p>
+<p><a href="https://help.avtoelektrik-pro.kz/kody/">Коды ошибок</a> · <a href="https://help.avtoelektrik-pro.kz/kursy/">Курсы автоэлектрика</a> · <a href="https://help.avtoelektrik-pro.kz/">Приложение АвтоЭлектрик PRO</a></p>
+<p class="small">© 2026 АвтоЭлектрик PRO · Дмитриев Олег Сергеевич · Алматы</p>
+</div></footer>
+</body>
+</html>
