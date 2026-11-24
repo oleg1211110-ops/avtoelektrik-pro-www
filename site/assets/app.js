@@ -88,6 +88,9 @@ $all('form.form').forEach(function(f){
 });
 function toast(m){var t=$('#toast'); if(!t){t=document.createElement('div');t.id='toast';t.className='toast';document.body.appendChild(t);} t.textContent=m;t.classList.add('on');setTimeout(function(){t.classList.remove('on');},3200);}
 
+/* внешние ссылки (другой домен) — открывать в новой вкладке, чтобы не терять сайт (совет Сергея, 24.11) */
+document.querySelectorAll('a[href]').forEach(function(a){try{var u=new URL(a.href,location.href);if((u.protocol==='http:'||u.protocol==='https:')&&u.host!==location.host){a.target='_blank';a.rel='noopener noreferrer';}}catch(e){}});
+
 /* PWA */
 if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('/sw.js').catch(function(){});});}
 })();
