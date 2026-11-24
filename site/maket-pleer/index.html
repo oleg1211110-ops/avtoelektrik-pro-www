@@ -581,8 +581,8 @@ function buildEq(){
 function paintEq(){
   eqBands.querySelectorAll('.eq-rail').forEach((rail,i)=>{
     const v=eqVals[i], pct=(v+12)/24; const fill=rail.querySelector('.eq-fill'); const th=rail.querySelector('.eq-thumb'); if(th) th.style.top=(1-pct)*100+'%';
-    if(v>=0){fill.style.bottom='50%';fill.style.height=(pct-0.5)*100+'%';}
-    else{fill.style.top='50%';fill.style.bottom='auto';fill.style.height=(0.5-pct)*100+'%';}
+    if(v>=0){fill.style.top='auto';fill.style.bottom='50%';fill.style.height=(pct-0.5)*100+'%';}
+    else{fill.style.bottom='auto';fill.style.top='50%';fill.style.height=(0.5-pct)*100+'%';}
   });
 }
 function clearPreset(){document.querySelectorAll('#eqPre button').forEach(b=>b.classList.remove('on'));}
