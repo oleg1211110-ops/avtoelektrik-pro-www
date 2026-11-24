@@ -170,6 +170,15 @@ footer{border-top:1px solid var(--ln);background:var(--panel);padding:30px 0;mar
 footer .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px}
 footer a{color:var(--mut)}footer a:hover{color:var(--tx)}
 footer .sm{color:var(--mut);font-size:13px;margin-top:20px;border-top:1px solid var(--ln);padding-top:16px}
+footer .dev{margin-top:8px}
+footer .dev summary{cursor:pointer;list-style:none;display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--mut);user-select:none}
+footer .dev summary::-webkit-details-marker{display:none}
+footer .dev summary::after{content:"▾";font-size:10px;opacity:.65;transition:transform .2s}
+footer .dev[open] summary::after{transform:rotate(180deg)}
+footer .dev summary b{color:var(--tx2);font-weight:700}
+footer .dev-body{margin-top:9px;max-width:440px;font-size:12.5px;line-height:1.75;color:var(--mut);background:var(--bg);border:1px solid var(--ln);border-radius:10px;padding:11px 14px;animation:devIn .22s ease}
+footer .dev-body a{color:var(--acc)}
+@keyframes devIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
 .mbar{position:fixed;left:0;right:0;bottom:0;z-index:60;display:none;gap:10px;padding:10px max(12px,env(safe-area-inset-left)) calc(10px + env(safe-area-inset-bottom));background:var(--mbarbg);backdrop-filter:blur(10px);border-top:1px solid var(--ln)}
 .mbar a{flex:1;text-align:center;font-weight:800;padding:13px;border-radius:11px}
 .mbar .c{background:var(--acc);color:#111}.mbar .w{background:var(--ok);color:#06351b}
@@ -186,7 +195,7 @@ label.burger{user-select:none}
 .two-col{display:grid;grid-template-columns:1fr 320px;gap:26px;align-items:start}
 /* заметный блок помощника (оранжевый) */
 .helper-band{background:linear-gradient(135deg,var(--acc),var(--acc2));color:#1a1206}
-.helper-band .wrap{padding:26px 0}
+.helper-band .wrap{padding-block:26px}
 .helper-inner{display:flex;align-items:center;justify-content:space-between;gap:22px;flex-wrap:wrap}
 .helper-inner .tag{font-weight:800;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:#7a4a00;margin-bottom:6px}
 .helper-inner h2{margin:0 0 6px;color:#1a1206}
@@ -607,7 +616,12 @@ label.burger{user-select:none}
       <div><b>Полезное</b><br><a href="https://help.avtoelektrik-pro.kz/kody/">Коды ошибок</a> · <a href="https://help.avtoelektrik-pro.kz/kursy/">Курсы</a> · <a href="https://help.avtoelektrik-pro.kz/">Приложение</a> · <a href="/novosti-i-rekomendatsii">101 ошибка</a></div>
       <div><b>Связь</b><br><a href="tel:+77011211110">+7 701 121 11 10</a> · <a href="https://wa.me/77011211110">WhatsApp</a><br><span class="muted">ул. Мартынова, 39, Алматы</span></div>
     </div>
-    <div class="sm">© 2026 Автоэлектрик Олег · Дмитриев Олег Сергеевич · Алматы<br>Разработка сайта и приложения — <a href="mailto:8-8.8-8@mail.ru" style="color:var(--mut)">8-8.8-8@mail.ru</a></div>
+    <div class="sm">© 2026 Автоэлектрик Олег · Дмитриев Олег Сергеевич · Алматы
+      <!-- «Ван Сервис» позже станет ссылкой на общий сайт по рекламе -->
+      <details class="dev"><summary>Разработка — <b>Ван Сервис</b></summary>
+        <div class="dev-body">Создание сайтов · создание приложений · разработка и ведение Google-рекламы.<br><a href="mailto:8-8.8-8@mail.ru">8-8.8-8@mail.ru</a></div>
+      </details>
+    </div>
   </div>
 </footer>
 
