@@ -203,8 +203,10 @@ body{
 .eq-pre button.on{background:var(--orange);border-color:var(--orange);color:#1c1400}
 .eq-bands{display:grid;grid-template-columns:repeat(10,1fr);gap:3px;align-items:end;margin-top:12px;height:92px}
 .eq-band{display:flex;flex-direction:column;align-items:center;gap:5px;height:100%;justify-content:flex-end}
-.eq-rail{position:relative;width:8px;flex:1;border-radius:6px;background:#0d1219;overflow:hidden;cursor:ns-resize;touch-action:none}
+.eq-rail{position:relative;width:8px;flex:1;border-radius:6px;background:#0d1219;overflow:visible;cursor:ns-resize;touch-action:none}
 .eq-fill{position:absolute;left:0;right:0;bottom:50%;background:linear-gradient(180deg,var(--orange),var(--orange-deep));border-radius:6px;transition:height .12s,bottom .12s}
+.eq-rail::after{content:"";position:absolute;left:-3px;right:-3px;top:50%;height:1px;background:rgba(255,255,255,.13);transform:translateY(-50%);pointer-events:none}
+.eq-thumb{position:absolute;left:50%;top:50%;width:16px;height:5px;border-radius:3px;background:linear-gradient(180deg,var(--orange-soft),var(--orange-deep));box-shadow:0 0 9px var(--glow),0 1px 2px rgba(0,0,0,.6);transform:translate(-50%,-50%);transition:top .12s ease;z-index:3}
 .eq-band span{font:600 8.5px/1 var(--mono);color:var(--muted)}
 
 .dots{display:flex;justify-content:center;gap:7px;padding:4px 0 2px}
@@ -562,7 +564,7 @@ function buildEq(){
   eqBands.innerHTML='';
   EQ_F.forEach((f,i)=>{
     const b=document.createElement('div');b.className='eq-band';
-    b.innerHTML=`<div class="eq-rail" data-i="${i}"><div class="eq-fill"></div></div><span>${f}</span>`;
+    b.innerHTML=`<div class="eq-rail" data-i="${i}"><div class="eq-fill"></div><div class="eq-thumb"></div></div><span>${f}</span>`;
     eqBands.appendChild(b);
   });
   paintEq();
@@ -578,7 +580,7 @@ function buildEq(){
 }
 function paintEq(){
   eqBands.querySelectorAll('.eq-rail').forEach((rail,i)=>{
-    const v=eqVals[i], pct=(v+12)/24; const fill=rail.querySelector('.eq-fill');
+    const v=eqVals[i], pct=(v+12)/24; const fill=rail.querySelector('.eq-fill'); const th=rail.querySelector('.eq-thumb'); if(th) th.style.top=(1-pct)*100+'%';
     if(v>=0){fill.style.bottom='50%';fill.style.height=(pct-0.5)*100+'%';}
     else{fill.style.top='50%';fill.style.bottom='auto';fill.style.height=(0.5-pct)*100+'%';}
   });
