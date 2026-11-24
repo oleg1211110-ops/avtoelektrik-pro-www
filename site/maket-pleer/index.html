@@ -25,7 +25,7 @@ body{
     var(--bg);
   color:var(--ink);font-family:var(--font);
   display:flex;flex-direction:column;align-items:center;gap:18px;
-  padding:22px 16px 40px;min-height:100%;
+  padding:22px 8px 40px;min-height:100%;
 }
 .hd{max-width:420px;text-align:center}
 .hd h1{margin:0 0 4px;font-size:18px;font-weight:800;letter-spacing:.2px}
@@ -185,14 +185,14 @@ body{
 .vol-steps button:active{transform:scale(.92)}
 
 .toggles{display:flex;flex-direction:column;gap:12px}
-.tg{display:flex;align-items:center;gap:11px}
-.tg .sw{position:relative;width:52px;height:30px;border-radius:999px;background:#10151c;border:1px solid var(--line);cursor:pointer;flex:none;transition:background .25s}
-.tg .sw .kn{position:absolute;top:3px;left:3px;width:24px;height:24px;border-radius:50%;background:linear-gradient(180deg,#39434f,#1d242d);box-shadow:0 2px 4px rgba(0,0,0,.5);transition:transform .25s}
+.tg{display:flex;align-items:center;gap:9px}
+.tg .sw{position:relative;width:48px;height:28px;border-radius:999px;background:#10151c;border:1px solid var(--line);cursor:pointer;flex:none;transition:background .25s}
+.tg .sw .kn{position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:linear-gradient(180deg,#39434f,#1d242d);box-shadow:0 2px 4px rgba(0,0,0,.5);transition:transform .25s}
 .tg.on .sw{background:rgba(255,165,0,.18);border-color:var(--orange-deep)}
-.tg.on .sw .kn{transform:translateX(22px);background:linear-gradient(180deg,var(--orange-soft),var(--orange-deep))}
+.tg.on .sw .kn{transform:translateX(20px);background:linear-gradient(180deg,var(--orange-soft),var(--orange-deep))}
 .tg .led{width:11px;height:11px;border-radius:50%;background:var(--led-off);box-shadow:inset 0 0 3px rgba(0,0,0,.8);flex:none;transition:background .2s,box-shadow .2s}
 .tg.on .led{background:var(--led-on);box-shadow:0 0 10px rgba(88,224,106,.8)}
-.tg .nm{font-size:13px;font-weight:600;min-width:0;line-height:1.25}
+.tg .nm{font-size:12.5px;font-weight:600;min-width:0;line-height:1.25;overflow-wrap:break-word}
 .tg .nm small{display:block;color:var(--muted);font-size:11px;font-weight:500}
 
 /* mini EQ */
@@ -325,9 +325,9 @@ body{
                 <div class="knob-lbl">Volume</div>
               </div>
               <div class="toggles">
-                <div class="tg on" id="tgViz"><div class="sw"><div class="kn"></div></div><div class="led"></div><div class="nm">Визуализатор<small>живой спектр</small></div></div>
+                <div class="tg on" id="tgViz"><div class="sw"><div class="kn"></div></div><div class="led"></div><div class="nm">Спектр<small>визуализатор</small></div></div>
                 <div class="tg" id="tgBass"><div class="sw"><div class="kn"></div></div><div class="led"></div><div class="nm">Бас-буст<small>низкие +</small></div></div>
-                <div class="tg" id="tgVideo"><div class="sw"><div class="kn"></div></div><div class="led"></div><div class="nm">Видео-обложка<small>фон из Suno</small></div></div>
+                <div class="tg" id="tgVideo"><div class="sw"><div class="kn"></div></div><div class="led"></div><div class="nm">Видео-фон<small>обложка из Suno</small></div></div>
               </div>
             </div>
           </div>
