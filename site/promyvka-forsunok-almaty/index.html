@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<script>document.documentElement.classList.add('js');</script>
 <title>Промывка форсунок Алматы +7(707)67-80-414 Денис</title>
 <meta name="description" content="Чистка форсунок в Алматы: проверка причин неровной работы двигателя, повышенного расхода и потери тяги. Подбор способа очистки с учётом системы впрыска.">
 <link rel="canonical" href="https://avtoelektrik-pro.kz/promyvka-forsunok-almaty">
@@ -18,7 +19,9 @@
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <style>
 :root{--bg:#111315;--panel:#1b1e21;--panel2:#23272b;--acc:#FFA500;--acc2:#ffb733;--tx:#f2f2f2;--mut:#9aa0a6;--ln:#2a2e33;--ok:#25D366;--grad1:#1e2226;--grad2:#17191c;--heroA:#15181b;--heroB:#111315;--barbg:rgba(17,19,21,.86);--mbarbg:rgba(20,22,25,.96);--tx2:#d8dbdf;--prose:#e6e8ea;--mapln1:#1b1e21;--mapln2:#191c1f;--maproad:rgba(255,255,255,.075);--maproad2:rgba(255,255,255,.035);--mapaccent:rgba(255,165,0,.16)}
-*{box-sizing:border-box}html{scroll-behavior:smooth}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:72px}
+/* Якоря (#faq, #otzyvy, #rayony…) не прячутся под липкой шапкой */
+section[id],[id]{scroll-margin-top:72px}
 body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 a{color:var(--acc);text-decoration:none}a:hover{color:var(--acc2)}
 img{max-width:100%;height:auto}
@@ -323,9 +326,9 @@ label.burger{user-select:none}
 .reveal{opacity:1;transform:none}
 .read-progress{position:fixed;top:0;left:0;height:3px;width:100%;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,var(--acc),var(--acc2));z-index:70}
 @media (prefers-reduced-motion: no-preference){
-  @supports (animation-timeline: view){
-    .reveal{opacity:0;transform:translateY(16px);animation:reveal-in linear both;animation-timeline:view();animation-range:entry 5% cover 24%}
-  }
+  /* Прячем ТОЛЬКО когда есть JS (html.js) и разрешено движение. При любом сбое JS/анимации — текст виден (базовый .reveal{opacity:1}). */
+  html.js .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
+  html.js .reveal.shown{opacity:1;transform:none}
   @supports (animation-timeline: scroll(root)){
     .read-progress{animation:rp-grow linear both;animation-timeline:scroll(root)}
   }
@@ -338,7 +341,6 @@ label.burger{user-select:none}
     .card:hover,.mini:hover,.post-card:hover{transform:translateY(-3px);border-color:#3a4047}
   }
 }
-@keyframes reveal-in{to{opacity:1;transform:none}}
 @keyframes rp-grow{to{transform:scaleX(1)}}
 @keyframes hero-glow{from{transform:translate3d(0,0,0) scale(1);opacity:.7}to{transform:translate3d(30px,10px,0) scale(1.15);opacity:1}}
 /* Плавные переходы между страницами (прогрессивно, с деградацией) */
@@ -371,7 +373,7 @@ label.burger{user-select:none}
 <a href="/kontakty">Контакты</a>
 <a href="/novosti-i-rekomendatsii">101 ошибка</a>
     </nav>
-    <a class="call" href="tel:+77011211110">📞 +7 701 121 11 10</a>
+    <a class="call" href="tel:+77076780414">📞 +7 707 67-80-414</a>
   </div>
 </header>
 
@@ -382,8 +384,8 @@ label.burger{user-select:none}
     <h1>Промывка форсунок Алматы +7(707)67-80-414 Денис</h1>
     <p class="lead">Чистка форсунок в Алматы: проверка причин неровной работы двигателя, повышенного расхода и потери тяги. Подбор способа очистки с учётом системы впрыска.</p>
     <div class="cta">
-      <a class="btn primary" href="tel:+77011211110">📞 +7 701 121 11 10</a>
-      <a class="btn wa" href="https://wa.me/77011211110">WhatsApp</a>
+      <a class="btn primary" href="tel:+77076780414">📞 +7 707 67-80-414</a>
+      <a class="btn wa" href="https://wa.me/77076780414">WhatsApp</a>
       <a class="btn ghost" href="#" data-callback>Перезвоните мне</a>
     </div>
   </div>
@@ -656,7 +658,7 @@ label.burger{user-select:none}
     <div class="sec-head"><span class="tag">Контакты</span><h2>Контакты Олега</h2></div>
     <div class="grid g2" style="align-items:start">
       <div>
-        <p style="font-size:19px;margin:0 0 12px"><b>📞 <a href="tel:+77011211110">+7 701 121 11 10</a></b> — звоните в любое время</p>
+        <p style="font-size:19px;margin:0 0 12px"><b>📞 <a href="tel:+77076780414">+7 707 67-80-414</a></b> — звоните в любое время</p>
         <div class="sched" aria-label="График работы сервиса">
           <div class="sched-head"><h3>График работы</h3><span class="sched-status" data-sched>Приём на сервисе</span></div>
           <ul class="sched-rows">
@@ -667,8 +669,8 @@ label.burger{user-select:none}
           <div class="sched-note"><span class="z">⚡</span><span>Экстренный выезд — круглосуточно, <b>24/7</b></span></div>
         </div>
         <div class="cta" style="margin-top:14px">
-          <a class="btn primary" href="tel:+77011211110">Позвонить</a>
-          <a class="btn wa" href="https://wa.me/77011211110">WhatsApp</a>
+          <a class="btn primary" href="tel:+77076780414">Позвонить</a>
+          <a class="btn wa" href="https://wa.me/77076780414">WhatsApp</a>
         </div>
       </div>
       <a class="map" href="https://www.google.com/maps?cid=15303955675384448033" aria-label="Открыть карту в Google: ул. Мартынова, 39, Алматы">
@@ -692,7 +694,7 @@ label.burger{user-select:none}
     </div>
     <div class="cta" style="margin-top:6px">
       <a class="btn primary" href="https://g.page/r/CSEEnVmakmLUEBM/review">★ Оставить отзыв</a>
-      <a class="btn wa" href="https://wa.me/77011211110?text=Здравствуйте, Олег! Пожелание по сайту: ">Написать пожелание</a>
+      <a class="btn wa" href="https://wa.me/77076780414?text=Здравствуйте, Олег! Пожелание по сайту: ">Написать пожелание</a>
     </div>
   </div>
 </section>
@@ -720,9 +722,10 @@ label.burger{user-select:none}
 </footer>
 
 <nav class="mbar" aria-label="Быстрые действия">
-  <a class="c" href="tel:+77011211110">📞 Позвонить</a>
-  <a class="w" href="https://wa.me/77011211110">WhatsApp</a>
+  <a class="c" href="tel:+77076780414">📞 Позвонить</a>
+  <a class="w" href="https://wa.me/77076780414">WhatsApp</a>
 </nav>
+<script>window.__SITE_TEL="+77076780414";window.__SITE_WA="77076780414";</script>
 <script src="/assets/app.js" defer></script>
 </body>
 </html>

@@ -1,7 +1,7 @@
 /* avtoelektrik-pro.kz — лёгкие интерактивы: счётчики, квиз, обратный звонок, мини-диагностика, формы. */
 (function(){
 'use strict';
-var WA='77011211110', TEL='+77011211110';
+var WA=(window.__SITE_WA||'77011211110'), TEL=(window.__SITE_TEL||'+77011211110');
 var rm = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
 function $(s,r){return (r||document).querySelector(s);}
 function $all(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s));}
@@ -38,6 +38,52 @@ if(counters.length){
     counters.forEach(function(c){io.observe(c);});
   } else counters.forEach(animateCount);
 }
+
+/* Мобильное меню: закрываем при клике по пункту. Иначе якорь («Вопросы» → #faq, «Отзывы» → #otzyvy)
+   открывается ПОД полноэкранным оверлеем меню — выглядит, будто ссылка «тупит». Якорь на этой же
+   странице доводим скроллом сами (с учётом scroll-margin под шапкой). */
+(function(){
+  var cb=document.getElementById('nav-t'); var menu=$('nav.menu');
+  if(!cb||!menu) return;
+  menu.addEventListener('click',function(e){
+    var a=e.target&&e.target.closest?e.target.closest('a[href]'):null; if(!a) return;
+    cb.checked=false;
+    var h=a.getAttribute('href')||'', i=h.indexOf('#');
+    if(i>-1){
+      var id=h.slice(i+1), t=id&&document.getElementById(id);
+      if(t){ e.preventDefault(); if(history.replaceState){try{history.replaceState(null,'','#'+id);}catch(_){}} t.scrollIntoView(); }
+    }
+  });
+})();
+
+/* Появление по скроллу: .shown при входе во вьюпорт. При любом сбое анимации/JS текст остаётся видимым
+   (базовый .reveal{opacity:1}; прячем только html.js .reveal при разрешённом движении). Элементы уже в/над
+   вьюпортом и внутри горизонтального скролла (.hscroll) показываем сразу, чтобы текст не пропадал. */
+(function(){
+  var els=$all('.reveal'); if(!els.length) return;
+  function show(el){el.classList.add('shown');}
+  if(rm || !('IntersectionObserver' in window)){ els.forEach(show); return; }
+  // threshold 0: показываем, как только появился край. Высокие блоки (выше вьюпорта) порог по доле
+  // не набирают никогда — их показываем сразу, иначе текст остался бы невидимым.
+  var vo=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){show(e.target);vo.unobserve(e.target);}});},{threshold:0,rootMargin:'0px 0px -8% 0px'});
+  var vh=window.innerHeight||document.documentElement.clientHeight||0;
+  // внутри горизонтальной карусели (overflow-x: auto/scroll — .hscroll, .rev-carousel, .news-carousel)
+  // элемент, сдвинутый вбок, по вертикальному наблюдателю не появится никогда — показываем сразу.
+  function inHScroll(el){
+    var n=el.parentElement;
+    while(n && n!==document.body){
+      var ox=getComputedStyle(n).overflowX;
+      if(ox==='auto'||ox==='scroll') return true;
+      n=n.parentElement;
+    }
+    return false;
+  }
+  els.forEach(function(el){
+    var r=el.getBoundingClientRect();
+    if(r.top < vh || r.height > vh*0.7 || inHScroll(el)){ show(el); }
+    else { vo.observe(el); }
+  });
+})();
 
 /* График работы — статус «открыто/закрыто» и подсветка «сегодня» по времени Алматы (UTC+5). */
 (function(){

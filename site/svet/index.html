@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<script>document.documentElement.classList.add('js');</script>
 <meta name="robots" content="noindex,follow">
 <title>Автоэлектрик Алматы +7(701)121-11-10 Олег, стаж 26 лет</title>
 <meta name="description" content="Автоэлектрик Олег в Алматы, стаж 26 лет. Компьютерная диагностика, ремонт ЭБУ, иммобилайзеры, проводка. Выезд 24/7, честные цены, гарантия.">
@@ -19,7 +20,9 @@
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <style>
 :root{--bg:#111315;--panel:#1b1e21;--panel2:#23272b;--acc:#FFA500;--acc2:#ffb733;--tx:#f2f2f2;--mut:#9aa0a6;--ln:#2a2e33;--ok:#25D366;--grad1:#1e2226;--grad2:#17191c;--heroA:#15181b;--heroB:#111315;--barbg:rgba(17,19,21,.86);--mbarbg:rgba(20,22,25,.96);--tx2:#d8dbdf;--prose:#e6e8ea;--mapln1:#1b1e21;--mapln2:#191c1f;--maproad:rgba(255,255,255,.075);--maproad2:rgba(255,255,255,.035);--mapaccent:rgba(255,165,0,.16)}
-*{box-sizing:border-box}html{scroll-behavior:smooth}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:72px}
+/* Якоря (#faq, #otzyvy, #rayony…) не прячутся под липкой шапкой */
+section[id],[id]{scroll-margin-top:72px}
 body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 a{color:var(--acc);text-decoration:none}a:hover{color:var(--acc2)}
 img{max-width:100%;height:auto}
@@ -324,9 +327,9 @@ label.burger{user-select:none}
 .reveal{opacity:1;transform:none}
 .read-progress{position:fixed;top:0;left:0;height:3px;width:100%;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,var(--acc),var(--acc2));z-index:70}
 @media (prefers-reduced-motion: no-preference){
-  @supports (animation-timeline: view){
-    .reveal{opacity:0;transform:translateY(16px);animation:reveal-in linear both;animation-timeline:view();animation-range:entry 5% cover 24%}
-  }
+  /* Прячем ТОЛЬКО когда есть JS (html.js) и разрешено движение. При любом сбое JS/анимации — текст виден (базовый .reveal{opacity:1}). */
+  html.js .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
+  html.js .reveal.shown{opacity:1;transform:none}
   @supports (animation-timeline: scroll(root)){
     .read-progress{animation:rp-grow linear both;animation-timeline:scroll(root)}
   }
@@ -339,7 +342,6 @@ label.burger{user-select:none}
     .card:hover,.mini:hover,.post-card:hover{transform:translateY(-3px);border-color:#3a4047}
   }
 }
-@keyframes reveal-in{to{opacity:1;transform:none}}
 @keyframes rp-grow{to{transform:scaleX(1)}}
 @keyframes hero-glow{from{transform:translate3d(0,0,0) scale(1);opacity:.7}to{transform:translate3d(30px,10px,0) scale(1.15);opacity:1}}
 /* Плавные переходы между страницами (прогрессивно, с деградацией) */
@@ -347,6 +349,64 @@ label.burger{user-select:none}
 
 :root{--bg:#fbf7f0;--panel:#ffffff;--panel2:#f3ece0;--acc:#E07B00;--acc2:#FFA500;--tx:#1b1e21;--mut:#5f6b73;--ln:#e7ddcd;--ok:#1FA855;--grad1:#fffdf8;--grad2:#fdf4e6;--heroA:#fff3dd;--heroB:#fbf7f0;--barbg:rgba(251,247,240,.90);--mbarbg:rgba(255,255,255,.97);--tx2:#3a4249;--prose:#262b2f;--mapln1:#efe7d9;--mapln2:#f6f0e4;--maproad:rgba(0,0,0,.055);--maproad2:rgba(0,0,0,.028);--mapaccent:rgba(224,123,0,.17)}
 .btn.wa{color:#06351b}
+
+.diag{position:relative;border:1px solid #242a31;border-radius:20px;overflow:hidden;background:radial-gradient(120% 90% at 84% 8%,rgba(255,165,0,.14),transparent 55%),linear-gradient(170deg,#141a21,#0a0d11);box-shadow:0 14px 40px rgba(0,0,0,.4)}
+.diag svg{width:100%;height:auto;display:block}
+.diag .sky-glow{fill:url(#d_sky)}
+.diag .mtn{fill:#10161d;opacity:.8}.diag .mtn2{fill:#0b1016;opacity:.9}.diag .snow{fill:#2a3644;opacity:.55}
+.diag .ground{fill:#000;opacity:.42}
+.diag .body{fill:url(#d_bodyg);stroke:#39434e;stroke-width:1.2}
+.diag .sheen{fill:url(#d_sheen);opacity:.6}
+.diag .panel{fill:none;stroke:#0c1013;stroke-width:1.5;opacity:.75}
+.diag .crease{fill:none;stroke:#515d69;stroke-width:1.4;opacity:.65}
+.diag .glass{fill:url(#d_glassg)}
+.diag .glassframe{fill:none;stroke:#5a6773;stroke-width:2.2}
+.diag .pillar{fill:#10151b}
+.diag .mirror{fill:#161d25;stroke:#39434e;stroke-width:1}
+.diag .handle{fill:none;stroke:#6b7682;stroke-width:2.2;stroke-linecap:round}
+.diag .hl-core{fill:#fff6e0}
+.diag .tl{fill:#ff4436}.diag .tl-core{fill:#ffd2cc}
+.diag .wire{fill:none;stroke:rgba(255,170,50,.22);stroke-width:2}
+.diag .spark{fill:none;stroke:#ffdf94;stroke-width:3.2;stroke-linecap:round;stroke-dasharray:14 34;filter:url(#d_glow)}
+.diag .node{fill:#FFA500;filter:url(#d_glow)}
+.diag .batt{fill:#19222c;stroke:#FFA500;stroke-width:1.4}.diag .batt-t{fill:#FFA500}
+.diag .cable{fill:none;stroke:rgba(255,170,50,.22);stroke-width:2.6}
+.diag .cable-s{fill:none;stroke:#ffdf94;stroke-width:3.4;stroke-linecap:round;stroke-dasharray:16 40;filter:url(#d_glow)}
+.diag .stand{fill:#20272f;stroke:#333c45;stroke-width:1.2}
+.diag .tablet{fill:#0c1116;stroke:#39434e;stroke-width:2}
+.diag .screen{fill:url(#d_scr)}.diag .screen-glow{fill:#FFA500;opacity:0}
+.diag .grid{stroke:rgba(120,200,255,.12);stroke-width:1}
+.diag .gauge-track{fill:none;stroke:#223040;stroke-width:7;stroke-linecap:round}
+.diag .gauge-fill{fill:none;stroke:url(#d_gfill);stroke-width:7;stroke-linecap:round}
+.diag .needle{stroke:#FFA500;stroke-width:3;stroke-linecap:round}.diag .needle-cap{fill:#FFA500}
+.diag .graph{fill:none;stroke:#49d0a0;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;filter:url(#d_glow2)}
+.diag .led{fill:#2a3644}.diag .bar{fill:#FFA500;opacity:.85}
+.diag .txt{fill:#7fe0c0;font:600 13px ui-monospace,monospace;letter-spacing:1px}
+.diag .scanline{fill:url(#d_scang)}
+@media(prefers-reduced-motion:no-preference){
+ .diag .spark{animation:d_flow 1.15s linear infinite}
+ .diag .spark.s2{animation-duration:1.15s;animation-delay:-.4s;opacity:.55}
+ .diag .cable-s{animation:d_flow 1.15s linear infinite}
+ .diag .cable-s.s2{animation-delay:-.5s;opacity:.55}
+ .diag .hl-core,.diag .hlglow{animation:d_glow 2.8s ease-in-out infinite}
+ .diag .node{animation:d_np 2.6s ease-in-out infinite}.diag .node.n2{animation-delay:.9s}.diag .node.n3{animation-delay:1.7s}
+ .diag .needle-grp{animation:d_sweep 3.6s cubic-bezier(.5,.05,.5,.95) infinite;transform-origin:636px 182px}
+ .diag .graph{animation:d_scroll 2.2s linear infinite}
+ .diag .scanline{animation:d_scany 4.5s ease-in-out infinite}
+ .diag .screen-glow{animation:d_scrglow 3.6s ease-in-out infinite}
+ .diag .ledb{animation:d_blink 1.4s steps(1) infinite}.diag .ledb.b2{animation-delay:.45s}.diag .ledb.b3{animation-delay:.9s}
+ .diag .bar{animation:d_barh 1.8s ease-in-out infinite;transform-box:fill-box;transform-origin:bottom}
+ .diag .bar.bb2{animation-delay:.3s}.diag .bar.bb3{animation-delay:.6s}.diag .bar.bb4{animation-delay:.9s}
+}
+@keyframes d_flow{to{stroke-dashoffset:-48}}
+@keyframes d_glow{0%,100%{opacity:.55}50%{opacity:1}}
+@keyframes d_np{0%,100%{opacity:.35}50%{opacity:1}}
+@keyframes d_sweep{0%{transform:rotate(-16deg)}30%{transform:rotate(42deg)}55%{transform:rotate(16deg)}100%{transform:rotate(-16deg)}}
+@keyframes d_scroll{to{transform:translateX(-56px)}}
+@keyframes d_scany{0%{transform:translateY(0);opacity:0}10%{opacity:.5}50%{transform:translateY(96px);opacity:.5}60%{opacity:0}100%{opacity:0}}
+@keyframes d_scrglow{0%,100%{opacity:0}50%{opacity:.06}}
+@keyframes d_blink{0%,50%{fill:#49d0a0}51%,100%{fill:#2a3644}}
+@keyframes d_barh{0%,100%{transform:scaleY(.5)}50%{transform:scaleY(1)}}
 </style>
 <link rel="preconnect" href="https://www.googletagmanager.com">
 <link rel="preconnect" href="https://mc.yandex.ru">
@@ -357,7 +417,7 @@ label.burger{user-select:none}
 <script>gtag('js',new Date());gtag('config','AW-972695651');gtag('config','G-D5E79MWR50');</script>
 <script>(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window,document,'script','https://mc.yandex.ru/metrika/tag.js','ym');ym(108500613,'init',{clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:true});</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "AutoRepair", "name": "Автоэлектрик Олег", "image": "https://avtoelektrik-pro.kz/assets/icon-512.png", "@id": "https://avtoelektrik-pro.kz", "url": "https://avtoelektrik-pro.kz", "telephone": "+77011211110", "priceRange": "₸₸", "address": {"@type": "PostalAddress", "streetAddress": "ул. Мартынова, 39", "addressLocality": "Алматы", "addressCountry": "KZ"}, "openingHoursSpecification": {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"], "opens": "00:00", "closes": "23:59"}, "aggregateRating": {"@type": "AggregateRating", "ratingValue": "4.4", "reviewCount": "185"}, "areaServed": {"@type": "City", "name": "Алматы"}, "review": [{"@type": "Review", "author": {"@type": "Person", "name": "Emil Terlikpaev"}, "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"}, "reviewBody": "Быстро подъехал, всё оперативно сделал, выслал отчёт о неисправностях и посоветовал нужное СТО. Рекомендую."}, {"@type": "Review", "author": {"@type": "Person", "name": "Данил Бакаев"}, "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"}, "reviewBody": "Сделал компьютерную диагностику на G63 AMG. Профессионально, всё объяснил, отчёты на WhatsApp отправил. Спасибо! Рекомендую."}, {"@type": "Review", "author": {"@type": "Person", "name": "Assyl Kuanyshbayev"}, "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"}, "reviewBody": "Приехал на дом в обещанное время и даже раньше. Адаптацию сделал менее чем за 5 минут. Профессионально, без нареканий. Спасибо большое!"}, {"@type": "Review", "author": {"@type": "Person", "name": "Маргабат Дуанаев"}, "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"}, "reviewBody": "Обратился за адаптацией АКПП (Kia K5). Всё сделал профессионально и оперативно. Дополнительно произвёл полную диагностику авто и дал полезную консультацию. Отличный специалист. Всем советую."}, {"@type": "Review", "author": {"@type": "Person", "name": "Алексей Сизёв"}, "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"}, "reviewBody": "Отличный специалист. Иногда даже без выезда устраняет причину поломки, так сказать, удалённо. Рекомендую обращаться!"}, {"@type": "Review", "author": {"@type": "Person", "name": "Анастасия Вебер"}, "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"}, "reviewBody": "Огромное спасибо Олегу за помощь в подборе и проверке автомобиля! Несмотря на то, что мы находились в разных городах, всё прошло на высшем уровне. Настоящий профессионал своего дела."}, {"@type": "Review", "author": {"@type": "Person", "name": "Vladlen Novikov"}, "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"}, "reviewBody": "Автоэлектрик Олег очень грамотный, работу свою знает. Помог справиться с неработающим поворотником. Вежлив, рекомендую!"}, {"@type": "Review", "author": {"@type": "Person", "name": "Dmitri Shinkarev"}, "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"}, "reviewBody": "Один из лучших электриков в городе — уже больше 10 лет езжу к нему делать машину. Быстро, оперативно."}, {"@type": "Review", "author": {"@type": "Person", "name": "IMPERATOR Valkyry"}, "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"}, "reviewBody": "Настоящий мастер своего дела. Знает, чем занимается, работает чётко, аккуратно и быстро. Приятно удивлён качеством выездного сервиса. Большое спасибо, 5+!"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Сколько стоит выезд автоэлектрика?", "acceptedAnswer": {"@type": "Answer", "text": "Выезд с диагностикой — от 10 000 ₸. Перед работой называю предварительную стоимость, платите за результат."}}, {"@type": "Question", "name": "Как быстро приедете?", "acceptedAnswer": {"@type": "Answer", "text": "Обычно за 30–60 минут по Алматы. Работаю 24/7, без выходных."}}, {"@type": "Question", "name": "С какими авто работаете?", "acceptedAnswer": {"@type": "Answer", "text": "Легковые (Toyota, BMW, Mercedes, Hyundai, Zeekr, BYD, Li Auto и др.), грузовики и автобусы 24 В, коммерческий транспорт, спецтехника."}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Сколько стоит выезд автоэлектрика?", "acceptedAnswer": {"@type": "Answer", "text": "Выезд с диагностикой — от 10 000 ₸. Перед работой называю предварительную стоимость, платите за результат."}}, {"@type": "Question", "name": "Как быстро приедете?", "acceptedAnswer": {"@type": "Answer", "text": "Обычно за 30–60 минут по Алматы. Работаю 24/7, без выходных."}}, {"@type": "Question", "name": "С какими авто работаете?", "acceptedAnswer": {"@type": "Answer", "text": "Легковые (Toyota, BMW, Mercedes, Hyundai, Zeekr, BYD, Li Auto и др.), грузовики и автобусы 24 В, коммерческий транспорт, спецтехника."}}, {"@type": "Question", "name": "Можно сначала проконсультироваться по телефону?", "acceptedAnswer": {"@type": "Answer", "text": "Да, консультация по телефону бесплатна. Часто подсказываю, как запустить авто самому."}}, {"@type": "Question", "name": "Нужна ли предоплата?", "acceptedAnswer": {"@type": "Answer", "text": "Нет, предоплату не беру. Предварительную стоимость называю до начала работ, а платите за результат — когда проблема решена. Запчасти и материалы — по факту и только с вашего согласия."}}, {"@type": "Question", "name": "Даёте гарантию на работу?", "acceptedAnswer": {"@type": "Answer", "text": "Да, гарантия на все выполненные работы входит в стоимость. Если по моей части неисправность повторится — вернусь и доделаю."}}, {"@type": "Question", "name": "В какие районы Алматы выезжаете?", "acceptedAnswer": {"@type": "Answer", "text": "Во все районы города и в пригород — Бостандыкский, Алмалинский, Медеуский, Ауэзовский, Наурызбайский и другие. В среднем доезжаю за 30–60 минут."}}, {"@type": "Question", "name": "Что можно проверить самому до вашего приезда?", "acceptedAnswer": {"@type": "Answer", "text": "Первым делом — клеммы и заряд аккумулятора, целы ли предохранители, не разрядился ли брелок ключа. Позвоните — подскажу, что посмотреть: иногда машину удаётся завести и без выезда."}}, {"@type": "Question", "name": "Работаете ночью и в выходные?", "acceptedAnswer": {"@type": "Answer", "text": "Да, работаю 24/7 без выходных. Ночной и праздничный выезд тоже возможен — звоните в любое время."}}, {"@type": "Question", "name": "Ремонтируете грузовые и коммерческий транспорт?", "acceptedAnswer": {"@type": "Answer", "text": "Да: грузовики и автобусы с бортовой сетью 24 В, коммерческий транспорт и спецтехнику. Диагностика, проводка, ремонт ЭБУ, русификация — с выездом."}}]}</script>
 </head>
 <body>
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KRSH9VKK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -458,7 +518,88 @@ label.burger{user-select:none}
 <div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="https://wa.me/77011211110">Написать в WhatsApp</a></div>
 </div>
 
-<figure class="wp-block-image size-large"><img width="1672" height="941" loading="lazy" decoding="async" src="/assets/img/efdcf3481afb136a5f29.jpg" alt=""/></figure>
+<div class="diag" aria-label="Выездная компьютерная диагностика">
+<svg viewBox="0 0 860 440" fill="none" xmlns="http://www.w3.org/2000/svg" role="img">
+  <defs>
+    <linearGradient id="d_sky" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#16202b"/><stop offset=".55" stop-color="#1b1710"/><stop offset="1" stop-color="#2a1b06"/></linearGradient>
+    <linearGradient id="d_bodyg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#36424f"/><stop offset=".42" stop-color="#232e39"/><stop offset="1" stop-color="#12181f"/></linearGradient>
+    <linearGradient id="d_sheen" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#cfe0f0" stop-opacity=".22"/><stop offset=".62" stop-color="#fff" stop-opacity="0"/></linearGradient>
+    <linearGradient id="d_glassg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2d3c4d"/><stop offset="1" stop-color="#1a2531"/></linearGradient>
+    <radialGradient id="d_hlg" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#fff3d0"/><stop offset=".55" stop-color="#ffb63a"/><stop offset="1" stop-color="#ffb63a" stop-opacity="0"/></radialGradient>
+    <linearGradient id="d_scr" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0b1a24"/><stop offset="1" stop-color="#071017"/></linearGradient>
+    <linearGradient id="d_gfill" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#49d0a0"/><stop offset=".6" stop-color="#ffd27a"/><stop offset="1" stop-color="#ff7a59"/></linearGradient>
+    <linearGradient id="d_scang" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFA500" stop-opacity="0"/><stop offset=".5" stop-color="#9fe8ff" stop-opacity=".9"/><stop offset="1" stop-color="#FFA500" stop-opacity="0"/></linearGradient>
+    <filter id="d_glow" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="2.2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <filter id="d_glow2" x="-20%" y="-60%" width="140%" height="220%"><feGaussianBlur stdDeviation="1.4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <clipPath id="d_screenclip"><rect x="556" y="96" width="196" height="120" rx="6"/></clipPath>
+    <g id="d_wheel">
+      <circle r="52" fill="#0a0d10" stroke="#1b2127" stroke-width="2"/>
+      <circle r="47" fill="none" stroke="#141a1f" stroke-width="2" stroke-dasharray="3 6"/>
+      <circle r="34" fill="#171d23" stroke="#3c4650" stroke-width="2"/>
+      <circle r="21" fill="#0e1317" stroke="#2a333c" stroke-width="1.5"/>
+      <path d="M-6,-20 A21,21 0 0,1 7,-20 L5,-14 A15,15 0 0,0 -4,-14 Z" fill="#FFA500"/>
+      <g stroke="#aeb8c2" stroke-width="3.4" stroke-linecap="round">
+        <line x1="0" y1="8" x2="0" y2="31"/><line x1="6.7" y1="2.2" x2="29.5" y2="9.6"/><line x1="-6.7" y1="2.2" x2="-29.5" y2="9.6"/><line x1="-4.1" y1="-5.7" x2="-18.2" y2="-25.1"/><line x1="4.1" y1="-5.7" x2="18.2" y2="-25.1"/>
+      </g>
+      <circle r="7.5" fill="#2b343d" stroke="#444f59" stroke-width="1.5"/>
+    </g>
+  </defs>
+  <rect class="sky-glow" x="0" y="0" width="860" height="440"/>
+  <circle cx="712" cy="86" r="46" fill="#ffb347" opacity=".22"/><circle cx="712" cy="86" r="26" fill="#ffd27a" opacity=".3"/>
+  <path class="mtn" d="M0,214 L120,150 L210,196 L330,118 L440,190 L560,140 L680,200 L780,150 L860,188 L860,260 L0,260 Z"/>
+  <path class="snow" d="M330,118 L362,146 L310,150 Z M560,140 L586,162 L540,164 Z"/>
+  <path class="mtn2" d="M0,248 L150,202 L300,244 L450,208 L600,246 L740,214 L860,248 L860,300 L0,300 Z"/>
+  <ellipse class="ground" cx="250" cy="372" rx="250" ry="14"/>
+  <ellipse class="ground" cx="654" cy="404" rx="120" ry="10"/>
+  <g transform="translate(8,112) scale(.64)">
+    <ellipse cx="350" cy="288" rx="300" ry="11" fill="#000" opacity=".3"/>
+    <path class="body" d="M72,230 L67,206 Q67,189 88,182 L122,176 C168,172 216,150 258,120 Q266,112 288,111 L356,110 Q384,111 400,125 L472,166 L612,182 Q636,186 638,203 L636,217 L620,230 L574,230 A52,52 0 0,0 466,230 L239,230 A52,52 0 0,0 131,230 Z"/>
+    <path class="sheen" d="M122,176 C168,172 216,150 258,120 Q266,112 288,111 L356,110 Q384,111 400,125 L472,166 L612,182 L612,192 L250,176 L130,186 Z"/>
+    <path class="glass" d="M270,120 Q276,114 290,114 L354,113 Q376,114 389,128 L430,160 L250,152 Q258,132 270,120 Z"/>
+    <path class="pillar" d="M332,113 L336,113 L356,156 L348,156 Z"/>
+    <path class="glassframe" d="M258,150 L430,160"/>
+    <path class="crease" d="M126,196 L470,200 L600,196"/>
+    <path class="panel" d="M300,128 L300,230"/><path class="panel" d="M400,160 L400,230"/><path class="panel" d="M472,166 L472,230"/>
+    <path class="handle" d="M276,186 L300,186"/><path class="handle" d="M372,186 L396,186"/>
+    <path class="mirror" d="M452,150 q16,-2 18,8 q-10,4 -18,-2 Z"/>
+    <circle class="hlglow" cx="624" cy="200" r="20" fill="url(#d_hlg)"/>
+    <path class="hl-core" d="M612,196 l16,2 l-2,8 l-14,-2 Z"/>
+    <rect class="tl" x="66" y="190" width="7" height="16" rx="2"/><rect class="tl-core" x="67.5" y="196" width="4" height="5" rx="1"/>
+    <path class="wire" d="M548,172 C512,182 482,156 436,170 C384,186 322,152 262,172 C214,188 170,166 120,180"/>
+    <path class="wire" d="M556,168 C584,172 606,180 618,196"/>
+    <path class="spark" d="M548,172 C512,182 482,156 436,170 C384,186 322,152 262,172 C214,188 170,166 120,180"/>
+    <path class="spark s2" d="M548,172 C512,182 482,156 436,170 C384,186 322,152 262,172 C214,188 170,166 120,180"/>
+    <rect class="batt" x="530" y="156" width="26" height="15" rx="2.5"/>
+    <rect class="batt-t" x="535" y="152" width="4.5" height="5"/><rect class="batt-t" x="547" y="152" width="4.5" height="5"/>
+    <circle class="node" cx="436" cy="170" r="3.2"/><circle class="node n2" cx="262" cy="172" r="3.2"/><circle class="node n3" cx="120" cy="180" r="3.2"/>
+    <use href="#d_wheel" transform="translate(185,236)"/>
+    <use href="#d_wheel" transform="translate(520,236)"/>
+  </g>
+  <g>
+    <rect class="stand" x="648" y="214" width="12" height="150" rx="4"/>
+    <ellipse class="ground" cx="654" cy="392" rx="66" ry="12"/>
+    <rect class="stand" x="612" y="360" width="84" height="10" rx="4"/>
+    <rect class="tablet" x="548" y="86" width="212" height="140" rx="12"/>
+    <rect class="screen" x="556" y="96" width="196" height="120" rx="6"/>
+    <rect class="screen-glow" x="556" y="96" width="196" height="120" rx="6"/>
+    <g clip-path="url(#d_screenclip)">
+      <g class="grid"><line x1="556" y1="126" x2="752" y2="126"/><line x1="556" y1="156" x2="752" y2="156"/><line x1="556" y1="186" x2="752" y2="186"/><line x1="620" y1="96" x2="620" y2="216"/><line x1="684" y1="96" x2="684" y2="216"/></g>
+      <path class="gauge-track" d="M596,198 A52,52 0 0,1 676,198"/>
+      <path class="gauge-fill" d="M596,198 A52,52 0 0,1 666,166"/>
+      <g class="needle-grp"><line class="needle" x1="636" y1="182" x2="636" y2="150"/><circle class="needle-cap" cx="636" cy="182" r="4"/></g>
+      <path class="graph" d="M556,130 L576,124 L592,134 L610,112 L628,128 L648,118 L666,134 L686,110 L706,126 L726,120 L746,132 L766,116 L786,128 L806,118"/>
+      <rect class="scanline" x="556" y="96" width="196" height="10"/>
+    </g>
+    <text class="txt" x="566" y="112">● LIVE  2480 rpm</text>
+    <circle class="led ledb" cx="640" cy="236" r="5"/><circle class="led ledb b2" cx="662" cy="236" r="5"/><circle class="led ledb b3" cx="684" cy="236" r="5"/><circle class="led" cx="706" cy="236" r="5"/>
+    <g transform="translate(726,224)"><rect class="bar" x="0" y="0" width="5" height="14" rx="1"/><rect class="bar bb2" x="8" y="0" width="5" height="14" rx="1"/><rect class="bar bb3" x="16" y="0" width="5" height="14" rx="1"/><rect class="bar bb4" x="24" y="0" width="5" height="14" rx="1"/></g>
+  </g>
+  <path class="cable" d="M408,212 C470,196 500,188 540,188 C580,188 610,186 636,186"/>
+  <path class="cable-s" d="M408,212 C470,196 500,188 540,188 C580,188 610,186 636,186"/>
+  <path class="cable-s s2" d="M408,212 C470,196 500,188 540,188 C580,188 610,186 636,186"/>
+  <circle class="node" cx="500" cy="188" r="3.4"/><circle class="node n2" cx="560" cy="187" r="3.4"/>
+</svg>
+</div>
 
 <div class="ao-w" data-ao="car"></div> 
 
@@ -796,6 +937,12 @@ label.burger{user-select:none}
 <details class="q"><summary>Как быстро приедете?</summary><div class="a">Обычно за 30–60 минут по Алматы. Работаю 24/7, без выходных.</div></details>
 <details class="q"><summary>С какими авто работаете?</summary><div class="a">Легковые (Toyota, BMW, Mercedes, Hyundai, Zeekr, BYD, Li Auto и др.), грузовики и автобусы 24 В, коммерческий транспорт, спецтехника.</div></details>
 <details class="q"><summary>Можно сначала проконсультироваться по телефону?</summary><div class="a">Да, консультация по телефону бесплатна. Часто подсказываю, как запустить авто самому.</div></details>
+<details class="q"><summary>Нужна ли предоплата?</summary><div class="a">Нет, предоплату не беру. Предварительную стоимость называю до начала работ, а платите за результат — когда проблема решена. Запчасти и материалы — по факту и только с вашего согласия.</div></details>
+<details class="q"><summary>Даёте гарантию на работу?</summary><div class="a">Да, гарантия на все выполненные работы входит в стоимость. Если по моей части неисправность повторится — вернусь и доделаю.</div></details>
+<details class="q"><summary>В какие районы Алматы выезжаете?</summary><div class="a">Во все районы города и в пригород — Бостандыкский, Алмалинский, Медеуский, Ауэзовский, Наурызбайский и другие. В среднем доезжаю за 30–60 минут.</div></details>
+<details class="q"><summary>Что можно проверить самому до вашего приезда?</summary><div class="a">Первым делом — клеммы и заряд аккумулятора, целы ли предохранители, не разрядился ли брелок ключа. Позвоните — подскажу, что посмотреть: иногда машину удаётся завести и без выезда.</div></details>
+<details class="q"><summary>Работаете ночью и в выходные?</summary><div class="a">Да, работаю 24/7 без выходных. Ночной и праздничный выезд тоже возможен — звоните в любое время.</div></details>
+<details class="q"><summary>Ремонтируете грузовые и коммерческий транспорт?</summary><div class="a">Да: грузовики и автобусы с бортовой сетью 24 В, коммерческий транспорт и спецтехнику. Диагностика, проводка, ремонт ЭБУ, русификация — с выездом.</div></details>
   </div>
 </section>
 
