@@ -7,6 +7,18 @@ function $(s,r){return (r||document).querySelector(s);}
 function $all(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s));}
 function wa(text){return 'https://wa.me/'+WA+(text?'?text='+encodeURIComponent(text):'');}
 
+/* Google Ads — конверсия «Заявка с сайта» (клик по телефону/WhatsApp, отправка формы). Метка из кабинета Олега. */
+(function(){
+  var SEND_TO='AW-972695651/DxMVCJfywr4dEOPQ6M8D';
+  function fireLead(){ if(typeof gtag==='function'){ try{ gtag('event','conversion',{send_to:SEND_TO,value:1.0,currency:'USD'}); }catch(e){} } }
+  document.addEventListener('click',function(e){
+    var a=e.target&&e.target.closest?e.target.closest('a[href]'):null; if(!a)return;
+    var h=a.getAttribute('href')||'';
+    if(h.indexOf('tel:')===0||h.indexOf('wa.me')>-1||h.indexOf('api.whatsapp.com')>-1){ fireLead(); }
+  },true);
+  document.addEventListener('submit',function(e){ var f=e.target; if(f&&f.matches&&f.matches('form.form')){ fireLead(); } },true);
+})();
+
 /* Счётчики — набегают при входе в экран; без JS уже показано финальное число. */
 function animateCount(el){
   var to = parseFloat(el.getAttribute('data-count')); if(isNaN(to))return;

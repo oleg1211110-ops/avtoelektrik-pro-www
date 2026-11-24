@@ -85,6 +85,21 @@ a.svc{color:var(--tx)}
 .step{display:flex;gap:14px;align-items:flex-start}
 .step .num{counter-increment:s;flex:none;width:32px;height:32px;border-radius:50%;background:var(--acc);color:#111;font-weight:800;display:grid;place-items:center}
 .step .num::before{content:counter(s)}
+/* жёлтая вставка-секция для «перемешки» чёрный↔жёлтый (Олег, 24.11) */
+.sec.band-y{background:linear-gradient(135deg,var(--acc),var(--acc2));color:#1a1206;border-top:0}
+.band-y .sec-head .tag{color:#7a4a00}
+.band-y h2{color:#1a1206}
+.band-y b{color:#1a1206}
+.band-y .muted{color:#4a3410}
+.band-y .adv .i{background:rgba(0,0,0,.14);color:#1a1206}
+.band-y .step .num{background:#1a1206;color:var(--acc)}
+.band-y .step>div{color:#2a1c08}
+.band-y .card{background:var(--panel);border-color:rgba(0,0,0,.28)}
+.band-y .card b{color:var(--tx)}
+.band-y .card .muted{color:var(--mut)}
+.band-y a.card:hover{border-color:#1a1206}
+.band-y a{color:#1a1206;text-decoration:underline}
+.band-y a.card{text-decoration:none;color:var(--tx)}
 .cnt{display:flex;gap:26px;flex-wrap:wrap;margin-top:28px}
 .cnt .b{font-size:clamp(28px,5vw,40px);font-weight:800;color:var(--acc);line-height:1}
 .cnt .l{color:var(--mut);font-size:13.5px}
@@ -369,7 +384,7 @@ label.burger{user-select:none}
   </div>
 </section>
 
-<section class="sec">
+<section class="sec band-y">
   <div class="wrap">
     <div class="sec-head"><span class="tag">Почему я</span><h2>Почему выбирают меня</h2></div>
     <div class="grid g3">
@@ -633,7 +648,7 @@ label.burger{user-select:none}
   </div>
 </section>
 
-<section class="sec">
+<section class="sec band-y">
   <div class="wrap">
     <div class="sec-head"><span class="tag">Как вызвать</span><h2>Четыре шага — и я у вас</h2></div>
     <div class="steps">
@@ -778,7 +793,7 @@ label.burger{user-select:none}
   </div>
 </section>
 
-<section class="sec" id="rayony">
+<section class="sec band-y" id="rayony">
   <div class="wrap">
     <div class="sec-head"><span class="tag">География</span><h2>Выезд по всем районам Алматы</h2></div>
     <div class="grid g3">

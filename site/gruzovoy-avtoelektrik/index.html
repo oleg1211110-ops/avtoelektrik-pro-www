@@ -85,6 +85,21 @@ a.svc{color:var(--tx)}
 .step{display:flex;gap:14px;align-items:flex-start}
 .step .num{counter-increment:s;flex:none;width:32px;height:32px;border-radius:50%;background:var(--acc);color:#111;font-weight:800;display:grid;place-items:center}
 .step .num::before{content:counter(s)}
+/* жёлтая вставка-секция для «перемешки» чёрный↔жёлтый (Олег, 24.11) */
+.sec.band-y{background:linear-gradient(135deg,var(--acc),var(--acc2));color:#1a1206;border-top:0}
+.band-y .sec-head .tag{color:#7a4a00}
+.band-y h2{color:#1a1206}
+.band-y b{color:#1a1206}
+.band-y .muted{color:#4a3410}
+.band-y .adv .i{background:rgba(0,0,0,.14);color:#1a1206}
+.band-y .step .num{background:#1a1206;color:var(--acc)}
+.band-y .step>div{color:#2a1c08}
+.band-y .card{background:var(--panel);border-color:rgba(0,0,0,.28)}
+.band-y .card b{color:var(--tx)}
+.band-y .card .muted{color:var(--mut)}
+.band-y a.card:hover{border-color:#1a1206}
+.band-y a{color:#1a1206;text-decoration:underline}
+.band-y a.card{text-decoration:none;color:var(--tx)}
 .cnt{display:flex;gap:26px;flex-wrap:wrap;margin-top:28px}
 .cnt .b{font-size:clamp(28px,5vw,40px);font-weight:800;color:var(--acc);line-height:1}
 .cnt .l{color:var(--mut);font-size:13.5px}
@@ -348,7 +363,7 @@ label.burger{user-select:none}
 
 <p>🚚 <strong>Грузовики и тягачи</strong> · 🚌 <strong>Автобусы</strong> · 🚜 <strong>Спецтехника</strong></p>
 
-<p>Меня зовут <strong>Олег</strong>. Помогаю найти причину неисправности: от повреждённого провода и окисленного разъёма до проблем с питанием электронных блоков. По результатам проверки объясняю, что произошло, согласовываю ремонт и проверяю работу восстановленной системы.<br>Для обращения сообщите <strong>марку, год выпуска, местоположение техники и симптомы</strong>. Если на панели появляется ошибка, отправьте её фотографию.</p>
+<p>Меня зовут <strong>Олег</strong>. Помогаю найти причину неисправности: от повреждённого провода и окисленного разъёма до проблем с питанием электронных блоков. По результатам проверки объясняю, что произошло, согласовываю ремонт и проверяю работу восстановленной системы.<br>📞 <strong><a href="tel:+77011211110">Позвонить: +7 701 121 11 10</a></strong><br>💬 <strong><a href="https://wa.me/77011211110">Написать в WhatsApp</a></strong><br>Для обращения сообщите <strong>марку, год выпуска, местоположение техники и симптомы</strong>. Если на панели появляется ошибка, отправьте её фотографию.</p>
 
 <p><strong>📍 Выезд к грузовику на стоянку, базу или объект</strong></p>
 
