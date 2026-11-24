@@ -141,6 +141,26 @@ details.q .a{padding:0 18px 16px;color:var(--tx2);font-size:14.5px}
 .map:hover .mcard{border-color:var(--acc)}
 @media (prefers-reduced-motion:reduce){.map .pulse::before,.map .pulse::after{animation:none;opacity:0}}
 @media (max-width:560px){.map{height:240px}.map .mcard .go{display:none}}
+/* график работы рядом с картой */
+.sched{background:var(--panel);border:1px solid var(--ln);border-radius:16px;padding:18px 20px;display:flex;flex-direction:column}
+.sched-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px}
+.sched-head h3{margin:0;font-size:18px}
+.sched-status{font-size:12px;font-weight:700;padding:5px 11px;border-radius:999px;border:1px solid var(--ln);color:var(--mut);white-space:nowrap;display:inline-flex;align-items:center;gap:6px}
+.sched-status::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor;opacity:.55}
+.sched-status.open{color:#0c1a10;background:#28c76f;border-color:transparent}
+.sched-status.open::before{background:#0c1a10;opacity:.9;animation:livedot 2.4s ease-out infinite}
+.sched-status.closed{color:var(--mut);background:var(--bg)}
+.sched-rows{list-style:none;margin:0;padding:0}
+.sched-rows li{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 12px;border-radius:10px;font-size:15px}
+.sched-rows li+li{margin-top:3px}
+.sched-rows li .d{color:var(--mut)}
+.sched-rows li .h{color:var(--tx);font-weight:700}
+.sched-rows li .h.off{color:var(--mut);font-weight:600}
+.sched-rows li.today{background:linear-gradient(90deg,rgba(255,165,0,.15),transparent);box-shadow:inset 0 0 0 1px rgba(255,165,0,.32)}
+.sched-rows li.today .d{color:var(--tx);font-weight:600}
+.sched-note{margin-top:14px;padding-top:14px;border-top:1px solid var(--ln);font-size:13px;color:var(--mut);display:flex;align-items:center;gap:9px}
+.sched-note b{color:var(--acc)}
+.sched-note .z{font-size:17px;line-height:1}
 /* квиз */
 .quiz{background:linear-gradient(135deg,var(--grad1),var(--grad2));border:1px solid var(--ln);border-radius:16px;padding:24px}
 .quiz .q-step{display:none}.quiz .q-step.on{display:block}
@@ -378,11 +398,19 @@ label.burger{user-select:none}
 <section class="sec" id="kontakty">
   <div class="wrap">
     <div class="sec-head"><span class="tag">Контакты</span><h2>Контакты Олега</h2></div>
-    <div class="grid g2">
+    <div class="grid g2" style="align-items:start">
       <div>
-        <p style="font-size:19px;margin:0 0 6px"><b>📞 <a href="tel:+77011211110">+7 701 121 11 10</a></b> — звоните в любое время</p>
-        <p class="muted" style="margin:0 0 14px">🗺 ул. Мартынова, 39, Алматы · работаю 24/7</p>
-        <div class="cta" style="margin-top:0">
+        <p style="font-size:19px;margin:0 0 12px"><b>📞 <a href="tel:+77011211110">+7 701 121 11 10</a></b> — звоните в любое время</p>
+        <div class="sched" aria-label="График работы сервиса">
+          <div class="sched-head"><h3>График работы</h3><span class="sched-status" data-sched>Приём на сервисе</span></div>
+          <ul class="sched-rows">
+            <li data-day="wd"><span class="d">Пн&nbsp;–&nbsp;Пт</span><span class="h">09:00&nbsp;–&nbsp;18:00</span></li>
+            <li data-day="sat"><span class="d">Суббота</span><span class="h">09:00&nbsp;–&nbsp;15:00</span></li>
+            <li data-day="sun"><span class="d">Воскресенье</span><span class="h off">выходной</span></li>
+          </ul>
+          <div class="sched-note"><span class="z">⚡</span><span>Экстренный выезд — круглосуточно, <b>24/7</b></span></div>
+        </div>
+        <div class="cta" style="margin-top:14px">
           <a class="btn primary" href="tel:+77011211110">Позвонить</a>
           <a class="btn wa" href="https://wa.me/77011211110">WhatsApp</a>
         </div>

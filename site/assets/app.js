@@ -25,6 +25,25 @@ if(counters.length){
   } else counters.forEach(animateCount);
 }
 
+/* График работы — статус «открыто/закрыто» и подсветка «сегодня» по времени Алматы (UTC+5). */
+(function(){
+  var box=$('.sched'); if(!box) return;
+  var wd, mins;
+  try{
+    var pr=new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Almaty',weekday:'short',hour:'2-digit',minute:'2-digit',hour12:false}).formatToParts(new Date());
+    var o={}; pr.forEach(function(p){o[p.type]=p.value;});
+    var wm={Sun:0,Mon:1,Tue:2,Wed:3,Thu:4,Fri:5,Sat:6};
+    wd=wm[o.weekday]; mins=(parseInt(o.hour,10)%24)*60+parseInt(o.minute,10);
+    if(isNaN(wd)||isNaN(mins)) return;
+  }catch(e){ return; }
+  var key='sun', open=false;
+  if(wd>=1&&wd<=5){ key='wd'; open=mins>=540&&mins<1080; }
+  else if(wd===6){ key='sat'; open=mins>=540&&mins<900; }
+  var row=box.querySelector('.sched-rows li[data-day="'+key+'"]'); if(row)row.classList.add('today');
+  var st=box.querySelector('[data-sched]');
+  if(st){ st.textContent=open?'Сейчас открыто':'Сейчас закрыто'; st.classList.add(open?'open':'closed'); }
+})();
+
 /* Квиз «Что с машиной?» — 3 шага → WhatsApp с заполненным текстом. */
 $all('.quiz').forEach(function(q){
   var steps=$all('.q-step',q), fill=$('.bar>i',q), ans=[], idx=0;
