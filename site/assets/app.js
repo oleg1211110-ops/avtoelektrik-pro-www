@@ -7,10 +7,12 @@ function $(s,r){return (r||document).querySelector(s);}
 function $all(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s));}
 function wa(text){return 'https://wa.me/'+WA+(text?'?text='+encodeURIComponent(text):'');}
 
-/* Google Ads — конверсия «Заявка с сайта» (клик по телефону/WhatsApp, отправка формы). Метка из кабинета Олега. */
+/* Google Ads — конверсия «Заявка с сайта». Один помощник fireLead() на ВСЕ целевые действия:
+   клик по телефону/WhatsApp, отправка формы, завершение квиза, обратный звонок — чтобы ни одна заявка не терялась.
+   Метка из кабинета Олега. Беакон переживает переход (gtag шлёт через sendBeacon). В предпросмотре gtag нет — тихо ничего. */
+var LEAD_SEND_TO='AW-972695651/DxMVCJfywr4dEOPQ6M8D';
+function fireLead(){ if(typeof gtag==='function'){ try{ gtag('event','conversion',{send_to:LEAD_SEND_TO,value:1.0,currency:'USD'}); }catch(e){} } }
 (function(){
-  var SEND_TO='AW-972695651/DxMVCJfywr4dEOPQ6M8D';
-  function fireLead(){ if(typeof gtag==='function'){ try{ gtag('event','conversion',{send_to:SEND_TO,value:1.0,currency:'USD'}); }catch(e){} } }
   document.addEventListener('click',function(e){
     var a=e.target&&e.target.closest?e.target.closest('a[href]'):null; if(!a)return;
     var h=a.getAttribute('href')||'';
@@ -66,7 +68,7 @@ $all('.quiz').forEach(function(q){
       if(si<steps.length-1){show(si+1);}
       else{
         var txt='Здравствуйте, Олег! Нужна помощь автоэлектрика.\n'+ans.filter(Boolean).map(function(a,i){return (i+1)+') '+a;}).join('\n')+'\nПодскажите, пожалуйста, что делать?';
-        window.location.href=wa(txt);
+        fireLead(); window.location.href=wa(txt);
       }
     });
   });
@@ -79,6 +81,7 @@ $all('[data-callback]').forEach(function(btn){
   btn.addEventListener('click',function(e){
     e.preventDefault();
     var txt='Здравствуйте, Олег! Перезвоните, пожалуйста — нужна консультация автоэлектрика.';
+    fireLead();
     // десктоп → WhatsApp, мобильный → предложим звонок
     if(/Android|iPhone|iPad|Mobile/i.test(navigator.userAgent)){ window.location.href='tel:'+TEL; }
     else { window.open(wa(txt),'_blank'); }
