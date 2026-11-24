@@ -208,8 +208,14 @@ details.q .a{padding:0 18px 16px;color:var(--tx2);font-size:14.5px}
 .post-card .t{font-weight:700;font-size:15.5px;line-height:1.3}
 .post-card .d{color:var(--mut);font-size:12.5px;margin-top:auto}
 .aside{background:var(--panel);border:1px solid var(--ln);border-radius:14px;padding:18px}
-footer{border-top:1px solid var(--ln);background:var(--panel);padding:30px 0;margin-bottom:64px}
+footer{border-top:1px solid var(--ln);background:var(--panel);padding:22px 0;margin-bottom:64px}
 footer .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px}
+footer .foot-top{display:flex;flex-wrap:wrap;align-items:center;gap:9px 18px;margin-bottom:12px}
+footer .foot-top>b{font-size:15px;white-space:nowrap}
+footer .foot-links{display:flex;flex-wrap:wrap;gap:7px 16px;font-size:13.5px}
+.contact-notes{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:10px}
+.contact-notes li{display:flex;gap:10px;align-items:flex-start;color:var(--mut);font-size:13.5px;line-height:1.55}
+.contact-notes .z{font-size:16px;line-height:1.35;flex:none}
 footer a{color:var(--mut)}footer a:hover{color:var(--tx)}
 footer .sm{color:var(--mut);font-size:13px;margin-top:20px;border-top:1px solid var(--ln);padding-top:16px}
 footer .dev{margin-top:8px}
@@ -801,6 +807,11 @@ label.burger{user-select:none}
         <span class="mcard"><span class="e">📍</span><b>ул. Мартынова, 39, Алматы</b><span class="go">Открыть на карте →</span></span>
       </a>
     </div>
+    <ul class="contact-notes">
+      <li><span class="z">📄</span><span>Документы и чеки. Работаю на сервисе и выезжаю на место — на дом или в офис, по Алматы и области.</span></li>
+      <li><span class="z">💬</span><span>Консультирую по телефону — помогу определить неисправность ещё до выезда.</span></li>
+      <li><span class="z">🛠</span><span>Стаж 26 лет. Профессиональный ремонт авто и сложный ремонт блоков (ЭБУ).</span></li>
+    </ul>
   </div>
 </section>
 <section class="sec" style="border-top:1px solid var(--ln)">
@@ -818,11 +829,17 @@ label.burger{user-select:none}
 </section>
 <footer>
   <div class="wrap">
-    <div class="cols">
-      <div><b>Автоэлектрик Олег</b><br><span class="muted">Автоэлектрик в Алматы, стаж 26 лет. Выезд 24/7.</span></div>
-      <div><b>Услуги</b><br><a href="/kompyuternaya-diagnostika-avto-v-almaty">Диагностика</a> · <a href="/remont-avtokompyutera">Ремонт ЭБУ</a> · <a href="/remont-immobilayzera">Иммобилайзеры</a> · <a href="/servis">Все услуги</a></div>
-      <div><b>Полезное</b><br><a href="https://help.avtoelektrik-pro.kz/kody/">Коды ошибок</a> · <a href="https://help.avtoelektrik-pro.kz/kursy/">Курсы</a> · <a href="https://help.avtoelektrik-pro.kz/">Приложение</a> · <a href="/novosti-i-rekomendatsii">101 ошибка</a></div>
-      <div><b>Связь</b><br><a href="tel:+77011211110">+7 701 121 11 10</a> · <a href="https://wa.me/77011211110">WhatsApp</a><br><span class="muted">ул. Мартынова, 39, Алматы</span></div>
+    <div class="foot-top">
+      <b>Автоэлектрик Олег</b>
+      <nav class="foot-links" aria-label="Разделы сайта">
+        <a href="/servis">Услуги</a>
+        <a href="/kompyuternaya-diagnostika-avto-v-almaty">Диагностика</a>
+        <a href="/#faq">Вопросы</a>
+        <a href="https://help.avtoelektrik-pro.kz/kody/">Коды ошибок</a>
+        <a href="https://help.avtoelektrik-pro.kz/">Приложение</a>
+        <a href="/novosti-i-rekomendatsii">101 ошибка</a>
+        <a href="/kontakty">Контакты</a>
+      </nav>
     </div>
     <div class="sm">© 2026 Автоэлектрик Олег · Дмитриев Олег Сергеевич · Алматы
       <!-- «OneService» позже станет ссылкой на общий сайт по рекламе -->

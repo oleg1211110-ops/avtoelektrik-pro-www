@@ -208,8 +208,14 @@ details.q .a{padding:0 18px 16px;color:var(--tx2);font-size:14.5px}
 .post-card .t{font-weight:700;font-size:15.5px;line-height:1.3}
 .post-card .d{color:var(--mut);font-size:12.5px;margin-top:auto}
 .aside{background:var(--panel);border:1px solid var(--ln);border-radius:14px;padding:18px}
-footer{border-top:1px solid var(--ln);background:var(--panel);padding:30px 0;margin-bottom:64px}
+footer{border-top:1px solid var(--ln);background:var(--panel);padding:22px 0;margin-bottom:64px}
 footer .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px}
+footer .foot-top{display:flex;flex-wrap:wrap;align-items:center;gap:9px 18px;margin-bottom:12px}
+footer .foot-top>b{font-size:15px;white-space:nowrap}
+footer .foot-links{display:flex;flex-wrap:wrap;gap:7px 16px;font-size:13.5px}
+.contact-notes{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:10px}
+.contact-notes li{display:flex;gap:10px;align-items:flex-start;color:var(--mut);font-size:13.5px;line-height:1.55}
+.contact-notes .z{font-size:16px;line-height:1.35;flex:none}
 footer a{color:var(--mut)}footer a:hover{color:var(--tx)}
 footer .sm{color:var(--mut);font-size:13px;margin-top:20px;border-top:1px solid var(--ln);padding-top:16px}
 footer .dev{margin-top:8px}
@@ -314,28 +320,16 @@ label.burger{user-select:none}
 <section class="hero" style="padding:34px 0 20px"><div class="circuit" aria-hidden="true"><svg viewBox="0 0 600 360" fill="none" preserveAspectRatio="xMaxYMin meet"><path class="trace" d="M600 52 H472 Q454 52 454 70 V150 Q454 168 436 168 H286"/><path class="trace" d="M600 126 H522 Q506 126 506 142 V236 H372"/><path class="trace" d="M600 206 H556 V300 Q556 318 538 318 H326"/><path class="trace" d="M454 70 H560 Q576 70 576 86 V124"/><path class="spark" d="M600 52 H472 Q454 52 454 70 V150 Q454 168 436 168 H286" style="animation-delay:0s"/><path class="spark" d="M600 126 H522 Q506 126 506 142 V236 H372" style="animation-delay:1.1s"/><path class="spark" d="M600 206 H556 V300 Q556 318 538 318 H326" style="animation-delay:2.2s"/><path class="spark" d="M454 70 H560 Q576 70 576 86 V124" style="animation-delay:0.6s"/><circle class="node" cx="286" cy="168" r="4"/><circle class="node" cx="372" cy="236" r="4"/><circle class="node" cx="326" cy="318" r="4"/><circle class="node" cx="576" cy="124" r="4"/><circle class="node" cx="454" cy="70" r="3"/><circle class="node" cx="506" cy="142" r="3"/><circle class="node" cx="538" cy="318" r="3"/></svg></div><div class="wrap"><h1>Контакты</h1><p class="lead">Отвечаю сам, 24/7. Звоните, пишите в WhatsApp или оставьте заявку — перезвоню.</p></div></section>
 <section class="sec">
   <div class="wrap">
-    <div class="price-box reveal two-col">
-      <div>
-        <div class="sec-head" style="margin-bottom:6px"><span class="tag">Обратный звонок</span></div>
-        <h2 style="margin:0 0 8px">Перезвоню за 1 минуту</h2>
-        <p class="muted" style="max-width:480px">Оставьте имя и телефон — свяжусь сам и подскажу по проблеме. Консультация по телефону — бесплатно.</p>
-        <form class="form" style="margin-top:14px" novalidate>
-          <div><label>Как вас зовут?</label><input name="name" required placeholder="Имя"><div class="err">Укажите имя</div></div>
-          <div><label>Телефон</label><input name="phone" type="tel" required placeholder="+7 ___ ___ __ __"><div class="err">Введите корректный номер</div></div>
-          <div><label>Что случилось? (необязательно)</label><textarea name="msg" rows="2" placeholder="Коротко о проблеме"></textarea></div>
-          <button class="btn primary" type="submit">Жду звонка</button>
-        </form>
-      </div>
-      <div>
-        <div class="card">
-          <b>Нужно срочно?</b>
-          <p class="muted" style="margin:8px 0 14px">Звоните или пишите — отвечаю сам, 24/7.</p>
-          <div class="cta" style="margin-top:0;flex-direction:column">
-            <a class="btn primary" href="tel:+77011211110" data-callback>📞 Позвонить сейчас</a>
-            <a class="btn wa" href="https://wa.me/77011211110">Написать в WhatsApp</a>
-          </div>
-        </div>
-      </div>
+    <div class="price-box reveal">
+      <div class="sec-head" style="margin-bottom:6px"><span class="tag">Обратный звонок</span></div>
+      <h2 style="margin:0 0 8px">Перезвоню за 1 минуту</h2>
+      <p class="muted" style="max-width:520px">Оставьте имя и телефон — свяжусь сам и подскажу по проблеме. Консультация по телефону — бесплатно.</p>
+      <form class="form" style="margin-top:14px;max-width:520px" novalidate>
+        <div><label>Как вас зовут?</label><input name="name" required placeholder="Имя"><div class="err">Укажите имя</div></div>
+        <div><label>Телефон</label><input name="phone" type="tel" required placeholder="+7 ___ ___ __ __"><div class="err">Введите корректный номер</div></div>
+        <div><label>Что случилось? (необязательно)</label><textarea name="msg" rows="2" placeholder="Коротко о проблеме"></textarea></div>
+        <button class="btn primary" type="submit">Жду звонка</button>
+      </form>
     </div>
   </div>
 </section>
@@ -364,6 +358,11 @@ label.burger{user-select:none}
         <span class="mcard"><span class="e">📍</span><b>ул. Мартынова, 39, Алматы</b><span class="go">Открыть на карте →</span></span>
       </a>
     </div>
+    <ul class="contact-notes">
+      <li><span class="z">📄</span><span>Документы и чеки. Работаю на сервисе и выезжаю на место — на дом или в офис, по Алматы и области.</span></li>
+      <li><span class="z">💬</span><span>Консультирую по телефону — помогу определить неисправность ещё до выезда.</span></li>
+      <li><span class="z">🛠</span><span>Стаж 26 лет. Профессиональный ремонт авто и сложный ремонт блоков (ЭБУ).</span></li>
+    </ul>
   </div>
 </section>
 <section class="sec" style="border-top:1px solid var(--ln)">
@@ -381,11 +380,17 @@ label.burger{user-select:none}
 </section>
 <footer>
   <div class="wrap">
-    <div class="cols">
-      <div><b>Автоэлектрик Олег</b><br><span class="muted">Автоэлектрик в Алматы, стаж 26 лет. Выезд 24/7.</span></div>
-      <div><b>Услуги</b><br><a href="/kompyuternaya-diagnostika-avto-v-almaty">Диагностика</a> · <a href="/remont-avtokompyutera">Ремонт ЭБУ</a> · <a href="/remont-immobilayzera">Иммобилайзеры</a> · <a href="/servis">Все услуги</a></div>
-      <div><b>Полезное</b><br><a href="https://help.avtoelektrik-pro.kz/kody/">Коды ошибок</a> · <a href="https://help.avtoelektrik-pro.kz/kursy/">Курсы</a> · <a href="https://help.avtoelektrik-pro.kz/">Приложение</a> · <a href="/novosti-i-rekomendatsii">101 ошибка</a></div>
-      <div><b>Связь</b><br><a href="tel:+77011211110">+7 701 121 11 10</a> · <a href="https://wa.me/77011211110">WhatsApp</a><br><span class="muted">ул. Мартынова, 39, Алматы</span></div>
+    <div class="foot-top">
+      <b>Автоэлектрик Олег</b>
+      <nav class="foot-links" aria-label="Разделы сайта">
+        <a href="/servis">Услуги</a>
+        <a href="/kompyuternaya-diagnostika-avto-v-almaty">Диагностика</a>
+        <a href="/#faq">Вопросы</a>
+        <a href="https://help.avtoelektrik-pro.kz/kody/">Коды ошибок</a>
+        <a href="https://help.avtoelektrik-pro.kz/">Приложение</a>
+        <a href="/novosti-i-rekomendatsii">101 ошибка</a>
+        <a href="/kontakty">Контакты</a>
+      </nav>
     </div>
     <div class="sm">© 2026 Автоэлектрик Олег · Дмитриев Олег Сергеевич · Алматы
       <!-- «OneService» позже станет ссылкой на общий сайт по рекламе -->
