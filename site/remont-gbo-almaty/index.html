@@ -296,6 +296,37 @@ footer .foot-official .fo-txt b{color:var(--tx);font-weight:700}
 .mbar .c{background:var(--acc);color:#111}.mbar .w{background:var(--ok);color:#06351b}
 .toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%);background:var(--panel);border:1px solid var(--acc);border-radius:12px;padding:12px 18px;z-index:80;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s}
 .toast.on{opacity:1;transform:translateX(-50%) translateY(-6px)}
+/* ── ИИ-помощник Олега на сайте (голос + текст, ответы в стиле «сначала сам», передача в WhatsApp) ── */
+.pbot-fab{position:fixed;right:16px;bottom:calc(18px + env(safe-area-inset-bottom));z-index:62;display:inline-flex;align-items:center;gap:8px;padding:12px 16px 12px 14px;border:0;border-radius:999px;background:var(--acc);color:#111;font:800 14px/1 inherit;cursor:pointer;box-shadow:0 10px 30px -8px rgba(0,0,0,.55);transition:transform .15s,filter .15s}
+.pbot-fab:hover{filter:brightness(1.05)}.pbot-fab:active{transform:scale(.97)}
+.pbot-fab .d{width:8px;height:8px;border-radius:50%;background:#1b7a3c;box-shadow:0 0 0 0 rgba(37,211,102,.6);animation:pbot-live 2.4s ease-out infinite}
+@keyframes pbot-live{0%{box-shadow:0 0 0 0 rgba(37,211,102,.55)}70%{box-shadow:0 0 0 7px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+.pbot-panel{position:fixed;right:16px;bottom:calc(18px + env(safe-area-inset-bottom));width:380px;max-width:calc(100vw - 32px);height:min(560px,76vh);z-index:85;display:none;flex-direction:column;background:var(--panel);border:1px solid var(--ln);border-radius:18px;overflow:hidden;box-shadow:0 24px 60px -18px rgba(0,0,0,.7)}
+.pbot-panel.open{display:flex;animation:pbot-in .2s ease}
+@keyframes pbot-in{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.pbot-head{display:flex;align-items:center;gap:10px;padding:13px 14px;background:linear-gradient(135deg,var(--acc),var(--acc2));color:#1a1206}
+.pbot-head .ava{width:30px;height:30px;border-radius:9px;background:#111;color:var(--acc);display:grid;place-items:center;font-size:16px;flex:none}
+.pbot-head b{font-size:15px;line-height:1.1}.pbot-head .sub{font-size:11.5px;opacity:.8}
+.pbot-x{margin-left:auto;background:rgba(0,0,0,.12);border:0;color:#1a1206;width:30px;height:30px;border-radius:8px;font-size:17px;cursor:pointer;line-height:1}
+.pbot-log{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px;background:var(--bg)}
+.pbot-msg{max-width:88%;padding:10px 13px;border-radius:14px;font-size:14px;line-height:1.5;white-space:pre-wrap;word-wrap:break-word}
+.pbot-b{align-self:flex-start;background:var(--panel2);color:var(--tx);border-bottom-left-radius:5px}
+.pbot-u{align-self:flex-end;background:var(--acc);color:#111;border-bottom-right-radius:5px;font-weight:600}
+.pbot-chips{display:flex;flex-wrap:wrap;gap:7px}
+.pbot-chip{background:var(--panel2);border:1px solid var(--ln);color:var(--tx2);border-radius:999px;padding:7px 12px;font-size:12.5px;cursor:pointer}
+.pbot-chip:hover{border-color:var(--acc);color:var(--tx)}
+.pbot-wa{display:inline-flex;align-items:center;gap:7px;background:var(--ok);color:#06351b;font-weight:800;border-radius:11px;padding:10px 14px;font-size:13.5px;text-decoration:none;margin-top:2px}
+.pbot-foot{display:flex;align-items:center;gap:8px;padding:10px;border-top:1px solid var(--ln);background:var(--panel)}
+.pbot-foot input{flex:1;min-width:0;background:var(--bg);border:1px solid var(--ln);color:var(--tx);border-radius:11px;padding:11px 13px;font-size:14px;outline:none}
+.pbot-foot input:focus{border-color:var(--acc)}
+.pbot-ic{flex:none;width:42px;height:42px;border-radius:11px;border:1px solid var(--ln);background:var(--bg);color:var(--tx);font-size:18px;cursor:pointer;display:grid;place-items:center}
+.pbot-ic.send{background:var(--acc);color:#111;border-color:var(--acc)}
+.pbot-ic.mic.rec{background:#e5484d;color:#fff;border-color:#e5484d;animation:pbot-live 1.3s infinite}
+.pbot-ic[hidden]{display:none}
+@media(max-width:820px){
+  .pbot-fab{bottom:calc(86px + env(safe-area-inset-bottom))}
+  .pbot-panel{left:10px;right:10px;width:auto;max-width:none;bottom:calc(82px + env(safe-area-inset-bottom));height:min(70vh,520px)}
+}
 @media(max-width:820px){
   nav.menu,.bar .call{display:none}.burger{display:flex}
   #nav-t:checked ~ nav.menu{display:flex;position:fixed;top:60px;left:0;right:0;height:calc(100vh - 60px);height:calc(100dvh - 60px);flex-direction:column;gap:0;background:var(--bg);padding:8px 0;margin:0;overflow:auto;z-index:49}
@@ -695,6 +726,112 @@ label.burger{user-select:none}
     </div>
   </div>
 </footer>
+
+<button class="pbot-fab" id="pbotOpen" aria-label="Спросить мастера"><span class="d"></span>💬 Спросить мастера</button>
+<div class="pbot-panel" id="pbotPanel" role="dialog" aria-label="Помощник Олега">
+  <div class="pbot-head">
+    <div class="ava" aria-hidden="true">⚡</div>
+    <div><b>Помощник Олега</b><div class="sub">Подскажу, что проверить самому</div></div>
+    <button class="pbot-x" id="pbotClose" aria-label="Закрыть">✕</button>
+  </div>
+  <div class="pbot-log" id="pbotLog"></div>
+  <div class="pbot-foot">
+    <button class="pbot-ic mic" id="pbotMic" type="button" aria-label="Сказать голосом" hidden>🎤</button>
+    <input id="pbotInput" type="text" inputmode="text" autocomplete="off" placeholder="Что с машиной? Словами или голосом…">
+    <button class="pbot-ic send" id="pbotSend" type="button" aria-label="Отправить">➤</button>
+  </div>
+</div>
+<script>
+(function(){
+  var open=document.getElementById('pbotOpen'), panel=document.getElementById('pbotPanel'),
+      log=document.getElementById('pbotLog'), inp=document.getElementById('pbotInput'),
+      sendBtn=document.getElementById('pbotSend'), mic=document.getElementById('pbotMic'),
+      closeBtn=document.getElementById('pbotClose');
+  if(!open||!panel) return;
+  var WA=(window.__SITE_WA||'77011211110'), started=false;
+
+  var KB=[
+   {k:['не заводит','стартер крут','схватыва','не запуск','крутит но','заводится но'],t:'не заводится, стартер крутит',
+    a:'Если стартер крутит, но не схватывает — чаще всего нет искры или топлива.\n\nЧто проверить самому:\n• Включи зажигание и послушай у бака — бензонасос должен коротко зажужжать. Нет звука — по баку можно легонько стукнуть, иногда насос «оживает».\n• Проверь предохранители (насос, зажигание).\n• Недавно отключал АКБ или лез в сигналку? Возможен иммобилайзер — не видит ключ.\n\nНе ожило — отправь мне, подскажу по твоей машине.'},
+   {k:['не крут','щелч','щёлк','клац','молчит','тишина','не реагир','поворачиваю ключ'],t:'стартер не крутит / щелчки',
+    a:'Стартер не крутит или щёлкает — обычно питание или сам стартер.\n\nСам:\n• Включи фары — горят ярко или тускло? Тускло → слабый аккумулятор или клеммы.\n• Пошевели клеммы АКБ, зачисти, если окисел.\n• При повороте ключа можно легонько стукнуть по стартеру — если схватил, стартер под замену.\n\nОсталось молчать — пиши, посмотрим вместе.'},
+   {k:['check','чек','горит ошиб','значок','лампа','джеки','ошибка на пан','p0','p1','горит двиг'],t:'горит Check / ошибка',
+    a:'Горит Check — машина пишет код, по нему видно направление.\n\nСам:\n• Знаешь код (вид Pxxxx)? Глянь его в разделе кодов на сайте.\n• Сканером: считай код, сбрось, прокатись, посмотри — вернулся или нет.\n\nНазови мне код и марку — скажу, что это и опасно ли ехать.'},
+   {k:['оборот','плавают','глохн','троит','дёрга','дерга','холост','подсос','дроссел'],t:'плавают обороты / глохнет',
+    a:'Плавают обороты или глохнет — чаще дроссель, подсос воздуха или ДМРВ.\n\nСам:\n• Осмотри патрубки после воздушного фильтра на трещины и хомуты (подсос).\n• Недавно мыли двигатель или снимали впуск? Проверь разъёмы датчиков.\n\nНапиши, когда глохнет (на холодную/горячую, на холостых/в движении) — подскажу точнее.'},
+   {k:['стеклопод','печк','фар','прикурив','не включ','магнитол','плафон','предохран','реле','пропал свет','не работает свет','нет света'],t:'не работает электрика',
+    a:'Не работает узел электрики — начинай с питания этой цепи.\n\nСам:\n• Найди и проверь предохранитель именно этой цепи (схема на крышке блока).\n• Перегорел — поставь такой же. Снова сгорел → где-то замыкание, дальше не угадывай.\n\nНапиши, что именно не работает — подскажу, где искать массу и реле.'},
+   {k:['после ремонт','поменял','снимал','снял','ставил','делал ход','развал','поменяли колес','снимали рул','после замен','загорелась после'],t:'проблема после ремонта',
+    a:'Если беда вылезла сразу после ремонта — почти всегда задели разъём или датчик того узла.\n\nВспомни, что делали:\n• Ходовка/колесо → смотри датчик ABS того колеса (фишка, разъём).\n• Снимали руль/рейку → датчик угла поворота.\n• Магнитный датчик (ABS, коленвал) часто просто в грязи или стружке — снять и почистить.\n\nНапиши, что именно делали — скажу, какой датчик смотреть.'},
+   {k:['иммобил','не видит ключ','чип','метк','ключ не','сигнализац','обходчик'],t:'иммобилайзер / ключ',
+    a:'Похоже на иммобилайзер — машина не узнаёт ключ.\n\nСам:\n• Попробуй второй ключ.\n• Поднеси ключ вплотную к метке или замку (сел элемент в ключе — частая причина).\n• Недавно ставили сигналку? Могли задеть обходчик или проводку.\n\nНе помогло — пиши, с ключами и метками разбираюсь.'},
+   {k:['садится акк','разряж','за ночь','утечк','не держит','разрядил','акб сад','аккумулятор сад'],t:'садится АКБ / утечка тока',
+    a:'АКБ садится за ночь — либо сам аккумулятор устал, либо утечка тока.\n\nСам:\n• Проверь возраст и заряд АКБ (часто ему уже 5+ лет).\n• Вспомни, что добавляли: сигналка, магнитола, регистратор на постоянном плюсе — частые виновники.\n\nАКБ свежий, а всё равно садится — нужна проверка утечки, пиши.'},
+   {k:['дизел','мочевин','adblue','адблю','scr','сажев','разнос','солярк','не глохнет','сам газ'],t:'дизель / мочевина (AdBlue/SCR)',
+    a:'Дизель и мочевина (AdBlue/SCR) — это моя тема.\n\nКоротко:\n• Горит ошибка AdBlue — не глуши надолго, часто уходит в ограничение мощности.\n• Дизель пошёл в разнос (сам газует) — глуши передачей или перекрытием впуска, это опасно.\n\nНапиши марку и что горит или как ведёт — разберём по потоку данных.'},
+   {k:['камаз','грузов','фур','газель','тягач','тахограф','спидометр','отвязк','эбу','ebu','маз','даф','ман','скани','вольво'],t:'грузовик / ЭБУ',
+    a:'С грузовыми работаю (КамАЗ, европейцы, мочевина, ремонт ЭБУ).\n\nСам:\n• Назови марку и что беспокоит (не заводится, ошибка, мочевина, спидометр).\n• Если после ремонта — вспомни, что крутили.\n\nНапиши — скажу, едет ли оно само или нужен выезд.'},
+   {k:['диагностик','сколько сто','цена','выезд','приедеш','записат','сканер','проверить машину','компьютерн'],t:'диагностика / выезд / цена',
+    a:'Компьютерная диагностика на сервисе от 8 000 ₸, выезд с диагностикой от 10 000 ₸.\n\nЧтобы я сразу приехал с нужным — опиши машину и симптом и жми кнопку ниже. Если просто спросить — звони, часто подскажу по телефону бесплатно.'}
+  ];
+
+  function norm(s){return (s||'').toLowerCase().replace(/ё/g,'е').replace(/\s+/g,' ').trim();}
+  function match(t){var n=norm(t),best=null,bs=0;for(var i=0;i<KB.length;i++){var sc=0,ks=KB[i].k;for(var j=0;j<ks.length;j++){if(n.indexOf(ks[j])>=0)sc++;}if(sc>bs){bs=sc;best=KB[i];}}return bs>0?best:null;}
+
+  function el(cls,txt){var d=document.createElement('div');d.className=cls;if(txt!=null)d.textContent=txt;return d;}
+  function toBottom(){log.scrollTop=log.scrollHeight;}
+  function addUser(t){log.appendChild(el('pbot-msg pbot-u',t));toBottom();}
+  function addBot(t){log.appendChild(el('pbot-msg pbot-b',t));toBottom();}
+
+  function waBtn(userText,title){
+    var msg='Здравствуйте, Олег! Пишу с сайта.\nВопрос: '+userText+(title?'\n(похоже на: '+title+')':'')+'\nПодскажите, пожалуйста.';
+    var a=document.createElement('a');
+    a.className='pbot-wa';a.href='https://wa.me/'+WA+'?text='+encodeURIComponent(msg);
+    a.target='_blank';a.rel='noopener';a.textContent='📲 Отправить Олегу в WhatsApp';
+    a.addEventListener('click',function(){if(window.fireLead){try{fireLead();}catch(e){}}});
+    log.appendChild(a);toBottom();
+  }
+  function chips(items){
+    var wrap=el('pbot-chips');
+    items.forEach(function(it){var b=document.createElement('button');b.type='button';b.className='pbot-chip';b.textContent=it;
+      b.addEventListener('click',function(){userSay(it);});wrap.appendChild(b);});
+    log.appendChild(wrap);toBottom();
+  }
+
+  function respond(t){
+    var m=match(t);
+    if(m){addBot(m.a);waBtn(t,m.t);}
+    else{
+      addBot('Понял вас. Чтобы помочь точнее, напишите марку машины и что именно беспокоит (например: «Тойота не заводится, стартер крутит»). А можно сразу отправить вопрос Олегу — ответит лично.');
+      waBtn(t,null);
+    }
+  }
+  function userSay(t){t=(t||'').trim();if(!t)return;addUser(t);inp.value='';setTimeout(function(){respond(t);},260);}
+
+  function greet(){
+    addBot('Привет! Я помощник Олега. Опишите словами или голосом, что с машиной — подскажу, что проверить самому, а если нужно, отправлю вопрос Олегу уже готовым.\n\nС чего начнём?');
+    chips(['Не заводится','Горит Check','Плавают обороты','Не работает электрика','После ремонта','Нужна диагностика']);
+  }
+  function openP(){panel.classList.add('open');open.style.display='none';if(!started){started=true;greet();}setTimeout(function(){try{inp.focus();}catch(e){}},80);}
+  function closeP(){panel.classList.remove('open');open.style.display='';}
+
+  open.addEventListener('click',openP);
+  closeBtn.addEventListener('click',closeP);
+  sendBtn.addEventListener('click',function(){userSay(inp.value);});
+  inp.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();userSay(inp.value);}});
+
+  // Голосовой ввод — Web Speech API (бесплатно, в браузере). Нет поддержки — кнопка скрыта.
+  var SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+  if(SR){
+    mic.hidden=false;var rec=new SR();rec.lang='ru-RU';rec.interimResults=false;rec.maxAlternatives=1;var on=false;
+    mic.addEventListener('click',function(){if(on){rec.stop();return;}try{rec.start();}catch(e){}});
+    rec.onstart=function(){on=true;mic.classList.add('rec');inp.placeholder='Говорите…';};
+    rec.onend=function(){on=false;mic.classList.remove('rec');inp.placeholder='Что с машиной? Словами или голосом…';};
+    rec.onerror=function(){on=false;mic.classList.remove('rec');};
+    rec.onresult=function(e){var txt=e.results[0][0].transcript;userSay(txt);};
+  }
+})();
+</script>
 
 <nav class="mbar" aria-label="Быстрые действия">
   <a class="c" href="tel:+77011211110">📞 Позвонить</a>
