@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<script>document.documentElement.classList.add('js');</script>
+<script>document.documentElement.classList.add('js');try{if(sessionStorage.getItem('aepSplash'))document.documentElement.classList.add('splash-seen');}catch(e){}</script>
 <title>🔧 Компьютерная диагностика LADA — точный поиск неисправностей автомобиля</title>
 <meta name="description" content="Компьютерная диагностика автомобилей LADA позволяет быстро выявить ошибки двигателя, ABS, подушек безопасности и электронных систем. Проверка параметров работы двигателя, поиск неисправностей проводки и блоков управления.">
 <link rel="canonical" href="https://avtoelektrik-pro.kz/novosti-i-rekomendatsii/e7db0v5f61-lada">
@@ -292,8 +292,11 @@ footer .foot-official .fo-txt{font-size:13px;line-height:1.5;color:var(--tx2)}
 footer .foot-official .fo-txt b{color:var(--tx);font-weight:700}
 @keyframes devIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
 .mbar{position:fixed;left:0;right:0;bottom:0;z-index:60;display:none;gap:8px;padding:6px max(12px,env(safe-area-inset-left)) calc(6px + env(safe-area-inset-bottom));background:var(--mbarbg);backdrop-filter:blur(10px);border-top:1px solid var(--ln)}
-.mbar a{flex:1;text-align:center;font-weight:700;font-size:14.5px;letter-spacing:.01em;padding:9px;border-radius:10px}
+.mbar a,.mbar button{flex:1;min-width:0;text-align:center;font-weight:700;font-size:14px;letter-spacing:.01em;padding:8px 6px;border-radius:10px;white-space:nowrap}
+.mbar button{font-family:inherit;cursor:pointer;line-height:1.5}
 .mbar .c{background:var(--acc);color:#111}.mbar .w{background:var(--ok);color:#06351b}
+.mbar .pm{background:transparent;color:var(--acc);border:1.5px solid var(--acc)}
+.mbar .pm:hover{background:rgba(255,165,0,.1)}
 .toast{position:fixed;left:50%;bottom:74px;transform:translateX(-50%);background:var(--panel);border:1px solid var(--acc);border-radius:12px;padding:12px 18px;z-index:80;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s}
 .toast.on{opacity:1;transform:translateX(-50%) translateY(-6px)}
 /* ── ИИ-помощник Олега на сайте (голос + текст, ответы в стиле «сначала сам», передача в WhatsApp) ── */
@@ -324,8 +327,8 @@ footer .foot-official .fo-txt b{color:var(--tx);font-weight:700}
 .pbot-ic.mic.rec{background:#e5484d;color:#fff;border-color:#e5484d;animation:pbot-live 1.3s infinite}
 .pbot-ic[hidden]{display:none}
 @media(max-width:820px){
-  .pbot-fab{bottom:calc(66px + env(safe-area-inset-bottom))}
-  .pbot-panel{left:10px;right:10px;width:auto;max-width:none;bottom:calc(62px + env(safe-area-inset-bottom));height:min(70vh,520px)}
+  .pbot-fab{display:none}
+  .pbot-panel{left:10px;right:10px;width:auto;max-width:none;bottom:calc(56px + env(safe-area-inset-bottom));height:min(70vh,520px)}
 }
 @media(max-width:820px){
   nav.menu,.bar .call{display:none}.burger{display:flex}
@@ -384,6 +387,29 @@ label.burger{user-select:none}
 @keyframes hero-glow{from{transform:translate3d(0,0,0) scale(1);opacity:.7}to{transform:translate3d(30px,10px,0) scale(1.15);opacity:1}}
 /* Плавные переходы между страницами (прогрессивно, с деградацией) */
 @view-transition{navigation:auto}
+#aep-splash{position:fixed;inset:0;z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;padding:26px;background:radial-gradient(120% 90% at 50% 20%,rgba(255,165,0,.09),transparent 60%),#070a0d;color:#e9edf0;animation:aep-splash-out .55s ease 3.6s forwards}
+#aep-splash.gone{opacity:0;visibility:hidden;pointer-events:none;transition:opacity .55s ease,visibility 0s .55s}
+html.splash-seen #aep-splash{display:none}
+@media (prefers-reduced-motion:reduce){#aep-splash{display:none}}
+@keyframes aep-splash-out{to{opacity:0;visibility:hidden;pointer-events:none}}
+.aep-brand{position:fixed;top:calc(22px + env(safe-area-inset-top));left:0;right:0;display:flex;align-items:center;justify-content:center;gap:10px;font-weight:800;font-size:17px}
+.aep-brand .l{width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,#FFA500,#ff8c00);display:grid;place-items:center;font-size:18px;color:#1a1206}
+.aep-gauge{position:relative;width:180px;height:110px}
+.aep-gauge svg{width:100%;height:100%;overflow:visible}
+.aep-gt{fill:none;stroke:#1d2733;stroke-width:9;stroke-linecap:round}
+.aep-gf{fill:none;stroke:url(#aepgg);stroke-width:9;stroke-linecap:round;stroke-dasharray:220;stroke-dashoffset:220}
+.aep-needle{stroke:#FFA500;stroke-width:3.5;stroke-linecap:round;transform-origin:90px 96px;transform:rotate(-90deg)}
+.aep-val{position:absolute;left:0;right:0;top:58px;text-align:center;font:800 26px ui-monospace,monospace;color:#FFA500}
+.aep-cap{position:absolute;left:0;right:0;top:90px;text-align:center;font:600 11px ui-monospace,monospace;color:#8b949c;letter-spacing:2px}
+.aep-lines{width:100%;max-width:340px;display:flex;flex-direction:column;gap:9px;font:600 13.5px ui-monospace,monospace}
+.aep-line{display:flex;align-items:center;gap:10px;color:#9fb0bf;opacity:0;transform:translateX(-6px)}
+.aep-line.show{opacity:1;transform:none;transition:all .3s ease}
+.aep-line .mk{width:16px;color:#49d0a0}
+.aep-bar{width:100%;max-width:340px;height:6px;border-radius:4px;background:#172029;overflow:hidden}
+.aep-bar i{display:block;height:100%;width:0;border-radius:4px;background:linear-gradient(90deg,#FFA500,#ff8c00)}
+.aep-status{font:800 17px ui-monospace,monospace;letter-spacing:2px;color:#49d0a0;opacity:0}
+.aep-status.show{opacity:1;transition:opacity .4s ease}
+.aep-skip{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));color:#8b949c;font-size:13px;background:#141b23;border:1px solid #232b34;border-radius:9px;padding:9px 14px;cursor:pointer}
 .read-progress{}</style>
 <link rel="preconnect" href="https://www.googletagmanager.com">
 <link rel="preconnect" href="https://mc.yandex.ru">
@@ -399,6 +425,53 @@ label.burger{user-select:none}
 <body>
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KRSH9VKK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <noscript><div><img src="https://mc.yandex.ru/watch/108500613" style="position:absolute;left:-9999px" alt="" /></div></noscript>
+<div id="aep-splash" role="status" aria-label="Запуск диагностики">
+  <div class="aep-brand"><span class="l">⚡</span>Автоэлектрик Олег</div>
+  <div class="aep-gauge">
+    <svg viewBox="0 0 180 110" aria-hidden="true">
+      <defs><linearGradient id="aepgg" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#49d0a0"/><stop offset="1" stop-color="#FFA500"/></linearGradient></defs>
+      <path class="aep-gt" d="M14,96 A82,82 0 0,1 166,96"/>
+      <path class="aep-gf" id="aepGf" d="M14,96 A82,82 0 0,1 166,96"/>
+      <line class="aep-needle" id="aepNeedle" x1="90" y1="96" x2="90" y2="30"/>
+    </svg>
+    <div class="aep-val" id="aepVal">0</div>
+    <div class="aep-cap">ДИАГНОСТИКА</div>
+  </div>
+  <div class="aep-lines" id="aepLines">
+    <div class="aep-line"><span class="mk">›</span><span>Подключение к ЭБУ…</span></div>
+    <div class="aep-line"><span class="mk">›</span><span>Опрос датчиков…</span></div>
+    <div class="aep-line"><span class="mk">›</span><span>Проверка цепей питания…</span></div>
+    <div class="aep-line"><span class="mk">›</span><span>Чтение кодов ошибок — не найдено</span></div>
+  </div>
+  <div class="aep-bar"><i id="aepBar"></i></div>
+  <div class="aep-status" id="aepStatus">✓ СИСТЕМА В НОРМЕ</div>
+  <button class="aep-skip" id="aepSkip" type="button">пропустить ›</button>
+</div>
+<script>
+(function(){
+  var sp=document.getElementById('aep-splash'); if(!sp) return;
+  var reduce=false; try{reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;}catch(e){}
+  var seen=false; try{seen=!!sessionStorage.getItem('aepSplash');}catch(e){}
+  if(seen||reduce){ if(sp.parentNode)sp.parentNode.removeChild(sp); return; }
+  try{sessionStorage.setItem('aepSplash','1');}catch(e){}
+  var needle=document.getElementById('aepNeedle'),val=document.getElementById('aepVal'),gf=document.getElementById('aepGf'),
+      bar=document.getElementById('aepBar'),lines=sp.querySelectorAll('.aep-line'),status=document.getElementById('aepStatus');
+  var timers=[],raf=0,done=false;
+  function at(ms,fn){timers.push(setTimeout(fn,ms));}
+  function sweep(from,to,dur){var t0=performance.now();function step(t){var k=Math.min(1,(t-t0)/dur);var e=1-Math.pow(1-k,3);var a=from+(to-from)*e;
+    needle.style.transform='rotate('+a+'deg)';val.textContent=Math.round(((a+90)/180)*6000/10)*10;gf.style.strokeDashoffset=220-220*((a+90)/180);
+    if(k<1)raf=requestAnimationFrame(step);}raf=requestAnimationFrame(step);}
+  function dismiss(){ if(done)return; done=true; for(var i=0;i<timers.length;i++)clearTimeout(timers[i]); cancelAnimationFrame(raf);
+    sp.classList.add('gone'); setTimeout(function(){if(sp.parentNode)sp.parentNode.removeChild(sp);},650); }
+  sp.addEventListener('click',function(){dismiss();});
+  at(120,function(){sweep(-90,80,900);});
+  at(1100,function(){sweep(80,-6,700);});
+  for(var i=0;i<lines.length;i++){(function(l,idx){at(380+idx*340,function(){l.classList.add('show');});})(lines[i],i);}
+  at(320,function(){bar.style.transition='width 1.9s ease';bar.style.width='100%';});
+  at(2200,function(){status.classList.add('show');});
+  at(2750,dismiss);
+})();
+</script>
 <div class="read-progress"></div>
 <header class="bar">
   <div class="wrap row">
@@ -674,7 +747,12 @@ label.burger{user-select:none}
   </div>
 </footer>
 
-<button class="pbot-fab" id="pbotOpen" aria-label="Спросить мастера"><span class="d"></span>💬 Спросить мастера</button>
+<nav class="mbar" aria-label="Быстрые действия">
+  <a class="c" href="tel:+77011211110">📞 Звонок</a>
+  <button type="button" class="pm pbot-open">💬 Помощник</button>
+  <a class="w" href="https://wa.me/77011211110">WhatsApp</a>
+</nav>
+<button class="pbot-fab pbot-open" aria-label="Спросить мастера"><span class="d"></span>💬 Спросить мастера</button>
 <div class="pbot-panel" id="pbotPanel" role="dialog" aria-label="Помощник Олега">
   <div class="pbot-head">
     <div class="ava" aria-hidden="true">⚡</div>
@@ -690,11 +768,11 @@ label.burger{user-select:none}
 </div>
 <script>
 (function(){
-  var open=document.getElementById('pbotOpen'), panel=document.getElementById('pbotPanel'),
+  var openers=document.querySelectorAll('.pbot-open'), panel=document.getElementById('pbotPanel'),
       log=document.getElementById('pbotLog'), inp=document.getElementById('pbotInput'),
       sendBtn=document.getElementById('pbotSend'), mic=document.getElementById('pbotMic'),
       closeBtn=document.getElementById('pbotClose');
-  if(!open||!panel) return;
+  if(!openers.length||!panel) return;
   var WA=(window.__SITE_WA||'77011211110'), started=false;
 
   var KB=[
@@ -759,10 +837,10 @@ label.burger{user-select:none}
     addBot('Привет! Я помощник Олега. Опишите словами или голосом, что с машиной — подскажу, что проверить самому, а если нужно, отправлю вопрос Олегу уже готовым.\n\nС чего начнём?');
     chips(['Не заводится','Горит Check','Плавают обороты','Не работает электрика','После ремонта','Нужна диагностика']);
   }
-  function openP(){panel.classList.add('open');open.style.display='none';if(!started){started=true;greet();}setTimeout(function(){try{inp.focus();}catch(e){}},80);}
-  function closeP(){panel.classList.remove('open');open.style.display='';}
+  function openP(){panel.classList.add('open');if(!started){started=true;greet();}setTimeout(function(){try{inp.focus();}catch(e){}},80);}
+  function closeP(){panel.classList.remove('open');}
 
-  open.addEventListener('click',openP);
+  for(var oi=0;oi<openers.length;oi++)openers[oi].addEventListener('click',openP);
   closeBtn.addEventListener('click',closeP);
   sendBtn.addEventListener('click',function(){userSay(inp.value);});
   inp.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();userSay(inp.value);}});
@@ -780,10 +858,6 @@ label.burger{user-select:none}
 })();
 </script>
 
-<nav class="mbar" aria-label="Быстрые действия">
-  <a class="c" href="tel:+77011211110">📞 Позвонить</a>
-  <a class="w" href="https://wa.me/77011211110">WhatsApp</a>
-</nav>
 <script src="/assets/app.js" defer></script>
 </body>
 </html>
