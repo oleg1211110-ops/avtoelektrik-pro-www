@@ -447,31 +447,6 @@ html.splash-seen #aep-splash{display:none}
   <div class="aep-status" id="aepStatus">✓ СИСТЕМА В НОРМЕ</div>
   <button class="aep-skip" id="aepSkip" type="button">пропустить ›</button>
 </div>
-<script>
-(function(){
-  var sp=document.getElementById('aep-splash'); if(!sp) return;
-  var reduce=false; try{reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;}catch(e){}
-  var seen=false; try{seen=!!sessionStorage.getItem('aepSplash');}catch(e){}
-  if(seen||reduce){ if(sp.parentNode)sp.parentNode.removeChild(sp); return; }
-  try{sessionStorage.setItem('aepSplash','1');}catch(e){}
-  var needle=document.getElementById('aepNeedle'),val=document.getElementById('aepVal'),gf=document.getElementById('aepGf'),
-      bar=document.getElementById('aepBar'),lines=sp.querySelectorAll('.aep-line'),status=document.getElementById('aepStatus');
-  var timers=[],raf=0,done=false;
-  function at(ms,fn){timers.push(setTimeout(fn,ms));}
-  function sweep(from,to,dur){var t0=performance.now();function step(t){var k=Math.min(1,(t-t0)/dur);var e=1-Math.pow(1-k,3);var a=from+(to-from)*e;
-    needle.style.transform='rotate('+a+'deg)';val.textContent=Math.round(((a+90)/180)*6000/10)*10;gf.style.strokeDashoffset=220-220*((a+90)/180);
-    if(k<1)raf=requestAnimationFrame(step);}raf=requestAnimationFrame(step);}
-  function dismiss(){ if(done)return; done=true; for(var i=0;i<timers.length;i++)clearTimeout(timers[i]); cancelAnimationFrame(raf);
-    sp.classList.add('gone'); setTimeout(function(){if(sp.parentNode)sp.parentNode.removeChild(sp);},650); }
-  sp.addEventListener('click',function(){dismiss();});
-  at(120,function(){sweep(-90,80,900);});
-  at(1100,function(){sweep(80,-6,700);});
-  for(var i=0;i<lines.length;i++){(function(l,idx){at(380+idx*340,function(){l.classList.add('show');});})(lines[i],i);}
-  at(320,function(){bar.style.transition='width 1.9s ease';bar.style.width='100%';});
-  at(2200,function(){status.classList.add('show');});
-  at(2750,dismiss);
-})();
-</script>
 <header class="bar">
   <div class="wrap row">
     <a class="logo" href="/"><span class="spark">⚡</span>Автоэлектрик&nbsp;Олег</a>
@@ -867,97 +842,6 @@ html.splash-seen #aep-splash{display:none}
     <button class="pbot-ic send" id="pbotSend" type="button" aria-label="Отправить">➤</button>
   </div>
 </div>
-<script>
-(function(){
-  var openers=document.querySelectorAll('.pbot-open'), panel=document.getElementById('pbotPanel'),
-      log=document.getElementById('pbotLog'), inp=document.getElementById('pbotInput'),
-      sendBtn=document.getElementById('pbotSend'), mic=document.getElementById('pbotMic'),
-      closeBtn=document.getElementById('pbotClose');
-  if(!openers.length||!panel) return;
-  var WA=(window.__SITE_WA||'77011211110'), started=false;
-
-  var KB=[
-   {k:['не заводит','стартер крут','схватыва','не запуск','крутит но','заводится но'],t:'не заводится, стартер крутит',
-    a:'Если стартер крутит, но не схватывает — чаще всего нет искры или топлива.\n\nЧто проверить самому:\n• Включи зажигание и послушай у бака — бензонасос должен коротко зажужжать. Нет звука — по баку можно легонько стукнуть, иногда насос «оживает».\n• Проверь предохранители (насос, зажигание).\n• Недавно отключал АКБ или лез в сигналку? Возможен иммобилайзер — не видит ключ.\n\nНе ожило — отправь мне, подскажу по твоей машине.'},
-   {k:['не крут','щелч','щёлк','клац','молчит','тишина','не реагир','поворачиваю ключ'],t:'стартер не крутит / щелчки',
-    a:'Стартер не крутит или щёлкает — обычно питание или сам стартер.\n\nСам:\n• Включи фары — горят ярко или тускло? Тускло → слабый аккумулятор или клеммы.\n• Пошевели клеммы АКБ, зачисти, если окисел.\n• При повороте ключа можно легонько стукнуть по стартеру — если схватил, стартер под замену.\n\nОсталось молчать — пиши, посмотрим вместе.'},
-   {k:['check','чек','горит ошиб','значок','лампа','джеки','ошибка на пан','p0','p1','горит двиг'],t:'горит Check / ошибка',
-    a:'Горит Check — машина пишет код, по нему видно направление.\n\nСам:\n• Знаешь код (вид Pxxxx)? Глянь его в разделе кодов на сайте.\n• Сканером: считай код, сбрось, прокатись, посмотри — вернулся или нет.\n\nНазови мне код и марку — скажу, что это и опасно ли ехать.'},
-   {k:['оборот','плавают','глохн','троит','дёрга','дерга','холост','подсос','дроссел'],t:'плавают обороты / глохнет',
-    a:'Плавают обороты или глохнет — чаще дроссель, подсос воздуха или ДМРВ.\n\nСам:\n• Осмотри патрубки после воздушного фильтра на трещины и хомуты (подсос).\n• Недавно мыли двигатель или снимали впуск? Проверь разъёмы датчиков.\n\nНапиши, когда глохнет (на холодную/горячую, на холостых/в движении) — подскажу точнее.'},
-   {k:['стеклопод','печк','фар','прикурив','не включ','магнитол','плафон','предохран','реле','пропал свет','не работает свет','нет света'],t:'не работает электрика',
-    a:'Не работает узел электрики — начинай с питания этой цепи.\n\nСам:\n• Найди и проверь предохранитель именно этой цепи (схема на крышке блока).\n• Перегорел — поставь такой же. Снова сгорел → где-то замыкание, дальше не угадывай.\n\nНапиши, что именно не работает — подскажу, где искать массу и реле.'},
-   {k:['после ремонт','поменял','снимал','снял','ставил','делал ход','развал','поменяли колес','снимали рул','после замен','загорелась после'],t:'проблема после ремонта',
-    a:'Если беда вылезла сразу после ремонта — почти всегда задели разъём или датчик того узла.\n\nВспомни, что делали:\n• Ходовка/колесо → смотри датчик ABS того колеса (фишка, разъём).\n• Снимали руль/рейку → датчик угла поворота.\n• Магнитный датчик (ABS, коленвал) часто просто в грязи или стружке — снять и почистить.\n\nНапиши, что именно делали — скажу, какой датчик смотреть.'},
-   {k:['иммобил','не видит ключ','чип','метк','ключ не','сигнализац','обходчик'],t:'иммобилайзер / ключ',
-    a:'Похоже на иммобилайзер — машина не узнаёт ключ.\n\nСам:\n• Попробуй второй ключ.\n• Поднеси ключ вплотную к метке или замку (сел элемент в ключе — частая причина).\n• Недавно ставили сигналку? Могли задеть обходчик или проводку.\n\nНе помогло — пиши, с ключами и метками разбираюсь.'},
-   {k:['садится акк','разряж','за ночь','утечк','не держит','разрядил','акб сад','аккумулятор сад'],t:'садится АКБ / утечка тока',
-    a:'АКБ садится за ночь — либо сам аккумулятор устал, либо утечка тока.\n\nСам:\n• Проверь возраст и заряд АКБ (часто ему уже 5+ лет).\n• Вспомни, что добавляли: сигналка, магнитола, регистратор на постоянном плюсе — частые виновники.\n\nАКБ свежий, а всё равно садится — нужна проверка утечки, пиши.'},
-   {k:['дизел','мочевин','adblue','адблю','scr','сажев','разнос','солярк','не глохнет','сам газ'],t:'дизель / мочевина (AdBlue/SCR)',
-    a:'Дизель и мочевина (AdBlue/SCR) — это моя тема.\n\nКоротко:\n• Горит ошибка AdBlue — не глуши надолго, часто уходит в ограничение мощности.\n• Дизель пошёл в разнос (сам газует) — глуши передачей или перекрытием впуска, это опасно.\n\nНапиши марку и что горит или как ведёт — разберём по потоку данных.'},
-   {k:['камаз','грузов','фур','газель','тягач','тахограф','спидометр','отвязк','эбу','ebu','маз','даф','ман','скани','вольво'],t:'грузовик / ЭБУ',
-    a:'С грузовыми работаю (КамАЗ, европейцы, мочевина, ремонт ЭБУ).\n\nСам:\n• Назови марку и что беспокоит (не заводится, ошибка, мочевина, спидометр).\n• Если после ремонта — вспомни, что крутили.\n\nНапиши — скажу, едет ли оно само или нужен выезд.'},
-   {k:['диагностик','сколько сто','цена','выезд','приедеш','записат','сканер','проверить машину','компьютерн'],t:'диагностика / выезд / цена',
-    a:'Компьютерная диагностика на сервисе от 8 000 ₸, выезд с диагностикой от 10 000 ₸.\n\nЧтобы я сразу приехал с нужным — опиши машину и симптом и жми кнопку ниже. Если просто спросить — звони, часто подскажу по телефону бесплатно.'}
-  ];
-
-  function norm(s){return (s||'').toLowerCase().replace(/ё/g,'е').replace(/\s+/g,' ').trim();}
-  function match(t){var n=norm(t),best=null,bs=0;for(var i=0;i<KB.length;i++){var sc=0,ks=KB[i].k;for(var j=0;j<ks.length;j++){if(n.indexOf(ks[j])>=0)sc++;}if(sc>bs){bs=sc;best=KB[i];}}return bs>0?best:null;}
-
-  function el(cls,txt){var d=document.createElement('div');d.className=cls;if(txt!=null)d.textContent=txt;return d;}
-  function toBottom(){log.scrollTop=log.scrollHeight;}
-  function addUser(t){log.appendChild(el('pbot-msg pbot-u',t));toBottom();}
-  function addBot(t){log.appendChild(el('pbot-msg pbot-b',t));toBottom();}
-
-  function waBtn(userText,title){
-    var msg='Здравствуйте, Олег! Пишу с сайта.\nВопрос: '+userText+(title?'\n(похоже на: '+title+')':'')+'\nПодскажите, пожалуйста.';
-    var a=document.createElement('a');
-    a.className='pbot-wa';a.href='https://wa.me/'+WA+'?text='+encodeURIComponent(msg);
-    a.target='_blank';a.rel='noopener';a.textContent='📲 Отправить Олегу в WhatsApp';
-    a.addEventListener('click',function(){if(window.fireLead){try{fireLead();}catch(e){}}});
-    log.appendChild(a);toBottom();
-  }
-  function chips(items){
-    var wrap=el('pbot-chips');
-    items.forEach(function(it){var b=document.createElement('button');b.type='button';b.className='pbot-chip';b.textContent=it;
-      b.addEventListener('click',function(){userSay(it);});wrap.appendChild(b);});
-    log.appendChild(wrap);toBottom();
-  }
-
-  function respond(t){
-    var m=match(t);
-    if(m){addBot(m.a);waBtn(t,m.t);}
-    else{
-      addBot('Понял вас. Чтобы помочь точнее, напишите марку машины и что именно беспокоит (например: «Тойота не заводится, стартер крутит»). А можно сразу отправить вопрос Олегу — ответит лично.');
-      waBtn(t,null);
-    }
-  }
-  function userSay(t){t=(t||'').trim();if(!t)return;addUser(t);inp.value='';setTimeout(function(){respond(t);},260);}
-
-  function greet(){
-    addBot('Привет! Я помощник Олега. Опишите словами или голосом, что с машиной — подскажу, что проверить самому, а если нужно, отправлю вопрос Олегу уже готовым.\n\nС чего начнём?');
-    chips(['Не заводится','Горит Check','Плавают обороты','Не работает электрика','После ремонта','Нужна диагностика']);
-  }
-  function openP(){panel.classList.add('open');if(!started){started=true;greet();}setTimeout(function(){try{inp.focus();}catch(e){}},80);}
-  function closeP(){panel.classList.remove('open');}
-
-  for(var oi=0;oi<openers.length;oi++)openers[oi].addEventListener('click',openP);
-  closeBtn.addEventListener('click',closeP);
-  sendBtn.addEventListener('click',function(){userSay(inp.value);});
-  inp.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();userSay(inp.value);}});
-
-  // Голосовой ввод — Web Speech API (бесплатно, в браузере). Нет поддержки — кнопка скрыта.
-  var SR=window.SpeechRecognition||window.webkitSpeechRecognition;
-  if(SR){
-    mic.hidden=false;var rec=new SR();rec.lang='ru-RU';rec.interimResults=false;rec.maxAlternatives=1;var on=false;
-    mic.addEventListener('click',function(){if(on){rec.stop();return;}try{rec.start();}catch(e){}});
-    rec.onstart=function(){on=true;mic.classList.add('rec');inp.placeholder='Говорите…';};
-    rec.onend=function(){on=false;mic.classList.remove('rec');inp.placeholder='Что с машиной? Словами или голосом…';};
-    rec.onerror=function(){on=false;mic.classList.remove('rec');};
-    rec.onresult=function(e){var txt=e.results[0][0].transcript;userSay(txt);};
-  }
-})();
-</script>
 
 <script src="/assets/app.js" defer></script>
 </body>
