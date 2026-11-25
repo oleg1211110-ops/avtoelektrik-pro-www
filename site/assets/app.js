@@ -83,6 +83,11 @@ if(counters.length){
     if(r.top < vh || r.height > vh*0.7 || inHScroll(el)){ show(el); }
     else { vo.observe(el); }
   });
+  // Страховка от невидимого текста: показываем по скроллу напрямую (не только через IO), и через 2.5с — всё оставшееся.
+  function sweep(){ var h=window.innerHeight||0; for(var i=0;i<els.length;i++){ var e=els[i]; if(!e.classList.contains('shown') && e.getBoundingClientRect().top < h*0.95) show(e); } }
+  var _t=false; function _onSc(){ if(_t)return; _t=true; requestAnimationFrame(function(){_t=false;sweep();}); }
+  window.addEventListener('scroll',_onSc,{passive:true}); window.addEventListener('resize',_onSc,{passive:true}); window.addEventListener('load',sweep);
+  setTimeout(function(){ for(var i=0;i<els.length;i++) show(els[i]); }, 2500);
 })();
 
 /* График работы — статус «открыто/закрыто» и подсветка «сегодня» по времени Алматы (UTC+5). */
