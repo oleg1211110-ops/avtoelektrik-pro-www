@@ -330,6 +330,10 @@ label.burger{user-select:none}
   /* Прячем ТОЛЬКО когда есть JS (html.js) и разрешено движение. При любом сбое JS/анимации — текст виден (базовый .reveal{opacity:1}). */
   html.js .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
   html.js .reveal.shown{opacity:1;transform:none}
+  /* CSS-СТРАХОВКА (не зависит от app.js): если JS показа не отработал (ошибка/старый кэш/медленная загрузка) —
+     любой .reveal без .shown всё равно проявляется через 1.6с. Текст не может остаться невидимым без JS-показа. */
+  @keyframes aep-failsafe{to{opacity:1;transform:none}}
+  html.js .reveal:not(.shown){animation:aep-failsafe .5s ease 1.6s forwards}
   @supports (animation-timeline: scroll(root)){
     .read-progress{animation:rp-grow linear both;animation-timeline:scroll(root)}
   }
