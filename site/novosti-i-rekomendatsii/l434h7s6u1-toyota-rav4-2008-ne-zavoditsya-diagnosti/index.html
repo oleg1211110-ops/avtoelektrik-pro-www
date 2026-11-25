@@ -286,6 +286,10 @@ footer .dev[open] summary::after{transform:rotate(180deg)}
 footer .dev summary b{color:var(--tx2);font-weight:700}
 footer .dev-body{margin-top:9px;max-width:440px;font-size:12.5px;line-height:1.75;color:var(--mut);background:var(--bg);border:1px solid var(--ln);border-radius:10px;padding:11px 14px;animation:devIn .22s ease}
 footer .dev-body a{color:var(--acc)}
+footer .foot-official{display:flex;gap:11px;align-items:center;max-width:640px;margin:0 0 16px;padding:11px 14px;background:linear-gradient(0deg,rgba(37,211,102,.09),rgba(37,211,102,.09)),var(--bg);border:1px solid rgba(37,211,102,.38);border-radius:12px}
+footer .foot-official .fo-ic{font-size:20px;line-height:1;flex:0 0 auto}
+footer .foot-official .fo-txt{font-size:13px;line-height:1.5;color:var(--tx2)}
+footer .foot-official .fo-txt b{color:var(--tx);font-weight:700}
 @keyframes devIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
 .mbar{position:fixed;left:0;right:0;bottom:0;z-index:60;display:none;gap:10px;padding:10px max(12px,env(safe-area-inset-left)) calc(10px + env(safe-area-inset-bottom));background:var(--mbarbg);backdrop-filter:blur(10px);border-top:1px solid var(--ln)}
 .mbar a{flex:1;text-align:center;font-weight:800;padding:13px;border-radius:11px}
@@ -534,6 +538,10 @@ label.burger{user-select:none}
 </section>
 <footer>
   <div class="wrap">
+    <div class="foot-official" role="note">
+      <span class="fo-ic" aria-hidden="true">🧾</span>
+      <div class="fo-txt"><b>Работаю официально.</b> Договор, чеки и закрывающие документы, безналичная оплата — удобно для организаций и автопарков.</div>
+    </div>
     <div class="foot-top">
       <b>Автоэлектрик Олег</b>
       <nav class="foot-links" aria-label="Разделы сайта">
