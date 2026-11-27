@@ -1,4 +1,3 @@
 User-agent: *
 Allow: /
-
 Sitemap: https://avtoelektrik-pro.kz/sitemap.xml

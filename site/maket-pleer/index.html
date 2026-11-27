@@ -1,0 +1,622 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Push-Start · плеер АвтоЭлектрик PRO (макет)</title>
+<meta name="description" content="Кликабельный макет премиум-плеера «Push-Start» для приложения АвтоЭлектрик PRO. На утверждение.">
+<style>
+:root{
+  --orange:#FFA500; --orange-soft:#FFB733; --orange-deep:#C97A00;
+  --bg:#0B0E12; --panel:#13171D; --panel-2:#1A2029; --steel:#222A34;
+  --ink:#ECEFF3; --muted:#8894A1; --line:#2A3440;
+  --led-on:#58E06A; --led-off:#23312a; --glow:rgba(255,165,0,.55);
+  --shadow:0 18px 50px rgba(0,0,0,.55);
+  --font:'Golos Text',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,'SFMono-Regular',Menlo,monospace;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;height:100%}
+body{
+  background:
+    radial-gradient(1200px 700px at 50% -10%, #16202b 0%, transparent 60%),
+    radial-gradient(900px 600px at 80% 120%, #1a140a 0%, transparent 55%),
+    var(--bg);
+  color:var(--ink);font-family:var(--font);
+  display:flex;flex-direction:column;align-items:center;gap:18px;
+  padding:22px 8px 40px;min-height:100%;
+}
+.hd{max-width:420px;text-align:center}
+.hd h1{margin:0 0 4px;font-size:18px;font-weight:800;letter-spacing:.2px}
+.hd p{margin:0;color:var(--muted);font-size:13px;line-height:1.5}
+.hd .tag{display:inline-block;margin-top:8px;padding:3px 11px;border-radius:999px;border:1px solid var(--line);color:var(--orange);font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+
+/* ===== PHONE FRAME ===== */
+.phone{
+  position:relative;width:390px;max-width:100%;height:800px;max-height:86vh;
+  border-radius:44px;background:#05070a;
+  padding:12px;box-shadow:var(--shadow), 0 0 0 2px #2a333d, inset 0 0 0 2px #000;
+}
+.screen{
+  position:relative;width:100%;height:100%;border-radius:33px;overflow:hidden;
+  background:var(--bg);
+}
+.notch{position:absolute;top:10px;left:50%;transform:translateX(-50%);width:120px;height:26px;border-radius:999px;background:#05070a;z-index:60}
+
+/* ===== VIEWS ===== */
+.view{position:absolute;inset:0;overflow:hidden}
+.view-app{z-index:10}
+.view-player{z-index:20;opacity:0;pointer-events:none;transform:scale(1.04)}
+.view-player.open{opacity:1;pointer-events:auto;transform:scale(1);transition:opacity .5s ease, transform .55s cubic-bezier(.2,.8,.2,1)}
+.view-app.hidden{opacity:0;pointer-events:none;transition:opacity .35s ease}
+
+/* ===== NORMAL APP ===== */
+.app-wrap{display:flex;flex-direction:column;height:100%;background:
+  radial-gradient(600px 300px at 50% -5%, #182431 0, transparent 60%), var(--bg)}
+.app-hd{display:flex;align-items:center;gap:10px;padding:46px 14px 12px}
+.pushwrap{flex:none;display:flex;flex-direction:column;align-items:center;gap:4px}
+.pblbl{font:800 8.5px/1 var(--font);letter-spacing:.1em;color:var(--orange)}
+.app-hd .burger{width:40px;height:40px;border-radius:12px;border:1px solid var(--line);background:var(--panel);display:grid;place-items:center;color:var(--ink);flex:none}
+.app-hd .av{width:40px;height:40px;border-radius:50%;background:var(--orange);color:#1c1400;display:grid;place-items:center;flex:none}
+.app-hd .ttl{display:flex;flex-direction:column;min-width:0;flex:1}
+.app-hd .ttl b{font-size:14px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.app-hd .ttl span{font-size:11.5px;color:var(--muted)}
+
+/* Push-Start button — engine start style */
+.pushbtn{
+  position:relative;flex:none;width:54px;height:54px;border-radius:50%;cursor:pointer;
+  border:0;padding:0;background:
+    radial-gradient(circle at 50% 38%, #2a3340 0%, #141a22 70%, #0c1016 100%);
+  box-shadow:0 0 0 3px var(--orange), 0 0 22px var(--glow), inset 0 2px 4px rgba(255,255,255,.08), inset 0 -4px 10px rgba(0,0,0,.6);
+  color:var(--orange);display:grid;place-items:center;
+  animation:pulse 2.6s ease-in-out infinite;
+}
+.pushbtn .pbtxt{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font:800 9px/1.05 var(--font);letter-spacing:.06em;text-align:center;color:var(--orange)}
+.pushbtn:active{transform:scale(.95)}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 3px var(--orange),0 0 16px var(--glow),inset 0 2px 4px rgba(255,255,255,.08),inset 0 -4px 10px rgba(0,0,0,.6)}50%{box-shadow:0 0 0 3px var(--orange),0 0 30px var(--glow),inset 0 2px 4px rgba(255,255,255,.08),inset 0 -4px 10px rgba(0,0,0,.6)}}
+
+.app-body{flex:1;overflow:auto;padding:4px 16px 16px;display:flex;flex-direction:column;gap:12px}
+.card{border:1px solid var(--line);border-radius:16px;background:var(--panel);padding:14px}
+.card .row{display:flex;gap:10px;align-items:flex-start}
+.card .ava{width:30px;height:30px;border-radius:50%;background:var(--orange);color:#1c1400;display:grid;place-items:center;flex:none;font-size:12px}
+.card b{font-size:13.5px}
+.card p{margin:6px 0 0;color:var(--muted);font-size:13px;line-height:1.5}
+.nowmini{display:flex;align-items:center;gap:11px;border:1px solid var(--orange-deep);border-radius:16px;background:linear-gradient(180deg,#1b2230,#141a22);padding:11px 12px;cursor:pointer}
+.nowmini .cv{width:46px;height:46px;border-radius:10px;flex:none;overflow:hidden}
+.nowmini .mt{flex:1;min-width:0}
+.nowmini .mt b{display:block;font-size:13.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nowmini .mt span{font-size:11.5px;color:var(--muted)}
+.nowmini .pl{width:34px;height:34px;border-radius:50%;background:var(--orange);color:#1c1400;display:grid;place-items:center;flex:none}
+.hint{text-align:center;color:var(--muted);font-size:12px;padding:2px 10px 0;line-height:1.5}
+.hint b{color:var(--orange)}
+
+/* tab bar */
+.tabbar{display:flex;border-top:1px solid var(--line);background:var(--panel)}
+.tabbar button{flex:1;border:0;background:none;color:var(--muted);font:600 10px/1.3 var(--font);padding:9px 0 10px;display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer}
+.tabbar button.on{color:var(--orange)}
+
+/* ===== IGNITION OVERLAY ===== */
+.ign{position:absolute;inset:0;z-index:40;display:none;place-items:center;background:rgba(5,7,10,.0)}
+.ign.run{display:grid}
+.ign .leds{display:flex;gap:14px}
+.ign .led{width:16px;height:16px;border-radius:50%;background:var(--led-off);box-shadow:inset 0 0 4px rgba(0,0,0,.8)}
+.ign .led.lit{background:var(--orange);box-shadow:0 0 14px var(--glow),0 0 6px var(--orange)}
+.ign .burst{position:absolute;width:40px;height:40px;border-radius:50%;background:var(--orange);opacity:0;filter:blur(2px)}
+.ign.run .burst{animation:burst .55s .5s ease-out forwards}
+@keyframes burst{0%{opacity:.9;transform:scale(1)}100%{opacity:0;transform:scale(26)}}
+
+/* ===== PLAYER (panel / hardware) ===== */
+.pl-wrap{display:flex;flex-direction:column;height:100%;
+  background:
+    linear-gradient(180deg, #11161d 0%, #0b0f14 100%);
+  position:relative;overflow:hidden}
+.pl-wrap::before{content:"";position:absolute;inset:0;background:
+  radial-gradient(500px 280px at 50% 8%, rgba(255,165,0,.14), transparent 60%);pointer-events:none}
+.pl-hd{display:flex;align-items:center;gap:10px;padding:44px 16px 6px;position:relative;z-index:2}
+.pl-hd .x{width:38px;height:38px;border-radius:12px;border:1px solid var(--line);background:var(--panel-2);color:var(--ink);display:grid;place-items:center;cursor:pointer;flex:none}
+.pl-hd .lbl{flex:1;text-align:center}
+.pl-hd .lbl b{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--orange)}
+.pl-hd .lbl span{font-size:11px;color:var(--muted)}
+.pl-hd .logo{width:38px;height:38px;border-radius:50%;background:var(--orange);color:#1c1400;display:grid;place-items:center;flex:none}
+
+.pl-body{flex:1;overflow:auto;padding:6px 18px 10px;position:relative;z-index:2;display:flex;flex-direction:column;gap:14px}
+
+/* cover + swipe */
+.cover-wrap{position:relative;width:100%;height:min(40vh,70vw);flex:none;border-radius:22px;overflow:hidden;
+  box-shadow:0 14px 40px rgba(0,0,0,.6), 0 0 0 1px var(--line), 0 0 34px rgba(255,165,0,.12);
+  touch-action:pan-y}
+.cover-track{display:flex;height:100%;transition:transform .45s cubic-bezier(.2,.8,.2,1)}
+.cover{position:relative;flex:0 0 100%;height:100%}
+.cover svg{position:absolute;inset:0;width:100%;height:100%}
+.cover .glow{position:absolute;inset:0;background:radial-gradient(circle at 50% 46%, rgba(255,165,0,.0) 40%, rgba(0,0,0,.35) 100%)}
+
+.trk-meta{text-align:center}
+.trk-meta h2{margin:0;font-size:21px;font-weight:800;letter-spacing:.2px}
+.trk-meta .sub{margin-top:3px;font-size:12.5px;color:var(--muted)}
+.badge{display:inline-flex;align-items:center;gap:6px;margin-top:9px;padding:4px 11px;border-radius:999px;
+  border:1px solid var(--orange-deep);background:rgba(255,165,0,.08);color:var(--orange);font:700 11px/1 var(--mono);letter-spacing:.02em}
+.badge .d{width:6px;height:6px;border-radius:50%;background:var(--orange);box-shadow:0 0 6px var(--orange)}
+.badge small{color:var(--muted);font-weight:600;letter-spacing:0}
+
+/* spectrum */
+.spec{width:100%;height:56px;display:block;border-radius:12px;background:linear-gradient(180deg,#0e131a,#0a0e13);border:1px solid var(--line)}
+
+/* waveform progress */
+.wave-row{display:flex;flex-direction:column;gap:5px}
+.wave{position:relative;width:100%;height:42px;cursor:pointer;touch-action:none}
+.wave canvas{width:100%;height:100%;display:block}
+.times{display:flex;justify-content:space-between;font:600 11px/1 var(--mono);color:var(--muted)}
+
+/* transport */
+.transport{display:flex;align-items:center;justify-content:center;gap:22px}
+.tbtn{width:56px;height:56px;border-radius:50%;border:1px solid var(--line);background:
+  radial-gradient(circle at 50% 35%,#222b36,#121821);color:var(--ink);display:grid;place-items:center;cursor:pointer;
+  box-shadow:inset 0 2px 3px rgba(255,255,255,.06), inset 0 -4px 8px rgba(0,0,0,.55)}
+.tbtn:active{transform:scale(.94)}
+.tbtn.play{width:74px;height:74px;color:#1c1400;background:
+  radial-gradient(circle at 50% 34%, var(--orange-soft), var(--orange) 55%, var(--orange-deep) 100%);
+  border:0;box-shadow:0 0 26px var(--glow), inset 0 3px 5px rgba(255,255,255,.35), inset 0 -5px 10px rgba(0,0,0,.35)}
+
+/* controls panel: knob + toggles */
+.panel-box{border:1px solid var(--line);border-radius:18px;padding:16px 14px;
+  background:linear-gradient(180deg,#161c24,#10151c);box-shadow:inset 0 1px 0 rgba(255,255,255,.04)}
+.ctl-grid{display:grid;grid-template-columns:128px 1fr;gap:14px;align-items:center}
+.ctl-grid>*{min-width:0}
+@media(max-width:360px){.ctl-grid{grid-template-columns:1fr;justify-items:center}}
+
+.knob-unit{display:flex;flex-direction:column;align-items:center;gap:8px}
+.knob{position:relative;width:118px;height:118px;border-radius:50%;cursor:grab;touch-action:none;
+  background:
+    radial-gradient(circle at 50% 38%, #2c3642 0%, #1a212a 60%, #0e1217 100%);
+  box-shadow:0 10px 24px rgba(0,0,0,.55), inset 0 2px 4px rgba(255,255,255,.08), inset 0 -6px 14px rgba(0,0,0,.6), 0 0 0 1px #2d3843}
+.knob:active{cursor:grabbing}
+.knob .ring{position:absolute;inset:7px;border-radius:50%;background:repeating-conic-gradient(#20272f 0 6deg,#141a20 6deg 12deg);
+  -webkit-mask:radial-gradient(circle,transparent 46px,#000 47px);mask:radial-gradient(circle,transparent 46px,#000 47px)}
+.knob .face{position:absolute;inset:22px;border-radius:50%;background:radial-gradient(circle at 50% 40%,#232c36,#12171d);display:grid;place-items:center}
+.knob .face b{font:800 20px/1 var(--mono);color:var(--orange)}
+.knob .face small{font-size:9px;color:var(--muted);letter-spacing:.1em;margin-top:2px}
+.knob .pointer{position:absolute;top:8px;left:50%;width:4px;height:20px;border-radius:3px;background:var(--orange);
+  transform-origin:50% 51px;box-shadow:0 0 8px var(--glow)}
+.knob-arc{position:absolute;inset:0;pointer-events:none}
+.knob-lbl{font:700 11px/1 var(--mono);color:var(--muted);letter-spacing:.1em;text-transform:uppercase}
+.vol-steps{display:flex;gap:10px}
+.vol-steps button{width:40px;height:40px;border-radius:12px;border:1px solid var(--line);background:var(--panel-2);color:var(--orange);font:800 20px/1 var(--font);cursor:pointer}
+.vol-steps button:active{transform:scale(.92)}
+
+.toggles{display:flex;flex-direction:column;gap:12px}
+.tg{display:flex;align-items:center;gap:9px}
+.tg .sw{position:relative;width:48px;height:28px;border-radius:999px;background:#10151c;border:1px solid var(--line);cursor:pointer;flex:none;transition:background .25s}
+.tg .sw .kn{position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:linear-gradient(180deg,#39434f,#1d242d);box-shadow:0 2px 4px rgba(0,0,0,.5);transition:transform .25s}
+.tg.on .sw{background:rgba(255,165,0,.18);border-color:var(--orange-deep)}
+.tg.on .sw .kn{transform:translateX(20px);background:linear-gradient(180deg,var(--orange-soft),var(--orange-deep))}
+.tg .led{width:11px;height:11px;border-radius:50%;background:var(--led-off);box-shadow:inset 0 0 3px rgba(0,0,0,.8);flex:none;transition:background .2s,box-shadow .2s}
+.tg.on .led{background:var(--led-on);box-shadow:0 0 10px rgba(88,224,106,.8)}
+.tg .nm{font-size:12.5px;font-weight:600;min-width:0;line-height:1.25;overflow-wrap:break-word}
+.tg .nm small{display:block;color:var(--muted);font-size:11px;font-weight:500}
+
+/* mini EQ */
+.eq-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.eq-head b{font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.eq-pre{display:flex;gap:7px;flex-wrap:wrap}
+.eq-pre button{padding:5px 10px;border-radius:999px;border:1px solid var(--line);background:var(--panel-2);color:var(--muted);font:700 11px/1 var(--font);cursor:pointer}
+.eq-pre button.on{background:var(--orange);border-color:var(--orange);color:#1c1400}
+.eq-bands{display:grid;grid-template-columns:repeat(10,1fr);gap:3px;align-items:end;margin-top:12px;height:92px}
+.eq-band{display:flex;flex-direction:column;align-items:center;gap:5px;height:100%;justify-content:flex-end}
+.eq-rail{position:relative;width:8px;flex:1;border-radius:6px;background:#0d1219;overflow:visible;cursor:ns-resize;touch-action:none}
+.eq-fill{position:absolute;left:0;right:0;bottom:50%;background:linear-gradient(180deg,var(--orange),var(--orange-deep));border-radius:6px;transition:height .12s,bottom .12s}
+.eq-rail::after{content:"";position:absolute;left:-3px;right:-3px;top:50%;height:1px;background:rgba(255,255,255,.13);transform:translateY(-50%);pointer-events:none}
+.eq-thumb{position:absolute;left:50%;top:50%;width:16px;height:5px;border-radius:3px;background:linear-gradient(180deg,var(--orange-soft),var(--orange-deep));box-shadow:0 0 9px var(--glow),0 1px 2px rgba(0,0,0,.6);transform:translate(-50%,-50%);transition:top .12s ease;z-index:3}
+.eq-band span{font:600 8.5px/1 var(--mono);color:var(--muted)}
+
+.dots{display:flex;justify-content:center;gap:7px;padding:4px 0 2px}
+.dots i{width:7px;height:7px;border-radius:50%;background:#2a3440;transition:background .25s,width .25s}
+.dots i.on{background:var(--orange);width:18px;border-radius:5px}
+
+.foot{text-align:center;color:var(--muted);font-size:11px;padding-top:2px}
+
+.app-note{max-width:420px;color:var(--muted);font-size:11.5px;text-align:center;line-height:1.55}
+
+@media (prefers-reduced-motion:reduce){
+  .pushbtn{animation:none}
+  .view-player.open{transition:opacity .2s ease}
+  .ign.run .burst{animation-duration:.2s}
+  .cover-track{transition:transform .2s ease}
+}
+</style>
+</head>
+<body>
+
+<div class="hd">
+  <div class="tag">Макет · на утверждение</div>
+  <h1>Push-Start — премиум-плеер</h1>
+  <p>Нажмите оранжевую кнопку <b style="color:var(--orange)">Push-Start</b> вверху экрана — включится «зажигание», и приложение развернётся в плеер в стиле «панель/железо».</p>
+</div>
+
+<div class="phone">
+  <div class="screen">
+    <div class="notch"></div>
+
+    <!-- ===== NORMAL APP ===== -->
+    <div class="view view-app" id="appView">
+      <div class="app-wrap">
+        <div class="app-hd">
+          <div class="av" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9.2" stroke="currentColor" stroke-width="2.4"/><path d="M13.2 5.6 8.6 13h3.1l-1 5.4 4.7-7.6h-3.1z" fill="currentColor"/></svg></div>
+          <div class="ttl"><b>АвтоЭлектрик PRO</b><span>Помощник · Сказания</span></div>
+          <div class="pushwrap">
+            <button class="pushbtn" id="pushStart" aria-label="Push-Start: включить режим плеера">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 3.5v7"/><path d="M6.5 6.8a8 8 0 1 0 11 0"/></svg>
+            </button>
+            <span class="pblbl">PUSH-START</span>
+          </div>
+        </div>
+        <div class="app-body">
+          <div class="card">
+            <div class="row"><div class="ava"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M13.2 5.6 8.6 13h3.1l-1 5.4 4.7-7.6h-3.1z"/></svg></div>
+            <div><b>Чем помочь по машине?</b><p>Опишите неисправность или код ошибки — подскажу, что можно проверить самому, и только если нужно — к Олегу.</p></div></div>
+          </div>
+          <div class="card">
+            <div class="row"><div class="ava">О</div>
+            <div><b>Сказания</b><p>Баллады мастеров: слушайте, листайте, эквалайзер. Включите премиум-режим плеера кнопкой Push-Start.</p></div></div>
+          </div>
+          <div class="nowmini" id="miniNow">
+            <div class="cv" id="miniCv"></div>
+            <div class="mt"><b id="miniTtl">Упырь ночной</b><span>Сказания · сейчас в очереди</span></div>
+            <div class="pl"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
+          </div>
+          <div class="hint">↑ Либо нажмите <b>Push-Start</b> вверху — весь плеер в стиле «панель/железо».</div>
+        </div>
+        <div class="tabbar">
+          <button class="on"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg>Помощник</button>
+          <button><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4" y="3" width="11" height="15" rx="2"/><path d="M7 7h5M7 11h5"/></svg>Сканер</button>
+          <button><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 2"/></svg>Коды</button>
+          <button><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>Сказания</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== IGNITION ===== -->
+    <div class="ign" id="ign">
+      <div class="burst"></div>
+      <div class="leds"><i class="led"></i><i class="led"></i><i class="led"></i><i class="led"></i><i class="led"></i></div>
+    </div>
+
+    <!-- ===== PLAYER ===== -->
+    <div class="view view-player" id="playerView">
+      <div class="pl-wrap">
+        <div class="pl-hd">
+          <button class="x" id="exitBtn" aria-label="Выйти в обычный режим"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg></button>
+          <div class="lbl"><b>Сейчас играет</b><span>Сказания · АвтоЭлектрик PRO</span></div>
+          <div class="logo" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9.2" stroke="currentColor" stroke-width="2.4"/><path d="M13.2 5.6 8.6 13h3.1l-1 5.4 4.7-7.6h-3.1z" fill="currentColor"/></svg></div>
+        </div>
+
+        <div class="pl-body">
+          <div class="cover-wrap" id="coverWrap">
+            <div class="cover-track" id="coverTrack"></div>
+          </div>
+
+          <div class="trk-meta">
+            <h2 id="trkTitle">Упырь ночной</h2>
+            <div class="sub">Сказания · АвтоЭлектрик PRO</div>
+            <div class="badge"><span class="d"></span>Lossless<small>· WAV · исходник Suno</small></div>
+          </div>
+
+          <canvas class="spec" id="spec"></canvas>
+
+          <div class="wave-row">
+            <div class="wave" id="wave"><canvas id="waveCv"></canvas></div>
+            <div class="times"><span id="tCur">0:00</span><span id="tDur">3:12</span></div>
+          </div>
+
+          <div class="transport">
+            <button class="tbtn" id="prevBtn" aria-label="Назад"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h2v12H6zM20 6v12L9 12z"/></svg></button>
+            <button class="tbtn play" id="playBtn" aria-label="Пуск/пауза"><svg id="playIco" width="30" height="30" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></button>
+            <button class="tbtn" id="nextBtn" aria-label="Вперёд"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M16 6h2v12h-2zM4 6l11 6-11 6z"/></svg></button>
+          </div>
+
+          <div class="panel-box">
+            <div class="ctl-grid">
+              <div class="knob-unit">
+                <div class="knob" id="knob" role="slider" aria-label="Громкость" aria-valuemin="0" aria-valuemax="100" aria-valuenow="70" tabindex="0">
+                  <div class="ring"></div>
+                  <svg class="knob-arc" viewBox="0 0 118 118"><path id="knobArc" fill="none" stroke="var(--orange)" stroke-width="3.5" stroke-linecap="round" opacity=".9"/></svg>
+                  <div class="pointer" id="knobPtr"></div>
+                  <div class="face"><b id="volVal">70</b><small>ГРОМК. %</small></div>
+                </div>
+                <div class="vol-steps"><button id="volDown" aria-label="Тише">−</button><button id="volUp" aria-label="Громче">+</button></div>
+                <div class="knob-lbl">Volume</div>
+              </div>
+              <div class="toggles">
+                <div class="tg on" id="tgViz"><div class="sw"><div class="kn"></div></div><div class="led"></div><div class="nm">Спектр<small>визуализатор</small></div></div>
+                <div class="tg" id="tgBass"><div class="sw"><div class="kn"></div></div><div class="led"></div><div class="nm">Бас-буст<small>низкие +</small></div></div>
+                <div class="tg" id="tgVideo"><div class="sw"><div class="kn"></div></div><div class="led"></div><div class="nm">Видео-фон<small>обложка из Suno</small></div></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel-box">
+            <div class="eq-head"><b>Эквалайзер · 10 полос</b>
+              <div class="eq-pre" id="eqPre">
+                <button data-p="flat" class="on">Обычный</button>
+                <button data-p="bass">Бас</button>
+                <button data-p="rock">Рок</button>
+                <button data-p="voc">Голос</button>
+              </div>
+            </div>
+            <div class="eq-bands" id="eqBands"></div>
+          </div>
+
+          <div class="dots" id="dots"></div>
+          <div class="foot">Макет · честное качество исходника, без выдуманных тех-характеристик</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="app-note">Это дизайн-макет для утверждения — в приложение пока не встроен. После «ок» встроим переключаемой темой: «классическая» (наши цвета, по умолчанию) ↔ «панель/железо». На Android крутилка громкости будет поворачиваться синхронно с аппаратными кнопками телефона.</div>
+
+<script>
+const reduce = matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+/* ---- tracks ---- */
+const TRACKS = [
+  {t:'Упырь ночной',  dur:192, hue:28,  scene:'vamp'},
+  {t:'Леший оборотов',dur:205, hue:140, scene:'forest'},
+  {t:'Шишига',        dur:168, hue:200, scene:'truck'},
+];
+let cur = 0, playing = true, pos = 0;
+
+/* ---- cover art (SVG, в духе Сказаний) ---- */
+function coverSVG(scene, hue){
+  const o = '#FFA500';
+  if(scene==='vamp') return `
+  <svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <radialGradient id="g1" cx="50%" cy="42%" r="62%"><stop offset="0%" stop-color="#2a1b33"/><stop offset="100%" stop-color="#0a0810"/></radialGradient>
+      <radialGradient id="moon" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#ffd27a"/><stop offset="70%" stop-color="${o}"/><stop offset="100%" stop-color="#8a5200"/></radialGradient>
+    </defs>
+    <rect width="400" height="400" fill="url(#g1)"/>
+    <circle cx="200" cy="150" r="66" fill="url(#moon)" opacity=".92"/>
+    <circle cx="178" cy="135" r="60" fill="#0a0810" opacity=".55"/>
+    <g fill="#140d1c"><path d="M0 400 V300 Q60 250 110 290 T220 300 T340 280 T400 310 V400Z"/></g>
+    <g stroke="${o}" stroke-width="3" fill="none" opacity=".85"><path d="M150 230 l18 40 l-14 0 l20 48 l-40 -54 l16 0 z"/></g>
+    <g fill="#1b1326"><path d="M250 400 V250 l20 -70 l10 0 l18 70 V400Z"/><path d="M90 400 V270 l14 -46 h8 l14 46 V400Z"/></g>
+    <circle cx="300" cy="300" r="2.5" fill="${o}"/><circle cx="110" cy="320" r="2.5" fill="${o}"/>
+  </svg>`;
+  if(scene==='forest') return `
+  <svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <defs><radialGradient id="g2" cx="50%" cy="38%" r="65%"><stop offset="0%" stop-color="#15231a"/><stop offset="100%" stop-color="#070b08"/></radialGradient></defs>
+    <rect width="400" height="400" fill="url(#g2)"/>
+    <circle cx="210" cy="140" r="54" fill="#ffd27a" opacity=".18"/>
+    <g fill="#0c140e"><path d="M200 60 l44 120 h-26 l40 110 h-30 l36 90 H136 l36 -90 h-30 l40 -110 h-26 z"/></g>
+    <g fill="#0a110c"><path d="M80 400 l30 -150 l8 0 l30 150z"/><path d="M300 400 l26 -130 l7 0 l26 130z"/></g>
+    <g stroke="#FFA500" stroke-width="3" fill="none" opacity=".8"><path d="M185 215 l18 40 l-14 0 l20 48 l-40 -54 l16 0 z"/></g>
+    <circle cx="120" cy="150" r="3" fill="#FFA500"/><circle cx="290" cy="200" r="2.5" fill="#FFA500"/>
+  </svg>`;
+  return `
+  <svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <defs><linearGradient id="g3" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#13202b"/><stop offset="100%" stop-color="#070d12"/></linearGradient></defs>
+    <rect width="400" height="400" fill="url(#g3)"/>
+    <circle cx="300" cy="110" r="46" fill="#FFA500" opacity=".16"/>
+    <g fill="#0b141c"><rect x="60" y="210" width="230" height="110" rx="14"/><rect x="250" y="170" width="90" height="150" rx="14"/></g>
+    <circle cx="110" cy="330" r="34" fill="#060a0e" stroke="#1b2731" stroke-width="10"/>
+    <circle cx="290" cy="330" r="34" fill="#060a0e" stroke="#1b2731" stroke-width="10"/>
+    <g stroke="#FFA500" stroke-width="3" fill="none"><path d="M150 150 l20 44 l-16 0 l22 52 l-44 -60 l18 0 z"/></g>
+    <rect x="258" y="190" width="70" height="40" rx="6" fill="#0a1218"/><rect x="266" y="198" width="54" height="24" rx="4" fill="#FFA500" opacity=".22"/>
+  </svg>`;
+}
+
+/* build covers */
+const coverTrack = document.getElementById('coverTrack');
+TRACKS.forEach(tr=>{
+  const d = document.createElement('div'); d.className='cover';
+  d.innerHTML = coverSVG(tr.scene, tr.hue) + '<div class="glow"></div>';
+  coverTrack.appendChild(d);
+});
+document.getElementById('miniCv').innerHTML = coverSVG(TRACKS[0].scene, TRACKS[0].hue);
+
+/* dots */
+const dots = document.getElementById('dots');
+TRACKS.forEach((_,i)=>{const i2=document.createElement('i');if(i===0)i2.className='on';dots.appendChild(i2);});
+
+function fmt(s){s=Math.max(0,Math.floor(s));return Math.floor(s/60)+':'+String(s%60).padStart(2,'0');}
+
+/* ---- render current track ---- */
+function render(){
+  const tr = TRACKS[cur];
+  coverTrack.style.transform = `translateX(${-cur*100}%)`;
+  document.getElementById('trkTitle').textContent = tr.t;
+  document.getElementById('tDur').textContent = fmt(tr.dur);
+  [...dots.children].forEach((d,i)=>d.classList.toggle('on',i===cur));
+  pos = Math.min(pos, tr.dur);
+  drawWave();
+}
+
+/* ---- waveform ---- */
+const waveCv = document.getElementById('waveCv');
+let waveBars = [];
+function genWave(){ waveBars = Array.from({length:76},(_,i)=>{
+  const v = 0.25 + 0.75*Math.abs(Math.sin(i*0.5)+0.4*Math.sin(i*1.7)+0.3*Math.random());
+  return Math.min(1, v);
+});}
+function drawWave(){
+  const dpr = devicePixelRatio||1, w=waveCv.clientWidth, h=waveCv.clientHeight;
+  waveCv.width=w*dpr; waveCv.height=h*dpr; const x=waveCv.getContext('2d'); x.scale(dpr,dpr);
+  const tr=TRACKS[cur], prog = tr.dur? pos/tr.dur : 0;
+  const n=waveBars.length, bw=w/n;
+  for(let i=0;i<n;i++){
+    const bh = waveBars[i]*h*0.9, y=(h-bh)/2;
+    const done = i/n <= prog;
+    x.fillStyle = done ? '#FFA500' : '#2f3a46';
+    const r=Math.min(bw*0.35,2);
+    x.beginPath(); x.roundRect(i*bw+bw*0.2, y, bw*0.6, bh, r); x.fill();
+  }
+}
+
+/* ---- spectrum ---- */
+const spec = document.getElementById('spec');
+let specBars, specPhase=0;
+function initSpec(){ specBars = new Array(48).fill(0); }
+function drawSpec(){
+  const dpr=devicePixelRatio||1, w=spec.clientWidth, h=spec.clientHeight;
+  if(spec.width!==w*dpr){spec.width=w*dpr;spec.height=h*dpr;}
+  const x=spec.getContext('2d'); x.setTransform(dpr,0,0,dpr,0,0); x.clearRect(0,0,w,h);
+  const n=specBars.length, bw=w/n;
+  specPhase+=0.08;
+  for(let i=0;i<n;i++){
+    let target;
+    if(playing && vizOn){
+      const bass = Math.pow(1-i/n,1.5);
+      target = (0.15+0.85*Math.abs(Math.sin(specPhase+i*0.5)*Math.cos(specPhase*0.6+i*0.21)))*(0.4+0.6*bass);
+      if(bassOn) target = Math.min(1, target*(1+0.5*bass));
+      target += Math.random()*0.08;
+    } else target = 0.04;
+    specBars[i] += (Math.min(1,target)-specBars[i])*(reduce?0.5:0.28);
+    const bh=specBars[i]*h*0.92, y=h-bh;
+    const g=x.createLinearGradient(0,y,0,h);
+    g.addColorStop(0,'#FFC14D'); g.addColorStop(1,'#C97A00');
+    x.fillStyle=g;
+    x.beginPath(); x.roundRect(i*bw+bw*0.18, y, bw*0.64, bh, 1.5); x.fill();
+  }
+}
+
+/* ---- animation loop ---- */
+let last=performance.now();
+function loop(now){
+  const dt=(now-last)/1000; last=now;
+  if(playing){ pos+=dt; if(pos>=TRACKS[cur].dur){ next(); } document.getElementById('tCur').textContent=fmt(pos); drawWave(); }
+  drawSpec();
+  requestAnimationFrame(loop);
+}
+
+/* ---- controls ---- */
+let vol=70, vizOn=true, bassOn=false;
+const knob=document.getElementById('knob'), ptr=document.getElementById('knobPtr'),
+      volVal=document.getElementById('volVal'), knobArc=document.getElementById('knobArc');
+function setVol(v){
+  vol=Math.max(0,Math.min(100,Math.round(v)));
+  volVal.textContent=vol;
+  const ang=-135 + 270*(vol/100);
+  ptr.style.transform=`translateX(-50%) rotate(${ang}deg)`;
+  // arc
+  const cx=59,cy=59,r=52, a0=-225*Math.PI/180, a1=(-225+270*(vol/100))*Math.PI/180;
+  const large = (270*(vol/100))>180?1:0;
+  const sx=cx+r*Math.cos(a0), sy=cy+r*Math.sin(a0), ex=cx+r*Math.cos(a1), ey=cy+r*Math.sin(a1);
+  knobArc.setAttribute('d',`M ${sx.toFixed(1)} ${sy.toFixed(1)} A ${r} ${r} 0 ${large} 1 ${ex.toFixed(1)} ${ey.toFixed(1)}`);
+  knob.setAttribute('aria-valuenow',vol);
+}
+setVol(vol);
+
+/* knob drag (circular + vertical) */
+let dragging=false, startY=0, startVol=0;
+function knobDown(e){dragging=true;startY=(e.touches?e.touches[0].clientY:e.clientY);startVol=vol;e.preventDefault();}
+function knobMove(e){ if(!dragging)return;
+  const y=(e.touches?e.touches[0].clientY:e.clientY);
+  setVol(startVol + (startY-y)*0.6);
+  e.preventDefault();
+}
+function knobUp(){dragging=false;}
+knob.addEventListener('mousedown',knobDown); knob.addEventListener('touchstart',knobDown,{passive:false});
+addEventListener('mousemove',knobMove); addEventListener('touchmove',knobMove,{passive:false});
+addEventListener('mouseup',knobUp); addEventListener('touchend',knobUp);
+knob.addEventListener('keydown',e=>{if(e.key==='ArrowUp'||e.key==='ArrowRight'){setVol(vol+5);e.preventDefault();}if(e.key==='ArrowDown'||e.key==='ArrowLeft'){setVol(vol-5);e.preventDefault();}});
+document.getElementById('volUp').onclick=()=>setVol(vol+5);
+document.getElementById('volDown').onclick=()=>setVol(vol-5);
+
+/* toggles */
+function bindTg(id,fn){const el=document.getElementById(id);el.onclick=()=>{el.classList.toggle('on');fn(el.classList.contains('on'));};}
+bindTg('tgViz',v=>vizOn=v);
+bindTg('tgBass',v=>bassOn=v);
+bindTg('tgVideo',()=>{});
+
+/* transport */
+const playIco=document.getElementById('playIco');
+function setPlay(p){playing=p;playIco.innerHTML=p?'<path d="M8 5v14l11-7z"/>':'<path d="M7 5h4v14H7zM13 5h4v14h-4z"/>';}
+document.getElementById('playBtn').onclick=()=>setPlay(!playing);
+function next(){cur=(cur+1)%TRACKS.length;pos=0;render();}
+function prev(){ if(pos>3){pos=0;render();return;} cur=(cur-1+TRACKS.length)%TRACKS.length;pos=0;render();}
+document.getElementById('nextBtn').onclick=next;
+document.getElementById('prevBtn').onclick=prev;
+
+/* swipe cover */
+let sx0=null;
+const cw=document.getElementById('coverWrap');
+cw.addEventListener('touchstart',e=>{sx0=e.touches[0].clientX;},{passive:true});
+cw.addEventListener('touchend',e=>{if(sx0==null)return;const dx=e.changedTouches[0].clientX-sx0;if(dx<-40)next();else if(dx>40)prev();sx0=null;});
+let mdx=null;
+cw.addEventListener('mousedown',e=>mdx=e.clientX);
+cw.addEventListener('mouseup',e=>{if(mdx==null)return;const dx=e.clientX-mdx;if(dx<-40)next();else if(dx>40)prev();mdx=null;});
+
+/* seek on waveform */
+const wave=document.getElementById('wave');
+function seek(e){const r=wave.getBoundingClientRect();const cx=(e.touches?e.touches[0].clientX:e.clientX)-r.left;pos=Math.max(0,Math.min(1,cx/r.width))*TRACKS[cur].dur;document.getElementById('tCur').textContent=fmt(pos);drawWave();}
+wave.addEventListener('click',seek);
+wave.addEventListener('touchstart',seek,{passive:true});
+
+/* ---- EQ ---- */
+const EQ_F=['31','62','125','250','500','1k','2k','4k','8k','16k'];
+const EQ_P={flat:[0,0,0,0,0,0,0,0,0,0],bass:[6,5,4,2,1,0,0,0,0,0],rock:[5,4,3,1,-1,-1,1,3,4,5],voc:[-2,-1,0,2,4,4,3,1,0,-1]};
+let eqVals=EQ_P.flat.slice();
+const eqBands=document.getElementById('eqBands');
+function buildEq(){
+  eqBands.innerHTML='';
+  EQ_F.forEach((f,i)=>{
+    const b=document.createElement('div');b.className='eq-band';
+    b.innerHTML=`<div class="eq-rail" data-i="${i}"><div class="eq-fill"></div><div class="eq-thumb"></div></div><span>${f}</span>`;
+    eqBands.appendChild(b);
+  });
+  paintEq();
+  eqBands.querySelectorAll('.eq-rail').forEach(rail=>{
+    const set=e=>{const r=rail.getBoundingClientRect();const y=(e.touches?e.touches[0].clientY:e.clientY)-r.top;const v=Math.round((1-Math.max(0,Math.min(1,y/r.height)))*24-12);eqVals[+rail.dataset.i]=v;clearPreset();paintEq();};
+    let d=false;
+    rail.addEventListener('mousedown',e=>{d=true;set(e);});
+    rail.addEventListener('touchstart',e=>{d=true;set(e);},{passive:true});
+    addEventListener('mousemove',e=>{if(d)set(e);});
+    rail.addEventListener('touchmove',e=>{if(d)set(e);},{passive:true});
+    addEventListener('mouseup',()=>d=false); rail.addEventListener('touchend',()=>d=false);
+  });
+}
+function paintEq(){
+  eqBands.querySelectorAll('.eq-rail').forEach((rail,i)=>{
+    const v=eqVals[i], pct=(v+12)/24; const fill=rail.querySelector('.eq-fill'); const th=rail.querySelector('.eq-thumb'); if(th) th.style.top=(1-pct)*100+'%';
+    if(v>=0){fill.style.top='auto';fill.style.bottom='50%';fill.style.height=(pct-0.5)*100+'%';}
+    else{fill.style.bottom='auto';fill.style.top='50%';fill.style.height=(0.5-pct)*100+'%';}
+  });
+}
+function clearPreset(){document.querySelectorAll('#eqPre button').forEach(b=>b.classList.remove('on'));}
+document.querySelectorAll('#eqPre button').forEach(b=>b.onclick=()=>{
+  clearPreset();b.classList.add('on');eqVals=EQ_P[b.dataset.p].slice();paintEq();
+});
+buildEq();
+
+/* ---- Push-Start ignition + morph ---- */
+const ign=document.getElementById('ign'), appView=document.getElementById('appView'), playerView=document.getElementById('playerView');
+document.getElementById('pushStart').onclick=openPlayer;
+document.getElementById('miniNow').onclick=openPlayer;
+function openPlayer(){
+  const leds=ign.querySelectorAll('.led');
+  leds.forEach(l=>l.classList.remove('lit'));
+  ign.classList.add('run');
+  const step=reduce?40:110;
+  leds.forEach((l,i)=>setTimeout(()=>l.classList.add('lit'), i*step));
+  setTimeout(()=>{
+    appView.classList.add('hidden');
+    playerView.classList.add('open');
+    genWave(); render();
+  }, leds.length*step + (reduce?20:120));
+  setTimeout(()=>ign.classList.remove('run'), leds.length*step + (reduce?260:700));
+}
+document.getElementById('exitBtn').onclick=()=>{
+  playerView.classList.remove('open');
+  appView.classList.remove('hidden');
+};
+
+/* init */
+initSpec(); genWave(); render();
+requestAnimationFrame(loop);
+addEventListener('resize',()=>{drawWave();});
+</script>
+</body>
+</html>
