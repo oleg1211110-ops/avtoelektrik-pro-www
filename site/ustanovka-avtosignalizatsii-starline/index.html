@@ -49,6 +49,7 @@ nav.menu a{color:var(--mut)}nav.menu a:hover{color:var(--tx)}
 .hero .badge b{color:var(--acc)}
 .hero p.lead{font-size:clamp(16px,2.2vw,19px);color:var(--tx2);max-width:640px}
 .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
+.cta-eq{flex-wrap:nowrap}.cta-eq .btn{flex:1 1 0;min-width:0;justify-content:center;padding:12px 12px}
 .btn{display:inline-flex;align-items:center;gap:9px;font-weight:800;padding:14px 22px;border-radius:12px;font-size:16px;border:0;cursor:pointer;text-align:center}
 .btn.primary{background:var(--acc);color:#111}.btn.primary:hover{background:var(--acc2);color:#111}
 .btn.wa{background:var(--ok);color:#06351b}.btn.wa:hover{filter:brightness(1.08);color:#06351b}
@@ -195,7 +196,11 @@ details.q .a{padding:0 18px 16px;color:var(--tx2);font-size:14.5px}
 @keyframes cbIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
 .price-row{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px dashed var(--ln)}
 .price-row:last-child{border-bottom:0}
-.price-row .p{color:var(--acc);font-weight:800;white-space:nowrap}
+.price-row .p{color:var(--acc);font-weight:800;white-space:nowrap;text-align:right}
+.price-row .p.pt{white-space:normal;min-width:0;flex:1;text-align:right}
+.to-top{position:fixed;right:14px;bottom:calc(66px + env(safe-area-inset-bottom));z-index:45;width:44px;height:44px;border-radius:50%;border:0;background:var(--acc);color:#111;font-size:22px;font-weight:800;line-height:1;cursor:pointer;box-shadow:0 6px 18px -6px rgba(0,0,0,.6);opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .25s,visibility .25s,transform .25s}
+.to-top.show{opacity:1;visibility:visible;transform:none}
+@media(min-width:821px){.to-top{bottom:20px}}
 .map{height:300px;border-radius:16px;border:1px solid var(--ln);position:relative;overflow:hidden;display:block;text-decoration:none;background:radial-gradient(130% 90% at 72% 12%,var(--mapaccent),transparent 58%),linear-gradient(165deg,var(--mapln2),var(--mapln1))}
 .map::before{content:"";position:absolute;inset:-22%;transform:rotate(-9deg);background:linear-gradient(90deg,transparent 0 47.6%,var(--maproad) 47.6% 52.4%,transparent 52.4%),linear-gradient(0deg,transparent 0 61%,var(--maproad) 61% 65%,transparent 65%),linear-gradient(0deg,transparent 0 27%,var(--maproad2) 27% 29.4%,transparent 29.4%),linear-gradient(90deg,transparent 0 21%,var(--maproad2) 21% 23.4%,transparent 23.4%),linear-gradient(90deg,transparent 0 75%,var(--maproad2) 75% 77.4%,transparent 77.4%),linear-gradient(0deg,transparent 0 86%,var(--maproad2) 86% 88%,transparent 88%)}
 .map::after{content:"";position:absolute;inset:0;background:linear-gradient(118deg,transparent 0 39%,var(--mapaccent) 39% 43.5%,transparent 43.5%);opacity:.8}
@@ -345,6 +350,9 @@ footer .foot-official .fo-txt b{color:var(--tx);font-weight:700}
   #nav-t:checked ~ nav.menu a{padding:16px max(16px,env(safe-area-inset-left));border-bottom:1px solid var(--ln);font-size:17px}
   .mbar{display:flex}footer{margin-bottom:58px}
   .two-col{grid-template-columns:1fr!important}
+  .cta-main{flex-wrap:nowrap;gap:10px}
+  .cta-main .btn{flex:1 1 0;min-width:0;padding:12px 8px;font-size:14px;justify-content:center;line-height:1.2}
+  .hero .cnt{display:grid;grid-template-columns:1fr 1fr;gap:18px 16px}
 }
 label.burger{user-select:none}
 .two-col{display:grid;grid-template-columns:1fr 320px;gap:26px;align-items:start}
@@ -526,6 +534,8 @@ html.splash-seen #aep-splash{display:none}
 
 <h2 class="wp-block-heading">Автозапуск для холодных ночей: нужен ли он именно вам</h2>
 
+<div class="ascar" role="img" aria-label="Автозапуск StarLine: с брелока заводится двигатель, машина прогревается заранее — к выходу салон уже тёплый"><style>.ascar{position:relative;background:radial-gradient(130% 100% at 72% 0%,rgba(255,165,0,.12),transparent 55%),linear-gradient(165deg,#161b21,#0c0f12);border:1px solid #2a2f36;border-radius:16px;padding:16px;overflow:hidden;margin:4px 0 10px}.ascar svg{width:100%;height:auto;display:block}.as-body{fill:url(#asbody);stroke:#39434e;stroke-width:1.2}.as-glass{fill:url(#asglass)}.as-key{fill:#18212b;stroke:#54606d;stroke-width:1.6}.as-keybtn{fill:#FFA500}.as-wave{fill:none;stroke:#ffcf6b;stroke-width:3;stroke-linecap:round;opacity:0}.as-puff{fill:#b9c3cd;opacity:0}.as-heat{fill:url(#asheatg);opacity:0}@media (prefers-reduced-motion:no-preference){.as-keybtn{animation:as-press 2.6s ease-in-out infinite}.as-w1{animation:as-wave 2.6s ease-out .1s infinite}.as-w2{animation:as-wave 2.6s ease-out .45s infinite}.as-p1{animation:as-puff 2.6s ease-out 1.0s infinite}.as-p2{animation:as-puff 2.6s ease-out 1.35s infinite}.as-p3{animation:as-puff 2.6s ease-out 1.7s infinite}.as-heat{animation:as-warm 2.6s ease-in-out 1.1s infinite}}@keyframes as-press{0%,100%{opacity:.5}50%{opacity:1}}@keyframes as-wave{0%{opacity:0}20%{opacity:.95}70%,100%{opacity:0}}@keyframes as-puff{0%{opacity:0;transform:translate(0,0) scale(.5)}25%{opacity:.75}100%{opacity:0;transform:translate(-40px,-30px) scale(1.6)}}@keyframes as-warm{0%,100%{opacity:0}55%{opacity:.8}}</style><svg viewBox="0 0 700 300" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="asbody" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#36424f"/><stop offset=".42" stop-color="#232e39"/><stop offset="1" stop-color="#12181f"/></linearGradient><linearGradient id="asglass" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2d3c4d"/><stop offset="1" stop-color="#1a2531"/></linearGradient><radialGradient id="asheatg" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#ff7a2e" stop-opacity=".6"/><stop offset=".6" stop-color="#ff7a2e" stop-opacity=".26"/><stop offset="1" stop-color="#ff7a2e" stop-opacity="0"/></radialGradient><g id="aswheel"><circle r="52" fill="#0a0d10" stroke="#1b2127" stroke-width="2"/><circle r="34" fill="#171d23" stroke="#3c4650" stroke-width="2"/><circle r="21" fill="#0e1317" stroke="#2a333c" stroke-width="1.5"/><g stroke="#aeb8c2" stroke-width="3.4" stroke-linecap="round"><line x1="0" y1="8" x2="0" y2="31"/><line x1="6.7" y1="2.2" x2="29.5" y2="9.6"/><line x1="-6.7" y1="2.2" x2="-29.5" y2="9.6"/><line x1="-4.1" y1="-5.7" x2="-18.2" y2="-25.1"/><line x1="4.1" y1="-5.7" x2="18.2" y2="-25.1"/></g><circle r="7.5" fill="#2b343d" stroke="#444f59" stroke-width="1.5"/></g></defs><ellipse cx="360" cy="288" rx="290" ry="11" fill="#000" opacity=".4"/><path class="as-body" d="M72,230 L67,206 Q67,189 88,182 L122,176 C168,172 216,150 258,120 Q266,112 288,111 L356,110 Q384,111 400,125 L472,166 L612,182 Q636,186 638,203 L636,217 L620,230 L574,230 A52,52 0 0,0 466,230 L239,230 A52,52 0 0,0 131,230 Z"/><path class="as-glass" d="M270,120 Q276,114 290,114 L354,113 Q376,114 389,128 L430,160 L250,152 Q258,132 270,120 Z"/><ellipse class="as-heat" cx="332" cy="158" rx="96" ry="46"/><use href="#aswheel" transform="translate(185,236)"/><use href="#aswheel" transform="translate(520,236)"/><circle class="as-puff as-p1" cx="70" cy="224" r="7"/><circle class="as-puff as-p2" cx="70" cy="224" r="9"/><circle class="as-puff as-p3" cx="70" cy="224" r="6"/><g transform="translate(118,236)"><rect class="as-key" x="0" y="0" width="42" height="68" rx="11"/><circle class="as-keybtn" cx="21" cy="21" r="9"/><rect x="12" y="40" width="18" height="6" rx="3" fill="#39434e"/><rect x="12" y="51" width="18" height="6" rx="3" fill="#39434e"/></g><path class="as-wave as-w1" d="M172,250 Q184,238 196,250"/><path class="as-wave as-w2" d="M166,254 Q184,232 202,254"/><g transform="translate(486,146)"><circle r="21" fill="#13181e" stroke="#ffb63a" stroke-width="2"/><path d="M0 -12 V 1" stroke="#ffb63a" stroke-width="3.4" stroke-linecap="round"/><path d="M-9 -4 A 12 12 0 1 0 9 -4" fill="none" stroke="#ffb63a" stroke-width="3.4" stroke-linecap="round"/></g></svg></div>
+
 <p>Холодные ночи у нас долгие, и прогреть машину из тёплой квартиры очень удобно. Но автозапуск нужен не всем. Сначала решите сами: стоите ли вы во дворе, на каких режимах ездите, коробка у вас механика или автомат. Проверьте, сколько у вас ключей: второй ключ пригодится при установке. И узнайте, есть ли штатный иммобилайзер, потому что тогда понадобится обходчик, а он подходит не ко всем машинам. Совместимость я проверяю честно: иногда автозапуск ставить не стоит, и я так и скажу. Если с иммобилайзером были проблемы раньше, почитайте про <a href="/remont-immobilayzera">ремонт иммобилайзера</a>. Не уверены, подойдёт ли StarLine вашей машине, звоните Олегу, посмотрим модель и решим без лишних трат.</p>
 
 <p><strong>🚗 Установка и настройка автосигнализации</strong></p>
@@ -637,6 +647,8 @@ html.splash-seen #aep-splash{display:none}
 
 <h2 class="wp-block-heading">Установка автосигнализации</h2>
 
+<div class="gpcar" role="img" aria-label="GSM/GPS StarLine: на карте видно, где находится машина, и ею можно управлять со смартфона"><style>.gpcar{position:relative;background:radial-gradient(130% 100% at 72% 0%,rgba(255,165,0,.12),transparent 55%),linear-gradient(165deg,#161b21,#0c0f12);border:1px solid #2a2f36;border-radius:16px;padding:16px;overflow:hidden;margin:4px 0 10px}.gpcar svg{width:100%;height:auto;display:block}.gp-body{fill:url(#gpbody);stroke:#39434e;stroke-width:1.2}.gp-glass{fill:url(#gpglass)}.gp-beam{stroke:#ffcf6b;stroke-width:2.4;stroke-linecap:round;opacity:0}.gp-pin{fill:#FFA500}.gp-ping{fill:none;stroke:#ffcf6b;stroke-width:2.6;opacity:0}.gp-sat{fill:#263241;stroke:#8b97a3;stroke-width:1.6}.gp-panel{fill:#2b5c86}.gp-phone{fill:#141a20;stroke:#54606d;stroke-width:1.8}.gp-scr{fill:#0e1317}.gp-map{stroke:#2a3340;stroke-width:1.4}@media (prefers-reduced-motion:no-preference){.gp-b1{animation:gp-beam 2.4s ease-out .1s infinite}.gp-b2{animation:gp-beam 2.4s ease-out .4s infinite}.gp-b3{animation:gp-beam 2.4s ease-out .7s infinite}.gp-ping{animation:gp-ping 2.4s ease-out infinite}.gp-pin{animation:gp-bob 2.4s ease-in-out infinite;transform-box:fill-box;transform-origin:center}}@keyframes gp-beam{0%{opacity:0}25%{opacity:.9}75%,100%{opacity:0}}@keyframes gp-ping{0%{opacity:.75;transform:scale(.3);transform-box:fill-box;transform-origin:center}100%{opacity:0;transform:scale(1.5)}}@keyframes gp-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}</style><svg viewBox="0 0 700 300" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="gpbody" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#36424f"/><stop offset=".42" stop-color="#232e39"/><stop offset="1" stop-color="#12181f"/></linearGradient><linearGradient id="gpglass" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2d3c4d"/><stop offset="1" stop-color="#1a2531"/></linearGradient><g id="gpwheel"><circle r="52" fill="#0a0d10" stroke="#1b2127" stroke-width="2"/><circle r="34" fill="#171d23" stroke="#3c4650" stroke-width="2"/><circle r="21" fill="#0e1317" stroke="#2a333c" stroke-width="1.5"/><g stroke="#aeb8c2" stroke-width="3.4" stroke-linecap="round"><line x1="0" y1="8" x2="0" y2="31"/><line x1="6.7" y1="2.2" x2="29.5" y2="9.6"/><line x1="-6.7" y1="2.2" x2="-29.5" y2="9.6"/><line x1="-4.1" y1="-5.7" x2="-18.2" y2="-25.1"/><line x1="4.1" y1="-5.7" x2="18.2" y2="-25.1"/></g><circle r="7.5" fill="#2b343d" stroke="#444f59" stroke-width="1.5"/></g></defs><ellipse cx="360" cy="288" rx="290" ry="11" fill="#000" opacity=".4"/><g transform="translate(70,40)"><rect class="gp-sat" x="-10" y="-8" width="34" height="22" rx="4"/><rect class="gp-panel" x="-40" y="-6" width="26" height="12" rx="2"/><rect class="gp-panel" x="24" y="-6" width="26" height="12" rx="2"/><path d="M7 14 l0 14" stroke="#8b97a3" stroke-width="2.4"/><circle cx="7" cy="32" r="4" fill="#ffcf6b"/></g><path class="gp-beam gp-b1" d="M84,74 L300,150"/><path class="gp-beam gp-b2" d="M84,74 L326,146"/><path class="gp-beam gp-b3" d="M84,74 L352,150"/><path class="gp-body" d="M72,230 L67,206 Q67,189 88,182 L122,176 C168,172 216,150 258,120 Q266,112 288,111 L356,110 Q384,111 400,125 L472,166 L612,182 Q636,186 638,203 L636,217 L620,230 L574,230 A52,52 0 0,0 466,230 L239,230 A52,52 0 0,0 131,230 Z"/><path class="gp-glass" d="M270,120 Q276,114 290,114 L354,113 Q376,114 389,128 L430,160 L250,152 Q258,132 270,120 Z"/><use href="#gpwheel" transform="translate(185,236)"/><use href="#gpwheel" transform="translate(520,236)"/><circle class="gp-ping" cx="330" cy="88" r="11"/><g transform="translate(330,46)"><g class="gp-pin"><path d="M0 0 C -16 0 -16 19 0 38 C 16 19 16 0 0 0 Z"/><circle cx="0" cy="13" r="6" fill="#13181e"/></g></g><g transform="translate(556,120)"><rect class="gp-phone" x="0" y="0" width="74" height="134" rx="13"/><rect class="gp-scr" x="8" y="13" width="58" height="108" rx="5"/><path class="gp-map" d="M12 40 H62 M12 70 H62 M12 100 H62 M28 18 V116 M46 18 V116"/><g transform="translate(37,56)"><g class="gp-pin"><path d="M0 0 C -9 0 -9 11 0 22 C 9 11 9 0 0 0 Z"/><circle cx="0" cy="8" r="3.5" fill="#0e1317"/></g></g></g></svg></div>
+
 <!--FEED:ustanovka-avtosignalizatsii:12-->
 
 <p><a href="/novosti-i-rekomendatsii?c=ustanovka-avtosignalizatsii">Все статьи рубрики «Установка автосигнализации» →</a></p>
@@ -648,15 +660,15 @@ html.splash-seen #aep-splash{display:none}
 <p>📞 Телефон: <strong><a href="tel:+77011211110">+7 701 121 11 10</a></strong><br>🟢 WhatsApp: <strong><u><a href="https://wa.me/77011211110">+7 701 121 11 10</a></u></strong><br>📍 Адрес: <strong><a href="https://www.google.com/maps?cid=15303955675384448033" target="_blank" rel="noreferrer noopener">ул. Мартынова, 39, Алматы</a></strong><br>🗺 <a href="https://www.google.com/maps/dir/?api=1&amp;destination=43.269785,76.898974" target="_blank" rel="noreferrer noopener">Проложить маршрут</a><br>⏰ <strong>Круглосуточно, без выходных</strong></p>
 
 <p>🧾 Документы и чеки, работаю на сервисе, выезжаю к клиентам на место, на дом или в офис <strong>по Алматы и области</strong>.<br>💬 Консультирую по телефону, помогу определить неисправность даже до выезда.<br>⚙️ Стаж более 26 лет. Занимаюсь профессионально ремонтом авто, выполняю сложный ремонт блоков.</p></div>
-      <div class="cta" style="margin-top:18px"><a class="btn wa" href="https://wa.me/?text=Установка автосигнализации в Алматы 8(701)1211110 Олег https://avtoelektrik-pro.kz/ustanovka-avtosignalizatsii-starline">Поделиться в WhatsApp</a><a class="btn ghost" href="https://t.me/share/url?url=https://avtoelektrik-pro.kz/ustanovka-avtosignalizatsii-starline&text=Установка автосигнализации в Алматы 8(701)1211110 Олег">Telegram</a></div>
+      <div class="cta" style="margin-top:18px"><button type="button" class="btn primary ao-share" data-sh-t="Установка автосигнализации в Алматы 8(701)1211110 Олег" data-sh-u="https://avtoelektrik-pro.kz/ustanovka-avtosignalizatsii-starline">Поделиться</button></div>
     </div>
     <aside>
       
     <div class="price-box reveal" style="margin-top:8px">
       <div class="sec-head" style="margin-bottom:8px"><span class="tag">Прозрачная цена</span></div>
       <div class="price-row"><span>Установка + сигнализация StarLine</span><span class="p">от 150 000 ₸</span></div>
-      <div class="price-row"><span>Запчасти / материалы</span><span class="p">по факту, с вашего согласия</span></div>
-      <div class="price-row"><span>Гарантия на работу</span><span class="p">входит в стоимость</span></div>
+      <div class="price-row"><span>Запчасти / материалы</span><span class="p pt">по факту, с вашего согласия</span></div>
+      <div class="price-row"><span>Гарантия на работу</span><span class="p pt">входит в стоимость</span></div>
       <p class="muted" style="margin:12px 0 0">Точную цену называю до начала работ. Консультация по телефону — бесплатно.</p>
     </div>
       <div class="aside reveal" style="margin-top:14px">
@@ -676,8 +688,8 @@ html.splash-seen #aep-splash{display:none}
     <div class="sec-head"><span class="tag">Ещё услуги</span><h2>Связанные услуги</h2></div>
     <p class="muted" style="margin:-8px 0 14px;max-width:620px">Другие работы автоэлектрика с выездом — листайте вбок.</p>
     <div class="hscroll" role="list" aria-label="Связанные услуги">
-      <a class="svc-card reveal" href="/kompyuternaya-diagnostika-avto-v-almaty"><span class="n">Компьютерная диагностика на сервисе</span><span class="p">от 8 000 ₸</span></a>
-      <a class="svc-card reveal" href="/remont-avtokompyutera"><span class="n">Ремонт ЭБУ (автокомпьютера)</span><span class="p">от 25 000 ₸</span></a>
+      <a class="svc-card reveal" href="/kompyuternaya-diagnostika-avto-v-almaty"><span class="n">Компьютерная диагностика на сервисе</span><span class="p">от 10 000 ₸</span></a>
+      <a class="svc-card reveal" href="/remont-avtokompyutera"><span class="n">Ремонт ЭБУ (автокомпьютера)</span><span class="p">от 40 000 ₸</span></a>
       <a class="svc-card reveal" href="/remont-immobilayzera"><span class="n">Ремонт иммобилайзера, прописка ключей</span><span class="p">от 30 000 ₸</span></a>
       <a class="svc-card reveal" href="/gruzovoy-avtoelektrik"><span class="n">Грузовой автоэлектрик 24 В</span><span class="p">от 20 000 ₸</span></a>
       <a class="svc-card reveal" href="/kompyuternaya-diagnostika-gruzovykh-avto-v-almaty"><span class="n">Компьютерная диагностика грузовых</span><span class="p">от 20 000 ₸</span></a>
@@ -767,7 +779,7 @@ html.splash-seen #aep-splash{display:none}
           </ul>
           <div class="sched-note"><span class="z">⚡</span><span>Экстренный выезд — круглосуточно, <b>24/7</b></span></div>
         </div>
-        <div class="cta" style="margin-top:14px">
+        <div class="cta cta-eq" style="margin-top:14px">
           <a class="btn primary" href="tel:+77011211110">Позвонить</a>
           <a class="btn wa" href="https://wa.me/77011211110">WhatsApp</a>
         </div>
@@ -829,6 +841,7 @@ html.splash-seen #aep-splash{display:none}
   <button type="button" class="pm pbot-open">💬 Помощник</button>
   <a class="w" href="https://wa.me/77011211110">WhatsApp</a>
 </nav>
+<button type="button" class="to-top" aria-label="Наверх" title="Наверх">↑</button>
 <button class="pbot-fab pbot-open" aria-label="Спросить мастера"><span class="d"></span>💬 Спросить мастера</button>
 <div class="pbot-panel" id="pbotPanel" role="dialog" aria-label="Помощник Олега">
   <div class="pbot-head">

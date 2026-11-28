@@ -49,6 +49,7 @@ nav.menu a{color:var(--mut)}nav.menu a:hover{color:var(--tx)}
 .hero .badge b{color:var(--acc)}
 .hero p.lead{font-size:clamp(16px,2.2vw,19px);color:var(--tx2);max-width:640px}
 .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
+.cta-eq{flex-wrap:nowrap}.cta-eq .btn{flex:1 1 0;min-width:0;justify-content:center;padding:12px 12px}
 .btn{display:inline-flex;align-items:center;gap:9px;font-weight:800;padding:14px 22px;border-radius:12px;font-size:16px;border:0;cursor:pointer;text-align:center}
 .btn.primary{background:var(--acc);color:#111}.btn.primary:hover{background:var(--acc2);color:#111}
 .btn.wa{background:var(--ok);color:#06351b}.btn.wa:hover{filter:brightness(1.08);color:#06351b}
@@ -195,7 +196,11 @@ details.q .a{padding:0 18px 16px;color:var(--tx2);font-size:14.5px}
 @keyframes cbIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
 .price-row{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px dashed var(--ln)}
 .price-row:last-child{border-bottom:0}
-.price-row .p{color:var(--acc);font-weight:800;white-space:nowrap}
+.price-row .p{color:var(--acc);font-weight:800;white-space:nowrap;text-align:right}
+.price-row .p.pt{white-space:normal;min-width:0;flex:1;text-align:right}
+.to-top{position:fixed;right:14px;bottom:calc(66px + env(safe-area-inset-bottom));z-index:45;width:44px;height:44px;border-radius:50%;border:0;background:var(--acc);color:#111;font-size:22px;font-weight:800;line-height:1;cursor:pointer;box-shadow:0 6px 18px -6px rgba(0,0,0,.6);opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .25s,visibility .25s,transform .25s}
+.to-top.show{opacity:1;visibility:visible;transform:none}
+@media(min-width:821px){.to-top{bottom:20px}}
 .map{height:300px;border-radius:16px;border:1px solid var(--ln);position:relative;overflow:hidden;display:block;text-decoration:none;background:radial-gradient(130% 90% at 72% 12%,var(--mapaccent),transparent 58%),linear-gradient(165deg,var(--mapln2),var(--mapln1))}
 .map::before{content:"";position:absolute;inset:-22%;transform:rotate(-9deg);background:linear-gradient(90deg,transparent 0 47.6%,var(--maproad) 47.6% 52.4%,transparent 52.4%),linear-gradient(0deg,transparent 0 61%,var(--maproad) 61% 65%,transparent 65%),linear-gradient(0deg,transparent 0 27%,var(--maproad2) 27% 29.4%,transparent 29.4%),linear-gradient(90deg,transparent 0 21%,var(--maproad2) 21% 23.4%,transparent 23.4%),linear-gradient(90deg,transparent 0 75%,var(--maproad2) 75% 77.4%,transparent 77.4%),linear-gradient(0deg,transparent 0 86%,var(--maproad2) 86% 88%,transparent 88%)}
 .map::after{content:"";position:absolute;inset:0;background:linear-gradient(118deg,transparent 0 39%,var(--mapaccent) 39% 43.5%,transparent 43.5%);opacity:.8}
@@ -345,6 +350,9 @@ footer .foot-official .fo-txt b{color:var(--tx);font-weight:700}
   #nav-t:checked ~ nav.menu a{padding:16px max(16px,env(safe-area-inset-left));border-bottom:1px solid var(--ln);font-size:17px}
   .mbar{display:flex}footer{margin-bottom:58px}
   .two-col{grid-template-columns:1fr!important}
+  .cta-main{flex-wrap:nowrap;gap:10px}
+  .cta-main .btn{flex:1 1 0;min-width:0;padding:12px 8px;font-size:14px;justify-content:center;line-height:1.2}
+  .hero .cnt{display:grid;grid-template-columns:1fr 1fr;gap:18px 16px}
 }
 label.burger{user-select:none}
 .two-col{display:grid;grid-template-columns:1fr 320px;gap:26px;align-items:start}
@@ -554,6 +562,8 @@ html.splash-seen #aep-splash{display:none}
 
 <h2 class="wp-block-heading">Что входит в диагностику приобретаемого автомобиля</h2>
 
+<div class="tkcar" role="img" aria-label="Толщиномер краски на кузове: прибор показывает 118 мкм на заводской краске и 340 мкм на перекрашенной панели"><style>.tkcar{position:relative;background:radial-gradient(130% 100% at 72% 0%,rgba(255,165,0,.12),transparent 55%),linear-gradient(165deg,#161b21,#0c0f12);border:1px solid #2a2f36;border-radius:16px;padding:16px;overflow:hidden;margin:4px 0 10px}.tkcar svg{width:100%;height:auto;display:block}.tk-body{fill:url(#tkbody);stroke:#39434e;stroke-width:1.2}.tk-glass{fill:url(#tkglass)}.tk-dev{fill:#18212b;stroke:#54606d;stroke-width:1.6}.tk-scr{fill:#0c1218;stroke:#ffb63a;stroke-width:1.2}.tk-probe{stroke:#aeb8c2;stroke-width:3;stroke-linecap:round}.tk-tip{fill:#FFA500}.tk-glow{fill:url(#tkglowg);opacity:.85}.tk-patch{fill:url(#tkpatchg);stroke:#ff8a5c;stroke-width:1.2;stroke-dasharray:5 4;opacity:.8}.tk-panel{fill:#0f151b;stroke:#2f3a45;stroke-width:1.2}.tk-num{font:700 38px monospace;fill:#ffcf6b}.tk-unit{font:600 14px sans-serif;fill:#aeb8c2}.tk-ok{font:700 15px sans-serif;fill:#6fd08c}.tk-bad{font:700 15px sans-serif;fill:#ff7a5c}.tk-r2{opacity:0}@media (prefers-reduced-motion:no-preference){.tk-scan{animation:tk-scan 7s ease-in-out infinite}.tk-r1{animation:tk-r1 7s ease-in-out infinite}.tk-r2{animation:tk-r2 7s ease-in-out infinite}.tk-patch{animation:tk-pulse 2.4s ease-in-out infinite}.tk-tip{animation:tk-blink 1.2s ease-in-out infinite}}@keyframes tk-scan{0%,4%{transform:translateX(0)}55%{transform:translateX(130px)}66%{transform:translateX(165px)}90%{transform:translateX(205px)}100%{transform:translateX(0)}}@keyframes tk-r1{0%,56%{opacity:1}62%,94%{opacity:0}100%{opacity:1}}@keyframes tk-r2{0%,60%{opacity:0}66%,90%{opacity:1}96%,100%{opacity:0}}@keyframes tk-pulse{0%,100%{opacity:.5}50%{opacity:.95}}@keyframes tk-blink{0%,100%{opacity:.45}50%{opacity:1}}</style><svg viewBox="0 0 700 300" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="tkbody" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#36424f"/><stop offset=".42" stop-color="#232e39"/><stop offset="1" stop-color="#12181f"/></linearGradient><linearGradient id="tkglass" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2d3c4d"/><stop offset="1" stop-color="#1a2531"/></linearGradient><radialGradient id="tkglowg" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#ffb63a" stop-opacity=".5"/><stop offset=".6" stop-color="#ffb63a" stop-opacity=".2"/><stop offset="1" stop-color="#ffb63a" stop-opacity="0"/></radialGradient><radialGradient id="tkpatchg" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#ff6a3d" stop-opacity=".45"/><stop offset=".7" stop-color="#ff6a3d" stop-opacity=".18"/><stop offset="1" stop-color="#ff6a3d" stop-opacity="0"/></radialGradient><g id="tkwheel"><circle r="52" fill="#0a0d10" stroke="#1b2127" stroke-width="2"/><circle r="34" fill="#171d23" stroke="#3c4650" stroke-width="2"/><circle r="21" fill="#0e1317" stroke="#2a333c" stroke-width="1.5"/><g stroke="#aeb8c2" stroke-width="3.4" stroke-linecap="round"><line x1="0" y1="8" x2="0" y2="31"/><line x1="6.7" y1="2.2" x2="29.5" y2="9.6"/><line x1="-6.7" y1="2.2" x2="-29.5" y2="9.6"/><line x1="-4.1" y1="-5.7" x2="-18.2" y2="-25.1"/><line x1="4.1" y1="-5.7" x2="18.2" y2="-25.1"/></g><circle r="7.5" fill="#2b343d" stroke="#444f59" stroke-width="1.5"/></g></defs><ellipse cx="360" cy="288" rx="290" ry="11" fill="#000" opacity=".4"/><path class="tk-body" d="M72,230 L67,206 Q67,189 88,182 L122,176 C168,172 216,150 258,120 Q266,112 288,111 L356,110 Q384,111 400,125 L472,166 L612,182 Q636,186 638,203 L636,217 L620,230 L574,230 A52,52 0 0,0 466,230 L239,230 A52,52 0 0,0 131,230 Z"/><path class="tk-glass" d="M270,120 Q276,114 290,114 L354,113 Q376,114 389,128 L430,160 L250,152 Q258,132 270,120 Z"/><ellipse class="tk-patch" cx="430" cy="176" rx="38" ry="18"/><use href="#tkwheel" transform="translate(185,236)"/><use href="#tkwheel" transform="translate(520,236)"/><g transform="translate(250,176)"><g class="tk-scan"><ellipse class="tk-glow" cx="0" cy="0" rx="44" ry="22"/><rect class="tk-dev" x="-24" y="-64" width="48" height="44" rx="9"/><rect class="tk-scr" x="-16" y="-57" width="32" height="16" rx="3"/><rect x="-10" y="-34" width="20" height="5" rx="2.5" fill="#39434e"/><line class="tk-probe" x1="0" y1="-20" x2="0" y2="-3"/><circle class="tk-tip" cx="0" cy="0" r="4"/></g></g><rect class="tk-panel" x="24" y="22" width="206" height="82" rx="12"/><g class="tk-r1"><text class="tk-num" x="40" y="68">118</text><text class="tk-unit" x="112" y="68">мкм</text><text class="tk-ok" x="40" y="92">норма: заводская краска</text></g><g class="tk-r2"><text class="tk-num" x="40" y="68">340</text><text class="tk-unit" x="112" y="68">мкм</text><text class="tk-bad" x="40" y="92">перекрас: шпатлёвка</text></g></svg></div>
+
 <p><strong>Диагностика приобретаемого автомобиля</strong> — это не просто подключить сканер и посмотреть ошибки. Это комплексная проверка всех систем.</p>
 
 <p>Я проверяю:</p>
@@ -671,6 +681,8 @@ html.splash-seen #aep-splash{display:none}
 </ul>
 
 <h2 class="wp-block-heading">Когда особенно нужна диагностика</h2>
+
+<div class="vncar" role="img" aria-label="Проверка по VIN: код считывается с таблички, в отчёте по истории автомобиля подтверждаются пробег, ДТП, залог и розыск"><style>.vncar{position:relative;background:radial-gradient(130% 100% at 72% 0%,rgba(255,165,0,.12),transparent 55%),linear-gradient(165deg,#161b21,#0c0f12);border:1px solid #2a2f36;border-radius:16px;padding:16px;overflow:hidden;margin:4px 0 10px}.vncar svg{width:100%;height:auto;display:block}.vn-body{fill:url(#vnbody);stroke:#39434e;stroke-width:1.2}.vn-glass{fill:url(#vnglass)}.vn-plate{fill:#131a21;stroke:#54606d;stroke-width:1.6}.vn-code{font:700 17px monospace;fill:#ffcf6b;letter-spacing:1px}.vn-beam{fill:url(#vnbeamg)}.vn-link{fill:none;stroke:#ffb63a;stroke-width:2;stroke-dasharray:6 6;stroke-linecap:round;opacity:.7}.vn-card{fill:#0f151b;stroke:#2f3a45;stroke-width:1.2}.vn-title{font:700 13px sans-serif;fill:#aeb8c2}.vn-lab{font:600 14px sans-serif;fill:#d6dde4}.vn-tick{fill:none;stroke:#6fd08c;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}@media (prefers-reduced-motion:no-preference){.vn-scan{animation:vn-scan 4.2s ease-in-out infinite}.vn-link{animation:vn-flow 1.4s linear infinite}.vn-row{animation:vn-row 6s ease-out infinite}.vn-r2{animation-delay:.6s}.vn-r3{animation-delay:1.2s}.vn-r4{animation-delay:1.8s}}@keyframes vn-scan{0%{transform:translateX(0);opacity:0}10%{opacity:1}85%{opacity:1}100%{transform:translateX(236px);opacity:0}}@keyframes vn-flow{to{stroke-dashoffset:-24}}@keyframes vn-row{0%{opacity:0}12%,88%{opacity:1}100%{opacity:0}}</style><svg viewBox="0 0 700 300" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="vnbody" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#36424f"/><stop offset=".42" stop-color="#232e39"/><stop offset="1" stop-color="#12181f"/></linearGradient><linearGradient id="vnglass" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2d3c4d"/><stop offset="1" stop-color="#1a2531"/></linearGradient><radialGradient id="vnbeamg" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#ffb63a" stop-opacity=".7"/><stop offset=".55" stop-color="#ffb63a" stop-opacity=".25"/><stop offset="1" stop-color="#ffb63a" stop-opacity="0"/></radialGradient><g id="vnwheel"><circle r="52" fill="#0a0d10" stroke="#1b2127" stroke-width="2"/><circle r="34" fill="#171d23" stroke="#3c4650" stroke-width="2"/><circle r="21" fill="#0e1317" stroke="#2a333c" stroke-width="1.5"/><g stroke="#aeb8c2" stroke-width="3.4" stroke-linecap="round"><line x1="0" y1="8" x2="0" y2="31"/><line x1="6.7" y1="2.2" x2="29.5" y2="9.6"/><line x1="-6.7" y1="2.2" x2="-29.5" y2="9.6"/><line x1="-4.1" y1="-5.7" x2="-18.2" y2="-25.1"/><line x1="4.1" y1="-5.7" x2="18.2" y2="-25.1"/></g><circle r="7.5" fill="#2b343d" stroke="#444f59" stroke-width="1.5"/></g></defs><ellipse cx="360" cy="288" rx="290" ry="11" fill="#000" opacity=".4"/><path class="vn-body" d="M72,230 L67,206 Q67,189 88,182 L122,176 C168,172 216,150 258,120 Q266,112 288,111 L356,110 Q384,111 400,125 L472,166 L612,182 Q636,186 638,203 L636,217 L620,230 L574,230 A52,52 0 0,0 466,230 L239,230 A52,52 0 0,0 131,230 Z"/><path class="vn-glass" d="M270,120 Q276,114 290,114 L354,113 Q376,114 389,128 L430,160 L250,152 Q258,132 270,120 Z"/><use href="#vnwheel" transform="translate(185,236)"/><use href="#vnwheel" transform="translate(520,236)"/><path class="vn-link" d="M404,52 C340,52 290,64 236,68"/><rect class="vn-plate" x="414" y="26" width="266" height="52" rx="9"/><text class="vn-code" x="428" y="58">WBA3A5C5XDF000000</text><g transform="translate(428,52)"><g class="vn-scan"><ellipse class="vn-beam" cx="0" cy="0" rx="18" ry="30"/></g></g><rect class="vn-card" x="24" y="20" width="212" height="122" rx="12"/><text class="vn-title" x="40" y="42">Отчёт по VIN</text><g class="vn-row"><path class="vn-tick" d="M42,62 l5,5 l10,-11"/><text class="vn-lab" x="70" y="67">Пробег</text></g><g class="vn-row vn-r2"><path class="vn-tick" d="M42,86 l5,5 l10,-11"/><text class="vn-lab" x="70" y="91">ДТП</text></g><g class="vn-row vn-r3"><path class="vn-tick" d="M42,110 l5,5 l10,-11"/><text class="vn-lab" x="70" y="115">Залог</text></g><g class="vn-row vn-r4"><path class="vn-tick" d="M42,134 l5,5 l10,-11"/><text class="vn-lab" x="70" y="139">Розыск</text></g></svg></div>
 
 <p>Обязательно делайте <strong>проверку авто перед покупкой</strong>, если:</p>
 
@@ -824,15 +836,15 @@ html.splash-seen #aep-splash{display:none}
   ]
 }
 </script></div>
-      <div class="cta" style="margin-top:18px"><a class="btn wa" href="https://wa.me/?text=Диагностика автомобиля перед покупкой Алматы 8(701)121-11-10 Олег https://avtoelektrik-pro.kz/diagnostika-avto-pered-pokupkoy-almaty">Поделиться в WhatsApp</a><a class="btn ghost" href="https://t.me/share/url?url=https://avtoelektrik-pro.kz/diagnostika-avto-pered-pokupkoy-almaty&text=Диагностика автомобиля перед покупкой Алматы 8(701)121-11-10 Олег">Telegram</a></div>
+      <div class="cta" style="margin-top:18px"><button type="button" class="btn primary ao-share" data-sh-t="Диагностика автомобиля перед покупкой Алматы 8(701)121-11-10 Олег" data-sh-u="https://avtoelektrik-pro.kz/diagnostika-avto-pered-pokupkoy-almaty">Поделиться</button></div>
     </div>
     <aside>
       
     <div class="price-box reveal" style="margin-top:8px">
       <div class="sec-head" style="margin-bottom:8px"><span class="tag">Прозрачная цена</span></div>
       <div class="price-row"><span>Диагностика перед покупкой</span><span class="p">от 25 000 ₸</span></div>
-      <div class="price-row"><span>Запчасти / материалы</span><span class="p">по факту, с вашего согласия</span></div>
-      <div class="price-row"><span>Гарантия на работу</span><span class="p">входит в стоимость</span></div>
+      <div class="price-row"><span>Запчасти / материалы</span><span class="p pt">по факту, с вашего согласия</span></div>
+      <div class="price-row"><span>Гарантия на работу</span><span class="p pt">входит в стоимость</span></div>
       <p class="muted" style="margin:12px 0 0">Точную цену называю до начала работ. Консультация по телефону — бесплатно.</p>
     </div>
       <div class="aside reveal" style="margin-top:14px">
@@ -852,8 +864,8 @@ html.splash-seen #aep-splash{display:none}
     <div class="sec-head"><span class="tag">Ещё услуги</span><h2>Связанные услуги</h2></div>
     <p class="muted" style="margin:-8px 0 14px;max-width:620px">Другие работы автоэлектрика с выездом — листайте вбок.</p>
     <div class="hscroll" role="list" aria-label="Связанные услуги">
-      <a class="svc-card reveal" href="/kompyuternaya-diagnostika-avto-v-almaty"><span class="n">Компьютерная диагностика на сервисе</span><span class="p">от 8 000 ₸</span></a>
-      <a class="svc-card reveal" href="/remont-avtokompyutera"><span class="n">Ремонт ЭБУ (автокомпьютера)</span><span class="p">от 25 000 ₸</span></a>
+      <a class="svc-card reveal" href="/kompyuternaya-diagnostika-avto-v-almaty"><span class="n">Компьютерная диагностика на сервисе</span><span class="p">от 10 000 ₸</span></a>
+      <a class="svc-card reveal" href="/remont-avtokompyutera"><span class="n">Ремонт ЭБУ (автокомпьютера)</span><span class="p">от 40 000 ₸</span></a>
       <a class="svc-card reveal" href="/remont-immobilayzera"><span class="n">Ремонт иммобилайзера, прописка ключей</span><span class="p">от 30 000 ₸</span></a>
       <a class="svc-card reveal" href="/gruzovoy-avtoelektrik"><span class="n">Грузовой автоэлектрик 24 В</span><span class="p">от 20 000 ₸</span></a>
       <a class="svc-card reveal" href="/kompyuternaya-diagnostika-gruzovykh-avto-v-almaty"><span class="n">Компьютерная диагностика грузовых</span><span class="p">от 20 000 ₸</span></a>
@@ -942,7 +954,7 @@ html.splash-seen #aep-splash{display:none}
           </ul>
           <div class="sched-note"><span class="z">⚡</span><span>Экстренный выезд — круглосуточно, <b>24/7</b></span></div>
         </div>
-        <div class="cta" style="margin-top:14px">
+        <div class="cta cta-eq" style="margin-top:14px">
           <a class="btn primary" href="tel:+77011211110">Позвонить</a>
           <a class="btn wa" href="https://wa.me/77011211110">WhatsApp</a>
         </div>
@@ -1004,6 +1016,7 @@ html.splash-seen #aep-splash{display:none}
   <button type="button" class="pm pbot-open">💬 Помощник</button>
   <a class="w" href="https://wa.me/77011211110">WhatsApp</a>
 </nav>
+<button type="button" class="to-top" aria-label="Наверх" title="Наверх">↑</button>
 <button class="pbot-fab pbot-open" aria-label="Спросить мастера"><span class="d"></span>💬 Спросить мастера</button>
 <div class="pbot-panel" id="pbotPanel" role="dialog" aria-label="Помощник Олега">
   <div class="pbot-head">

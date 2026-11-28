@@ -21,6 +21,23 @@ function fireLead(){ if(typeof gtag==='function'){ try{ gtag('event','conversion
   document.addEventListener('submit',function(e){ var f=e.target; if(f&&f.matches&&f.matches('form.form')){ fireLead(); } },true);
 })();
 
+/* «Поделиться» — системный шэринг (все приложения телефона); запасной вариант — копирование ссылки или WhatsApp */
+document.addEventListener('click',function(e){
+  var b=e.target&&e.target.closest?e.target.closest('.ao-share'):null; if(!b)return;
+  e.preventDefault();
+  var t=b.getAttribute('data-sh-t')||document.title, u=b.getAttribute('data-sh-u')||location.href, full=t+' '+u;
+  if(navigator.share){ navigator.share({title:t,text:t,url:u}).catch(function(){}); return; }
+  if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(full).then(function(){ var o=b.textContent; b.textContent='Ссылка скопирована ✓'; setTimeout(function(){b.textContent=o;},2500); },function(){ window.open('https://wa.me/?text='+encodeURIComponent(full),'_blank','noopener'); }); }
+  else { window.open('https://wa.me/?text='+encodeURIComponent(full),'_blank','noopener'); }
+});
+
+/* кнопка «Наверх» — появляется при прокрутке, плавно поднимает страницу */
+(function(){var b=document.querySelector('.to-top'); if(!b) return;
+  var on=function(){ b.classList.toggle('show',(window.scrollY||document.documentElement.scrollTop)>500); };
+  window.addEventListener('scroll',on,{passive:true}); on();
+  b.addEventListener('click',function(){ window.scrollTo({top:0,behavior:'smooth'}); });
+})();
+
 /* Счётчики — набегают при входе в экран; без JS уже показано финальное число. */
 function animateCount(el){
   var to = parseFloat(el.getAttribute('data-count')); if(isNaN(to))return;
@@ -214,7 +231,7 @@ if('serviceWorker' in navigator){window.addEventListener('load',function(){navig
    {k:['камаз','грузов','фур','газель','тягач','тахограф','спидометр','отвязк','эбу','ebu','маз','даф','ман','скани','вольво'],t:'грузовик / ЭБУ',
     a:'С грузовыми работаю (КамАЗ, европейцы, мочевина, ремонт ЭБУ).\n\nСам:\n• Назови марку и что беспокоит (не заводится, ошибка, мочевина, спидометр).\n• Если после ремонта — вспомни, что крутили.\n\nНапиши — скажу, едет ли оно само или нужен выезд.'},
    {k:['диагностик','сколько сто','цена','выезд','приедеш','записат','сканер','проверить машину','компьютерн'],t:'диагностика / выезд / цена',
-    a:'Компьютерная диагностика на сервисе от 8 000 ₸, выезд с диагностикой от 10 000 ₸.\n\nЧтобы я сразу приехал с нужным — опиши машину и симптом и жми кнопку ниже. Если просто спросить — звони, часто подскажу по телефону бесплатно.'}
+    a:'Компьютерная диагностика на сервисе от 10 000 ₸, выезд с диагностикой от 15 000 ₸.\n\nЧтобы я сразу приехал с нужным — опиши машину и симптом и жми кнопку ниже. Если просто спросить — звони, часто подскажу по телефону бесплатно.'}
   ];
 
   function norm(s){return (s||'').toLowerCase().replace(/ё/g,'е').replace(/\s+/g,' ').trim();}
